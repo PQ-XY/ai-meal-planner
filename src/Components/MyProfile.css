@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+.myProfileContainer {
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.myProfileContainer .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.myProfileContainer .header .myProfileLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.myProfileContainer .header h1 {
+  font-family: 'Instrument Sans', serif;
+  font-size: 24px;
+  color: #94B06E;
+  font-weight: 700;
+  margin: 0;
+}

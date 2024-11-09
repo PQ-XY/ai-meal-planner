@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+.recommendationContainer {
+
+    margin: 16px;
+
+    .recommendationHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .recommendationBox {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .recommendationLogo {
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h2 {
+                margin: 0;
+                font-family: 'Instrument Sans', serif;
+                font-size: 24px;
+                color: #94B06E;
+                font-weight: 700;
+            }
+        }
+
+        .regenerate {
+            height: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            background-color:transparent;
+            font-family: 'Instrument Sans', serif;
+            color:#94B06E;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 0;
+
+            .regenerateLogo{
+                margin-left: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+    }
+
+    .recommendationSub {
+        margin: 0;
+        font-family: 'Instrument Sans', serif;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: 400;
+    }
+
+    .recommendationCardsBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 35px;
+    }
+
+}

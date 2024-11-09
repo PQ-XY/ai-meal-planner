@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@400;700&display=swap');
+
+body {
+    font-family: 'Judson', serif;
+}
+
+.homePageLayout {
+    display: flex;
+
+    .mainPage {
+
+        .headerContainer {
+            width: 1060px;
+            height: 99px;
+            margin-top: 75px;
+            margin-left: 120px;
+            margin-right: 120px;
+            margin-bottom: 45px;
+    
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                h1 {
+                    font-size: 48px;
+                    margin: 0;
+                }
+    
+                h2 {
+                    font-size: 32px;
+                    margin: 0;
+                }
+    
+            }
+    
+            .subHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                h3 {
+                    font-size: 32px;
+                    margin: 0;
+                }
+            }
+        }
+    
+        .myProfile {
+            width: 1060px;
+            margin-left: 120px;
+            margin-right: 120px;
+            margin-bottom: 30px;
+        }
+    
+        .recommendation {
+            width: 1060px;
+            height: 532px;
+            margin-left: 120px;
+            margin-right: 120px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 18px;
+            background-color: white;
+            margin-bottom: 56px;
+        }
+    
+        .aiAssistantBar {
+            width: 1060px;
+            height: 532px;
+            margin-left: 120px;
+            margin-right: 120px;
+        }
+    }
+
+    .sideWindowLayout {
+        width: 500px;
+        background-color: white;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+    }
+}

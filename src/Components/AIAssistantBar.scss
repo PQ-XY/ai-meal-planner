@@ -1,0 +1,17 @@
+.aiAssitantContainer {
+    width: 1060px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .aiAssistantLogo {
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        background-color: #94B06E;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

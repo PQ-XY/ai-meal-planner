@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@400;700&display=swap');
+
+.navBarLayout {
+
+    display: flex;
+    width: 100vw;
+    background-color: #F9FBF8;
+
+    .navBackground {
+        width: 140px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .siteLogo {
+            position: absolute;
+            top: 30px;
+            left: 3px;
+        }
+
+        .navBar {
+            background-color: #94B06E;
+            height: 340px;
+            width: 100px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        
+            button {
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+                border: none;
+                font-family: 'Judson', serif;
+                font-size: 13px;
+                font-weight: 700;
+
+                .navLink {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
