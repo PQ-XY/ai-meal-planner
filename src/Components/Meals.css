@@ -1,0 +1,9 @@
+.mealHeaderBox {
+  width: 1408px;
+  height: 184px;
+  background: linear-gradient(to left, #688B39, #94B06E);
+}
+
+.mealCardBox {
+  display: flex;
+}

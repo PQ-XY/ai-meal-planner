@@ -1,6 +1,7 @@
 import React from 'react'
 import './SideWindow.css'
 import SideWindowCard from './SideWindowCard'
+import MealDialog from './MealDialog'
 
 export default function SideWindow() {
   return (
@@ -17,9 +18,7 @@ export default function SideWindow() {
         <h2>Today's Meal</h2>
       </div>
       <div className='sideWindowCardsBox'>
-        <SideWindowCard title={'Breakfast'}></SideWindowCard>
-        <SideWindowCard title={'Lunch'}></SideWindowCard>
-        <SideWindowCard title={'Dinner'}></SideWindowCard>
+        <MealDialog></MealDialog>
       </div>
       <div>
         <button className='upcomingMealsButt'>Upcoming Meals</button>
