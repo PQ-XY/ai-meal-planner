@@ -1,6 +1,8 @@
 import React from 'react'
-import RecommendationCard from './RecommendationCard';
 import './Meals.css'
+import RadialBarChart from './RadialBarChart';
+import AIAssistantBar from './AIAssistantBar';
+import BasicTabs from './BasicTabs';
 
 export default function Meals() {
 
@@ -25,37 +27,43 @@ export default function Meals() {
   const weekDates = getWeekDates();
 
   return (
-    <div>
+    <div className='mealPageContainer'>
       <div className='mealHeaderBox'>
-        <div>
+        <div className='mealHeaderWeek'>
           <h1>Weekly Meals</h1>
           <h2>11/03-11/10</h2>
         </div>      
-        <div>
+        <div className='mealHeaderMeals'>
           <h3>Breakfast</h3>
           <h3>Lunch</h3>
           <h3>Dinner</h3>
         </div>
-        <div>
-          <div>          
+        <div className='mealCaloriesInfoContainer'>
+          <div className='totalCaloriesBox'>          
             <h1>420 Cal</h1>
             <h2>Low Calories</h2>
           </div>
-          <div>
+          <div className='caloriesRadialBarChartBox'>
+            <div className='RadialBarChartBox'>
+              <RadialBarChart></RadialBarChart>
+              <h5>Carbs</h5>
+            </div>
+            <div className='RadialBarChartBox'>
+              <RadialBarChart></RadialBarChart>
+              <h5>Protein</h5>
+            </div>
+            <div className='RadialBarChartBox'>
+              <RadialBarChart></RadialBarChart>
+              <h5>Fat</h5>
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <ul>
-          {weekDates.map((date, index) => (
-            <li key={index}>{date}</li>
-          ))}
-        </ul>
+      <div className='basicTabsBox'>
+        <BasicTabs></BasicTabs>
       </div>
-      <div className='mealCardBox'>
-        <RecommendationCard></RecommendationCard>
-        <RecommendationCard></RecommendationCard>
-        <RecommendationCard></RecommendationCard>
+      <div>
+        <AIAssistantBar></AIAssistantBar>
       </div>
     </div>
   )

@@ -1,11 +1,11 @@
 import React from 'react'
 import './RecommendationCard.css'
 
-export default function RecommendationCard() {
+export default function RecommendationCard({src}) {
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src="https://www.sidechef.com/recipe/0fb38edd-6c28-434a-a14c-e930e69115d4.jpg?d=1408x1120" alt="" />
+        <img className='recommendationCardImg' src={src} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <h3>Eggplant Casserole</h3>

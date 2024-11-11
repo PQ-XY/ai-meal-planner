@@ -1,18 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Judson:wght@400;700&display=swap");
 body {
   font-family: 'Judson', serif;
+  padding: 0;
+  margin: 0;
 }
 
 .homePageLayout {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+}
+
+.homePageLayout .mainPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
 }
 
 .homePageLayout .mainPage .headerContainer {
   width: 1060px;
   height: 99px;
   margin-top: 75px;
-  margin-left: 120px;
-  margin-right: 120px;
   margin-bottom: 45px;
 }
 
@@ -45,16 +54,12 @@ body {
 
 .homePageLayout .mainPage .myProfile {
   width: 1060px;
-  margin-left: 120px;
-  margin-right: 120px;
   margin-bottom: 30px;
 }
 
 .homePageLayout .mainPage .recommendation {
   width: 1060px;
   height: 532px;
-  margin-left: 120px;
-  margin-right: 120px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 18px;
   background-color: white;
@@ -64,8 +69,6 @@ body {
 .homePageLayout .mainPage .aiAssistantBar {
   width: 1060px;
   height: 532px;
-  margin-left: 120px;
-  margin-right: 120px;
 }
 
 .homePageLayout .sideWindowLayout {

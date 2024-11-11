@@ -2,19 +2,26 @@
 
 body {
     font-family: 'Judson', serif;
+    padding: 0;
+    margin: 0;
 }
 
 .homePageLayout {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
 
     .mainPage {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:auto;
 
         .headerContainer {
             width: 1060px;
             height: 99px;
             margin-top: 75px;
-            margin-left: 120px;
-            margin-right: 120px;
             margin-bottom: 45px;
     
             .header {
@@ -48,16 +55,14 @@ body {
     
         .myProfile {
             width: 1060px;
-            margin-left: 120px;
-            margin-right: 120px;
+
             margin-bottom: 30px;
         }
     
         .recommendation {
             width: 1060px;
             height: 532px;
-            margin-left: 120px;
-            margin-right: 120px;
+
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 18px;
             background-color: white;
@@ -67,8 +72,7 @@ body {
         .aiAssistantBar {
             width: 1060px;
             height: 532px;
-            margin-left: 120px;
-            margin-right: 120px;
+
         }
     }
 

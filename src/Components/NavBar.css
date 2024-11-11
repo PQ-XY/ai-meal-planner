@@ -50,3 +50,9 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.navBarLayout .contentBackground {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

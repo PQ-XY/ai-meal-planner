@@ -58,7 +58,7 @@ export default function NavBar() {
                 </button>
             </div>
         </div>
-        <div>
+        <div className='contentBackground'>
             <Outlet></Outlet>
         </div>
     </div>
