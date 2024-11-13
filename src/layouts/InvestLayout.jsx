@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Header'
-import NextButton from '../components/NextButton'
+import Header from '../Components/Header'
+import NextButton from '../Components/NextButton'
 import './InvestLayout.css'
 
 const InvestLayout = () => {
