@@ -8,7 +8,7 @@ const LabelCard = ({title,array,setArray}) => {
 
   // Handler for the click event
   const handleClick = () => {
-    !clicked; // Toggle the clicked state
+    clicked=!clicked; // Toggle the clicked state
     setArray((prevArray) => {
       if (prevArray.includes(title)) {
         // Remove the title if it exists in the array

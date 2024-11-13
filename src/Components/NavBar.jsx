@@ -39,19 +39,19 @@ export default function NavBar() {
             </div>
             <div className='navBar'>
                 <button style={{background:style==='style1'?'black':'none'}} onClick={() => changeStyle('style1')}>
-                    <Link className='navLink' to='/home' style={{textDecoration:'none', color:style==='style1'?'white':'#E8EDD5'}}>
+                    <Link className='navLink' to='/app/home' style={{textDecoration:'none', color:style==='style1'?'white':'#E8EDD5'}}>
                         <NavHomeLogo color={style==='style1'?'white':'#E8EDD5'}></NavHomeLogo>
                         Home
                     </Link>
                 </button>
                 <button style={{background:style==='style2'?'black':'none'}} onClick={() => changeStyle('style2')}>
-                    <Link className='navLink' to='/meals' style={{textDecoration:'none', color:style==='style2'?'white':'#E8EDD5'}}>
+                    <Link className='navLink' to='/app/meals' style={{textDecoration:'none', color:style==='style2'?'white':'#E8EDD5'}}>
                         <NavMealLogo color={style==='style2'?'white':'#E8EDD5'}></NavMealLogo>
                         Meal
                     </Link>
                 </button>
                 <button style={{background:style==='style3'?'black':'none'}} onClick={() => changeStyle('style3')}>
-                    <Link className='navLink' to='/planner' style={{textDecoration:'none', color:style==='style3'?'white':'#E8EDD5'}}>
+                    <Link className='navLink' to='/app/planner' style={{textDecoration:'none', color:style==='style3'?'white':'#E8EDD5'}}>
                         <NavPlannerLogo color={style==='style3'?'white':'#E8EDD5'}></NavPlannerLogo>
                         Planner
                     </Link>

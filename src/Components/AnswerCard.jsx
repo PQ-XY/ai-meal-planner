@@ -3,10 +3,10 @@ import './AnswerCard.css'
 
 const AnswerCard = ({title,image, array, setArray}) => {
   // State to track if the div has been clicked
-  const clicked = array.includes(title);
+  let clicked = array.includes(title);
   // Handler for the click event
   const handleClick = () => {
-    !clicked; // Toggle the clicked state
+    clicked=!clicked; // Toggle the clicked state
     setArray((prevArray) => {
       if (prevArray.includes(title)) {
         // Remove the title if it exists in the array
