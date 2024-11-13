@@ -1,0 +1,13 @@
+
+.layout-container {
+  background-color:#F9FBF8 ;
+  min-height: 100vh; /* Ensures background covers full viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+body, html {
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  height: 100%; /* Ensure the body and html take up the full height */
+}
