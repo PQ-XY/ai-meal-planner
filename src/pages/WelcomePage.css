@@ -1,0 +1,24 @@
+.cards-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 220px;
+  margin-right: 220px;
+  gap: 40px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.home-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+body{
+  background-image: url('../assets/images/home-bg.png');
+  background-size: cover;
+  background-position-y: top;   /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}

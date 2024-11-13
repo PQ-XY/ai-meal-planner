@@ -1,0 +1,37 @@
+import React from 'react'
+import { useState, useEffect } from 'react'
+import InvestNavigate from '../components/InvestNavigate'
+import TasteCard from '../components/TasteCard'
+import sourImage from '../assets/images/sour.svg'
+import sweetImage from '../assets/images/sweet.svg'
+import bitterImage from '../assets/images/bitter.svg'
+import spicyImage from '../assets/images/spicy.svg'
+import saltyImage from '../assets/images/salty.svg'
+import './InvestPage31.css'
+
+const InvestPage31 = () => {
+  const [tasteArray, setGridArray5] = useState(() => {
+    const savedTastes = localStorage.getItem('tasteArray');
+    return savedTastes ? JSON.parse(savedTastes) : [];
+  });
+
+  // Update the state in localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('tasteArray', JSON.stringify(tasteArray));
+  }, [tasteArray]);
+  return (
+    <div>
+      <InvestNavigate status='3'/>
+      <p className='invest-question'>Please choose your taste level.</p>
+      <div className='taste-grid'>
+        <TasteCard title='Sour' image={sourImage} array={tasteArray} setArray={setGridArray5} />
+        <TasteCard title='Sweet' image={sweetImage} array={tasteArray} setArray={setGridArray5} />
+        <TasteCard title='Bitter' image={bitterImage} array={tasteArray} setArray={setGridArray5} />
+        <TasteCard title='Spicy' image={spicyImage} array={tasteArray} setArray={setGridArray5} />
+        <TasteCard title='Salty' image={saltyImage} array={tasteArray} setArray={setGridArray5} />
+      </div>
+    </div>
+  )
+}
+
+export default InvestPage31

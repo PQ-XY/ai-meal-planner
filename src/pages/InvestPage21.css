@@ -1,0 +1,13 @@
+.label-grid{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 820px; /* Set the container width */
+  gap: 16px; /* Optional: adds spacing between the cards */
+}
+
+.page21-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}

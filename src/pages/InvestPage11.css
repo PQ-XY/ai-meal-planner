@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
+  column-gap: 20px;  /* Space between items */
+  row-gap:25px ;
+  width: 800px;  /* Adjust the width of the grid container */
+  max-width: 1200px; /* Optional: Set a maximum width for large screens */
+  margin: 0 auto;  /* Centers the grid horizontally */
+  margin-top: 20px;
+  margin-right: 332px;
+}
+
+.invest-question{
+  font-family: 'Instrument Sans',serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 310px;
+  margin-top: 40px;
+}
