@@ -12,7 +12,7 @@ const LabelCard = ({title,array,setArray}) => {
     setArray((prevArray) => {
       if (prevArray.includes(title)) {
         // Remove the title if it exists in the array
-        return prevArray.filter(item => item !== title && item!='No allergy');
+        return prevArray.filter(item => item !== title);
       } else {
         // Add the title if it doesn't exist
         return [...prevArray, title];
