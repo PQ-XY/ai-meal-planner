@@ -1,8 +1,8 @@
 import React from 'react'
 import './WelcomePage.css'
-import Header from '../components/Header'
-import FunctionCard from '../components/FunctionCard'
-import DemoButton from '../components/DemoButton'
+import Header from '../Components/Header'
+import FunctionCard from '../Components/FunctionCard'
+import DemoButton from '../Components/DemoButton'
 
 const WelcomePage = () => {
   return (

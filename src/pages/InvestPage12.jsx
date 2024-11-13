@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import InvestNavigate from '../components/InvestNavigate'
-import AnswerCard from '../components/AnswerCard'
+import InvestNavigate from '../Components/InvestNavigate'
+import AnswerCard from '../Components/AnswerCard'
 import fitnessImage from '../assets/images/fitness.png';
 import slimImage from '../assets/images/slim.png';
 import fastAndEasyImage from '../assets/images/fastAndEasy.png';

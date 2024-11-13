@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import InvestNavigate from '../components/InvestNavigate';
-import LabelCard from '../components/LabelCard';
-import AddButton from '../components/AddButton';
+import InvestNavigate from '../Components/InvestNavigate';
+import LabelCard from '../Components/LabelCard';
+import AddButton from '../Components/AddButton';
 import './InvestPage21.css';
 
 const InvestPage21 = () => {

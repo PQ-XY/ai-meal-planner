@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import InvestNavigate from '../components/InvestNavigate'
-import AnswerCard from '../components/AnswerCard'
+import InvestNavigate from '../Components/InvestNavigate'
+import AnswerCard from '../Components/AnswerCard'
 import breakfastImage from '../assets/images/breakfast.svg';
 import launchImage from '../assets/images/launch.png';
 import dinnerImage from '../assets/images/dinner.png';
