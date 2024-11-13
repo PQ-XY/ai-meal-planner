@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+p{
+  margin: 0;
+}
+.card-container{
+  background-color: white;
+  height: 420px;
+  width: 300px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border-color: rgba(0, 0,0, 0.2);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.card-bottom{
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 20px;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  background-color:#94B06E;
+  border-radius: 15px;
+}
+
+.card-bottom-paragraph{
+  display: flex;
+  flex-direction: row;
+}
+
+.card-bottom-title{
+  color: white;
+  font-family: "Judson", serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.card-bottom-description{
+  color: #E8EDD5;
+  font-family: "Instrument Sans", serif;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight:400;
+  font-style: normal;
+}

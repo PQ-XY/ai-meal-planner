@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.add-more-button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-more-button{
+  height: 46px;
+  width: 46px;
+  border-color:#94B06E;
+  border-radius: 8px;
+  border-style: solid;
+  font-size: 19px;
+  color:#94B06E;
+  background-color: #F9FDEB;
+  transition: 0.15s;
+  margin-right: 10px;
+}
+
+.add-more-button:hover{
+  background-color: #f0f4e2;
+}
+
+.add-more-button:active{
+  background-color: #d6dac9aa;
+}
+
+.add-more-input{
+  font-family: 'Instrument Sans', serif;
+  padding: 12px 20px;
+  width: 120px;
+  margin-bottom: 1px;
+  border-color:#94B06E;
+  border-radius: 8px;
+  border-style: solid;
+  font-size: 14px;
+  margin-top: 2px;
+  color:#000000;
+  background-color: #F9FDEB;
+  transition: 0.15s;
+  font-weight: bold;
+}

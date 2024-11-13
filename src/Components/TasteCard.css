@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.taste-card-container{
+  width: 395px;
+  height: 60px;
+  background-color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1.11px;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.taste-card-title{
+  font-family: 'Instrument Sans', serif;
+  color:#94B06E;
+  opacity: 80%;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.taste-card-image{
+  width: 35px;             /* Set the width of the image */
+  height: 35px;            /* Set the height to create a square */
+  object-fit: contain;       /* Clipping the image to fit within the given width and height */
+  object-position: center; 
+}
+
+.taste-card-image.clicked {
+  filter: hue-rotate(15deg) brightness(0.6) saturate(3);
+}
+
+.taste-card-image-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}

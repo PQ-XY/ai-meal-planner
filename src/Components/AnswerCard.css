@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.answer-card-container{
+  width: 260px;
+  height: 150px;
+  background-color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1.11px;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.answer-card-container.clicked {
+  background-color: #F9FDEB;  /* Change background color to green when clicked */
+  color: white;             /* Change text color to white when clicked */
+}
+
+.answer-card-container.clicked:hover {
+  background-color: #F9FDEB; /* Hover effect for non-clicked state */
+  color: black;                 /* Text color changes on hover */
+}
+
+.answer-card-container:hover{
+  background-color: #00000007;
+}
+
+.answer-card-container:active{
+  background-color: #0000000d;
+}
+
+.answer-card-image {
+  width: 90px;             /* Set the width of the image */
+  height: 90px;            /* Set the height to create a square */
+  object-fit: contain;       /* Clipping the image to fit within the given width and height */
+  object-position: center; /* Ensure the central part of the image is shown */
+}
+
+.answer-card-image.clicked {
+  filter: brightness(1) invert(50%) sepia(40%) saturate(300%) hue-rotate(50deg) brightness(95%) contrast(100%);
+}
+
+.answer-card-title{
+  font-family: 'Instrument Sans', serif;
+  color: #111111;
+  opacity: 80%;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.answer-card-title.clicked{
+  color: #94B06E;
+}

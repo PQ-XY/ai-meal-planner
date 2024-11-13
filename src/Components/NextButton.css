@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 50px; /* Fixed position from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  gap: 25px;
+}
+
+.next-button {
+  font-family: 'Instrument Sans', serif;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
+  justify-content: center; /* Center the content inside the button */
+  background-color: white; /* Button background */
+  border: 1px solid #94B06E; /* Button border color */
+  color: #94B06E; /* Text color */
+  font-size: 18px; /* Text size */
+  font-weight: regular;
+  width: 140px;
+  height: 50px;
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 25px; /* Rounded corners */
+  transition: 0.15s;
+}
+
+.next-button:hover {
+  background-color: #94B06E; /* Button background color on hover */
+  color: white; /* Text color on hover */
+}
+
+.next-button:active {
+  border: none;
+  background-color: #788e5a; /* Button background color on hover */
+  color: white; /* Text color on hover */
+}
+
+.next-button:hover.arrow-icon {
+  color: white; /* Text color on hover */
+}
+
+.arrow-icon {
+  margin-left: 8px; /* Space between text and icon */
+  color: #94B06E; /* Set the icon color */
+}
+
+.arrow-gray{
+  margin-left: 8px; /* Space between text and icon */
+  color: #cacaca; /* Set the icon color */
+}
+
+.next-button:hover .arrow-icon {
+  color: white;
+}
+
+.next-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.skip-info{
+  font-family: 'Instrument Sans',serif;
+  font-size: 16px;
+  color: #94B06E;
+}
+
+.skip-info-span{
+  font-family: 'Instrument Sans',serif;
+  font-size: 16px;
+  font-weight: lighter;
+  color: #94B06E;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.two-button{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.button-gray{
+  font-family: 'Instrument Sans', serif;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
+  justify-content: center; /* Center the content inside the button */
+  background-color: white; /* Button background */
+  border: 1px solid #cacaca; /* Button border color */
+  color: #cacaca; /* Text color */
+  font-size: 18px; /* Text size */
+  font-weight: regular;
+  width: 140px;
+  height: 50px;
+  border-radius: 25px; /* Rounded corners */
+  transition: 0.15s;
+}
+
+.button-green{
+  font-family: 'Instrument Sans', serif;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
+  justify-content: center; /* Center the content inside the button */
+  background-color:#94B06E; /* Button background */
+  border: none; /* Button border color */
+  color: white; /* Text color */
+  font-size: 18px; /* Text size */
+  font-weight: regular;
+  width: 140px;
+  height: 50px;
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 25px; /* Rounded corners */
+  transition: 0.15s;
+}
+
+.button-green:active{
+  border: none;
+  background-color: #788e5a; /* Button background color on hover */
+  color: white; /* Text color on hover */
+}
+
