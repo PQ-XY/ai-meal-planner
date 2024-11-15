@@ -4,10 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   position: fixed;
-  bottom: 50px; /* Fixed position from the bottom */
-  left: 50%; /* Center horizontally */
+  bottom: 20px;
+  margin-left: 50%; /* Center horizontally */
   transform: translateX(-50%);
   gap: 25px;
 }
@@ -15,6 +14,7 @@
 .next-button {
   font-family: 'Instrument Sans', serif;
   display: flex;
+  gap: 5px;
   align-items: center; /* Align text and icon vertically */
   justify-content: center; /* Center the content inside the button */
   background-color: white; /* Button background */
@@ -45,12 +45,10 @@
 }
 
 .arrow-icon {
-  margin-left: 8px; /* Space between text and icon */
   color: #94B06E; /* Set the icon color */
 }
 
 .arrow-gray{
-  margin-left: 8px; /* Space between text and icon */
   color: #cacaca; /* Set the icon color */
 }
 
@@ -86,6 +84,7 @@
 .button-gray{
   font-family: 'Instrument Sans', serif;
   display: flex;
+  gap: 5px;
   align-items: center; /* Align text and icon vertically */
   justify-content: center; /* Center the content inside the button */
   background-color: white; /* Button background */
