@@ -22,11 +22,13 @@ const InvestPage11 = () => {
   return (
     <div>
       <InvestNavigate status='1'/>
-      <p className='invest-question'>How many meals do you eat a day?</p>
-      <div className='answer-grid'>
-        <AnswerCard title='Breakfast' image={breakfastImage} array={mealsArray} setArray={setGridArray1}/>
-        <AnswerCard title='Launch' image={launchImage} array={mealsArray} setArray={setGridArray1}/>
-        <AnswerCard title='Dinner' image={dinnerImage} array={mealsArray} setArray={setGridArray1}/>
+      <div className='grid-container'>
+        <p className='invest-question'>How many meals do you eat a day?</p>
+        <div className='answer-grid'>
+          <AnswerCard title='Breakfast' image={breakfastImage} array={mealsArray} setArray={setGridArray1}/>
+          <AnswerCard title='Launch' image={launchImage} array={mealsArray} setArray={setGridArray1}/>
+          <AnswerCard title='Dinner' image={dinnerImage} array={mealsArray} setArray={setGridArray1}/>
+        </div>
       </div>
     </div>
   )

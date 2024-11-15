@@ -6,8 +6,18 @@
   gap: 16px; /* Optional: adds spacing between the cards */
 }
 
+.invest-question{
+  font-family: 'Instrument Sans',serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin:0 auto;
+  margin-top: 40px;
+}
+
 .page21-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 25px;
+  align-items: center;
+  gap: 30px;
 }

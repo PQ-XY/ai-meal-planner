@@ -7,14 +7,20 @@
   width: 800px;  /* Adjust the width of the grid container */
   max-width: 1200px; /* Optional: Set a maximum width for large screens */
   margin: 0 auto;  /* Centers the grid horizontally */
-  margin-top: 20px;
-  margin-right: 332px;
 }
 
 .invest-question{
   font-family: 'Instrument Sans',serif;
   font-size: 18px;
   font-weight: bold;
-  margin-left: 310px;
+  margin:0 auto;
   margin-top: 40px;
+}
+
+.grid-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }

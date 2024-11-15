@@ -41,14 +41,14 @@ const InvestPage13 = () => {
   return (
     <div>
       <InvestNavigate status="1" />
-      <p className="invest-question">What food are you allergic to?</p>
       <div className="page21-container">
-        <div className="label-grid">
-          {allAllergyArray.map((item, index) => (
-            <LabelCard key={index} title={item} array={allergyArray} setArray={setGridArray6} />
-          ))}
-          <AddButton addNewCard={addNewCard} />
-        </div>
+        <p className="invest-question">What food are you allergic to?</p>
+          <div className="label-grid">
+            {allAllergyArray.map((item, index) => (
+              <LabelCard key={index} title={item} array={allergyArray} setArray={setGridArray6} />
+            ))}
+            <AddButton addNewCard={addNewCard} />
+          </div>
       </div>
     </div>
   );

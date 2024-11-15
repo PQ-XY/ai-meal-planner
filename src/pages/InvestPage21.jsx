@@ -42,8 +42,8 @@ const InvestPage21 = () => {
   return (
     <div>
       <InvestNavigate status="2" />
-      <p className="invest-question">What cuisine do you like?</p>
       <div className="page21-container">
+         <p className="invest-question">What cuisine do you like?</p>
         <div className="label-grid">
           {allCuisinesArray.map((item, index) => (
             <LabelCard key={index} title={item} array={cuisineArray} setArray={setGridArray3} />

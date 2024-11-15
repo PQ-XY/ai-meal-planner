@@ -39,8 +39,8 @@ const InvestPage22 = () => {
   return (
     <div>
       <InvestNavigate status='2'/>
-      <p className='invest-question'>What cuisine do you like?</p>
       <div class='page21-container'>
+      <p className='invest-question'>What kind of kitchenware do you have?</p>
       <div className="label-grid">
           {allKitsArray.map((item, index) => (
             <LabelCard key={index} title={item} array={kitArray} setArray={setGridArray4} />

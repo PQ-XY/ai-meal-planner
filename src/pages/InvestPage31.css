@@ -1,13 +1,18 @@
 .taste-grid{
-  width: 820px;
   display: flex;
   flex-direction: row;
-  justify-content:flex-start;
+  justify-content: center;
   align-items:center;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 24px;
-  margin-left: 308px;
   margin-top: 30px;
   row-gap: 18px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.taste-grid-container{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
