@@ -1,6 +1,5 @@
 import React from 'react'
 import './SideWindow.css'
-import SideWindowCard from './SideWindowCard'
 import MealDialog from './MealDialog'
 
 export default function SideWindow() {
@@ -18,7 +17,9 @@ export default function SideWindow() {
         <h2>Today's Meal</h2>
       </div>
       <div className='sideWindowCardsBox'>
-        <MealDialog></MealDialog>
+        <MealDialog title={'Breakfast'} name={'Egg Sandwich'} src={'https://www.simplyrecipes.com/thmb/5KEzbHplXxqFntM-jqrI0QdExR4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Easy-Egg-Salad-Sandwich-LEAD-22-8ecbb89abda34a84b649ff4c44bab525.JPG'}></MealDialog>
+        <MealDialog title={'Lunch'} name={'Beef Bibimbap'} src={'https://carlsbadcravings.com/wp-content/uploads/2023/09/Bibimbap-9.jpg'}></MealDialog>
+        <MealDialog title={'Dinner'} name={'Chicken Breast Salad'} src={'https://www.wellseasonedstudio.com/wp-content/uploads/2023/04/Grilled-chicken-salad-with-cucumbers-and-creamy-garlic-dressing-on-a-plate.jpg'}></MealDialog>
       </div>
       <div>
         <button className='upcomingMealsButt'>Upcoming Meals</button>
