@@ -1,11 +1,11 @@
 import React from 'react'
-import './RecommendationCard.css'
+import './MealCard.css'
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-export default function RecommendationCard({src}) {
+export default function MealCard({src}) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -17,12 +17,12 @@ export default function RecommendationCard({src}) {
   };
 
   return (
-    <div className='recommendationCardContainer'>
-      <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={src} alt="" />
+    <div className='mealCardContainer'>
+      <div className='mealCardImgBox'>
+        <img className='mealCardImg' src={src} alt="" />
       </div>
-      <div className='recommendationCardInfo'>
-        <div className='recommendationCardHeader'>
+      <div className='mealCardInfo'>
+        <div className='mealCardHeader'>
           <h3>Eggplant Casserole</h3>
           <div>
             <IconButton
@@ -43,9 +43,8 @@ export default function RecommendationCard({src}) {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Replace Breakfast</MenuItem>
-              <MenuItem onClick={handleClose}>Replace Lunch</MenuItem>
-              <MenuItem onClick={handleClose}>Replace Dinner</MenuItem>
+              <MenuItem onClick={handleClose}>Delete</MenuItem>
+              <MenuItem onClick={handleClose}>Regenerate</MenuItem>
             </Menu>
           </div>
         </div>
