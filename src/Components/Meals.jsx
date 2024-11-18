@@ -6,37 +6,57 @@ import BasicTabs from './BasicTabs';
 
 export default function Meals() {
 
-  // Function to get the dates for the current week (Sunday to Saturday)
-  const getWeekDates = () => {
+  function getCurrentWeekDates() {
     const today = new Date();
-    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - dayOfWeek); // Set to the latest Sunday
-
-    const dates = [];
-    for (let i = 0; i < 7; i++) {
-      const day = new Date(startOfWeek);
-      day.setDate(startOfWeek.getDate() + i);
-      const dayString = day.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-      dates.push(dayString);
-    }
-    return dates;
-  };
+  
+    // Find Sunday (start of the week)
+    const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+  
+    // Find Saturday (end of the week)
+    const lastDayOfWeek = new Date(firstDayOfWeek);
+    lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
+  
+    // Format dates as MM/DD
+    const formatDate = (date) => {
+      const month = date.getMonth() + 1; // Months are 0-indexed
+      const day = date.getDate();
+      return `${month}/${day}`;
+    };
+  
+    return `${formatDate(firstDayOfWeek)} - ${formatDate(lastDayOfWeek)}`;
+  }
 
   // Get the current week's dates
-  const weekDates = getWeekDates();
+  const weekDates = getCurrentWeekDates();
+
+
+  const getMealTime = () => {
+    const currentHour = new Date().getHours(); // Get the current hour (0-23)
+
+    if (currentHour >= 5 && currentHour < 11) {
+      return 'Breakfast';
+    } else if (currentHour >= 11 && currentHour < 17) {
+      return 'Lunch';
+    } else if (currentHour >= 17 && currentHour < 22) {
+      return 'Dinner';
+    } else {
+      return ''; // Late night or early morning snack
+    }
+  };
+
+  const currentMeal = getMealTime()
 
   return (
     <div className='mealPageContainer'>
       <div className='mealHeaderBox'>
         <div className='mealHeaderWeek'>
           <h1>Weekly Meals</h1>
-          <h2>11/03-11/10</h2>
+          <h2>{weekDates}</h2>
         </div>      
         <div className='mealHeaderMeals'>
-          <h3>Breakfast</h3>
-          <h3>Lunch</h3>
-          <h3>Dinner</h3>
+          <h3 style={{ fontWeight: currentMeal === 'Breakfast' ? 'bold' : 'normal' }}>Breakfast</h3>
+          <h3 style={{ fontWeight: currentMeal === 'Lunch' ? 'bold' : 'normal' }}>Lunch</h3>
+          <h3 style={{ fontWeight: currentMeal === 'Dinner' ? 'bold' : 'normal' }}>Dinner</h3>
         </div>
         <div className='mealCaloriesInfoContainer'>
           <div className='totalCaloriesBox'>          
