@@ -1,10 +1,43 @@
 import React, { useState } from 'react'
 
+function parseMealPlan(resultString) {
+  const mealPlan = [];
+  
+  // Split the result string by each "Day X:" using regex
+  const days = resultString.split(/Day \d+:/).filter(day => day.trim() !== "");
+
+  // Iterate over each day to extract meals
+  days.forEach((day, index) => {
+      const dayObj = {
+          day: index + 1,
+          meals: [],
+      };
+
+      // Use regex to match known meal types like Breakfast, Lunch, Dinner, Snack
+      const mealPattern = /(Breakfast|Lunch|Dinner|Snack):\s*([^Breakfast|Lunch|Dinner|Snack]*)/g;
+      let match;
+
+      // Extract meals for the current day
+      while ((match = mealPattern.exec(day)) !== null) {
+          const mealType = match[1].trim();
+          const mealName = match[2].trim();
+          dayObj.meals.push({ mealType, mealName });
+      }
+
+      // Add the parsed day object to the meal plan
+      mealPlan.push(dayObj);
+  });
+
+  return mealPlan;
+}
+
+
 export default function Planner() {
   // State for storing the prompt input and the analysis result
   const [prompt, setPrompt] = useState('');
   const [MealPlanResults, setMealPlanResults] = useState('');
 
+  
   // Function to call the API and get the result
   const handleClick = async () => {
     const { available } = await window.ai.languageModel.capabilities();
@@ -21,7 +54,7 @@ export default function Planner() {
           numMeals: "2", // number of meals required per day, e.g., 3 meals + 1 snack, or lunch + dinne
           numDays: "3", // number of days, e.g. 7 days
           allergies: "peanuts, peanut butter", // any allergies or restrictions, e.g., peanuts, gluten-free, lactose intolerance
-          preference: "Asian", // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
+          preference: "Chinese", // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
           kitchenware: "wok, fry pan, air fryer", // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker
           tasteRating: [2, 3, 4, 2] // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
         }
@@ -42,11 +75,9 @@ export default function Planner() {
         Breakfast:...\n`
 
         // Run the AI analysis based on the prompt
-        const meals = s.promptStreaming(template);
-        for await (const chunk of meals) {
-          setMealPlanResults(chunk);
-        }
-         // Set the result to state
+        const meals = await s.prompt(template);
+        setMealPlanResults(meals);
+        console.log(parseMealPlan(meals));
       } catch (error) {
         console.error('Error analyzing the prompt:', error);
         setMealPlanResults('An error occurred while analyzing the prompt.');
