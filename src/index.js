@@ -15,6 +15,7 @@ import InvestPage21 from './pages/InvestPage21';
 import InvestPage22 from './pages/InvestPage22';
 import InvestPage31 from './pages/InvestPage31';
 import InvestPage13 from './pages/InvestPage13';
+import LoadingPage from './pages/LoadingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +32,7 @@ root.render(
           <Route path="/invest/2-2" element={<InvestPage22 />} />
           <Route path="/invest/3-1" element={<InvestPage31 />} />
         </Route>
+          <Route path='/loading' element={<LoadingPage />} />
         <Route path='/app' element={<App />}>
           <Route path='/app/home' element={<Home />} />
           <Route path='/app/meals' element={<Meals />} />
