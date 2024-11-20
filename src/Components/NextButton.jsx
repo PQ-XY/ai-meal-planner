@@ -40,18 +40,21 @@ const NextButton = () => {
     // Add more conditions based on your logic
   };
 
+  const handleSkipClick=()=>{
+    navigate('/app/home');
+  }
 
   return (
     <div className="button-container">
       <div className='two-button'>
-      <button onClick={handlePrevButtonClick} className={currentPage==='/invest/1-1'?"button-gray":"next-button"}>
-        Previous <FiArrowLeft size={20} className={currentPage==='/invest/1-1'?"arrow-gray":"arrow-icon"} />
-      </button>
-      <button onClick={handleNextButtonClick} className={currentPage==='/invest/3-1'?"button-green":"next-button"}>
-        {currentPage==='/invest/3-1'?'Finished':'Next'} {currentPage==='/invest/3-1'?'':<FiArrowRight size={20} className="arrow-green" />}
-      </button>
+        <button onClick={handlePrevButtonClick} className={currentPage==='/invest/1-1'?"button-gray":"next-button"}>
+          Previous <FiArrowLeft size={20} className={currentPage==='/invest/1-1'?"arrow-gray":"arrow-icon"} />
+        </button>
+        <button onClick={handleNextButtonClick} className={currentPage==='/invest/3-1'?"button-green":"next-button"}>
+          {currentPage==='/invest/3-1'?'Finished':'Next'} {currentPage==='/invest/3-1'?'':<FiArrowRight size={20} className="arrow-green" />}
+        </button>
       </div>
-      <p className='skip-info'>This will take you about 3 minutes, <span className='skip-info-span'>skip now.</span></p>
+      <p className='skip-info'>This will take you about 3 minutes, <span className='skip-info-span' onClick={handleSkipClick} >skip now.</span></p>
     </div>
   );
 };
