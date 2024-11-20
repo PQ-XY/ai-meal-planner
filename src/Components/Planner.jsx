@@ -1,43 +1,53 @@
 import React, { useState } from 'react'
+import {parseMealPlan} from './PlannerHelper'
 
-function parseMealPlan(resultString) {
-  const mealPlan = [];
-  
-  // Split the result string by each "Day X:" using regex
-  const days = resultString.split(/Day \d+:/).filter(day => day.trim() !== "");
+// Function to parse the API response into structured details
+function parseMealDetails(responseText) {
+  const details = {
+      name: "",
+      ingredients: [],
+      recipe: [],
+      calories: 0,
+  };
 
-  // Iterate over each day to extract meals
-  days.forEach((day, index) => {
-      const dayObj = {
-          day: index + 1,
-          meals: [],
-      };
+  // Extract the meal name
+  const mealNameMatch = responseText.match(/Meal Name:\s*(.+)/);
+  if (mealNameMatch) {
+      details.name = mealNameMatch[1];
+  }
 
-      // Use regex to match known meal types like Breakfast, Lunch, Dinner, Snack
-      const mealPattern = /(Breakfast|Lunch|Dinner|Snack):\s*([^Breakfast|Lunch|Dinner|Snack]*)/g;
-      let match;
+  // Extract ingredients
+  const ingredientsMatch = responseText.match(/Ingredients:\s*([\s\S]*?)Recipe:/);
+  if (ingredientsMatch) {
+      details.ingredients = ingredientsMatch[1]
+          .trim()
+          .split("\n")
+          .map(item => item.replace(/^-/, "").trim());
+  }
 
-      // Extract meals for the current day
-      while ((match = mealPattern.exec(day)) !== null) {
-          const mealType = match[1].trim();
-          const mealName = match[2].trim();
-          dayObj.meals.push({ mealType, mealName });
-      }
+  // Extract recipe steps
+  const recipeMatch = responseText.match(/Recipe:\s*([\s\S]*?)Total Calories:/);
+  if (recipeMatch) {
+      details.recipe = recipeMatch[1]
+          .trim()
+          .split("\n")
+          .map(step => step.trim());
+  }
 
-      // Add the parsed day object to the meal plan
-      mealPlan.push(dayObj);
-  });
+  // Extract calories
+  const caloriesMatch = responseText.match(/Total Calories:\s*(\d+)/);
+  if (caloriesMatch) {
+      details.calories = parseInt(caloriesMatch[1], 10);
+  }
 
-  return mealPlan;
+  return details;
 }
-
 
 export default function Planner() {
   // State for storing the prompt input and the analysis result
   const [prompt, setPrompt] = useState('');
   const [MealPlanResults, setMealPlanResults] = useState('');
 
-  
   // Function to call the API and get the result
   const handleClick = async () => {
     const { available } = await window.ai.languageModel.capabilities();
@@ -58,7 +68,7 @@ export default function Planner() {
           kitchenware: "wok, fry pan, air fryer", // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker
           tasteRating: [2, 3, 4, 2] // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
         }
-        const template = `**User Information:\n 
+        const planTemplate = `**User Information:\n 
         - **Number of meals per day:** ${user_info["numMeal"]}\n 
         - **Number of days for the meal plan:** ${user_info["numDays"]}\n 
         - **Allergies and dietary restrictions:** ${user_info["allergies"]}\n
@@ -75,9 +85,44 @@ export default function Planner() {
         Breakfast:...\n`
 
         // Run the AI analysis based on the prompt
-        const meals = await s.prompt(template);
-        setMealPlanResults(meals);
-        console.log(parseMealPlan(meals));
+        const promptRst = await s.prompt(planTemplate);
+        setMealPlanResults(promptRst);
+        let mealPlan = parseMealPlan(promptRst);
+        for (const day in mealPlan) {
+          const meals = mealPlan[day];
+    
+          // Iterate through each meal type (Breakfast, Lunch, Dinner)
+          for (const mealType in meals) {
+              const mealNames = meals[mealType];
+    
+              // Iterate through each meal name and fetch details
+              for (let i = 0; i < mealNames.length; i++) {
+                  const mealName = mealNames[i];
+
+                  const mealTemplate = `Provide detailed information for the meal "${mealName}" in the following format:\n\n` +
+                `Meal Name: [Meal Name]\nIngredients:\n- [Ingredient 1]\n- [Ingredient 2]\n...\n` +
+                `Recipe:\nStep 1 [Instruction 1]\nStep 2 [Instruction 2]\n...\n` +
+                `Total Calories: [Calories]`
+    
+                  // Fetch meal details from the API
+                  const promptRst = await s.prompt(mealTemplate);
+
+                  console.log(promptRst);
+
+                  const mealDetails = parseMealDetails(promptRst);
+    
+                  // Add the meal details back to the meal plan
+                  mealPlan[day][mealType][i] = {
+                      name: mealName,
+                      details: mealDetails, // Include ingredients, recipe, and calories
+                  };
+                  console.log(mealPlan);
+              }
+          }
+      }
+      console.log('success!');
+      console.log(mealPlan);
+      return mealPlan;
       } catch (error) {
         console.error('Error analyzing the prompt:', error);
         setMealPlanResults('An error occurred while analyzing the prompt.');
