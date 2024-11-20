@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Judson:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.ingredient-container{
+  font-family: 'Instrument Sans', serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  width: max-content;
+  height: max-content;
+  padding-right: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.159);
+  border-radius: 10px;
+}
+
+.ingredient-name-input{
+  font-family: 'Instrument Sans', serif;
+  border: none;
+  padding: 20px 10px;
+  font-size: 16px;
+  background-color: none;
+  text-align: center;
+}
+
+.ingredient-name-input:focus{
+  outline: none;
+}
+
+.ingredient-name-input::placeholder{
+  font-family: 'Instrument Sans', serif;
+  color: rgb(207, 207, 207);
+}
+
+.base-NumberInput-input{
+  font-family: 'Instrument Sans', serif;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border-color: #94B06E;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 1px;
+}
+
+.base-NumberInput-input:focus{
+  outline: none;
+}
+
+.base-NumberInput-root{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.base-NumberInput-decrementButton,
+.base-NumberInput-incrementButton{
+  width: 18px;
+  height: 18px;
+  background-color: #94B06E;
+  color: white;
+  border: none;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.base-NumberInput-decrementButton.disabled{
+  width: 18px;
+  height: 18px;
+  background-color: #bbbbbb;
+  color: white;
+  border: none;
+  font-size: 12px;
+  border-radius: 5px;
+}
