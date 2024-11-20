@@ -11,6 +11,7 @@ p{
   display: flex;
   flex-direction: column;
   justify-content: end;
+  align-items: center;
   border-color: rgba(0, 0,0, 0.2);
   border-width: 1px;
   border-style: solid;
@@ -47,4 +48,16 @@ p{
   font-size: 14px;
   font-weight:400;
   font-style: normal;
+}
+
+.card-image-container{
+  height: 280px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image{
+  width: 100%;
 }

@@ -1,0 +1,24 @@
+.add-ingredient-button{
+  background-color: white;
+  border: none;
+  height: 59.5px;
+  width: 60px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.add-ingredient-add1 {
+  color: #94B06E;
+  font-size: 20px; /* Adjust the size of the '+' sign */
+}
+
+.add-ingredient-Add {
+  color: #94B06E;
+  font-size: 12px; /* Keep the 'Add' text size unchanged */
+}

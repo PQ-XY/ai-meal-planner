@@ -47,3 +47,12 @@
   border-radius: 4px;
   background-color: #94B06E;
 }
+
+@media (max-width: 850px) {
+  .underline{
+    width: 150px;
+  }
+  .underline-active{
+    width: 150px;
+  }
+}

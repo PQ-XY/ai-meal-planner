@@ -1,9 +1,12 @@
 import React from 'react'
 import './FunctionCard.css'
 
-const FunctionCard = ({title,description1,description2}) => {
+const FunctionCard = ({title,description1,description2,image}) => {
   return (
     <div className='card-container'>
+      <div className='card-image-container'>
+        <img src={image} className='card-image'></img>
+      </div>
       <div className='card-bottom'>
           <div className='card-bottom-title'>
               <p>

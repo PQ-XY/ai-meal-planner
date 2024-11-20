@@ -20,7 +20,7 @@ const NextButton = () => {
     } else if (currentPage === '/invest/2-2') {
       navigate('/invest/3-1'); // Navigate to /invest from /welcome
     } else if (currentPage === '/invest/3-1') {
-      navigate('/app/home'); // Navigate to /invest from /welcome
+      navigate('/loading'); // Navigate to /invest from /welcome
     }
     // Add more conditions based on your logic
   };
