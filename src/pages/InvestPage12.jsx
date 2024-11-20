@@ -31,7 +31,6 @@ const InvestPage12 = () => {
           <AnswerCard title='Slim' image={slimImage} array={dietArray} setArray={setGridArray2}/>
           <AnswerCard title='Fast & Easy' image={fastAndEasyImage} array={dietArray} setArray={setGridArray2}/>
           <AnswerCard title='Diet Therapy' image={dietTherapyImage} array={dietArray} setArray={setGridArray2}/>
-          <AnswerCard title='Allergic' image={allergicImage} array={dietArray} setArray={setGridArray2}/>
           <AnswerCard title='New Trend' image={newTrendImage} array={dietArray} setArray={setGridArray2}/>
         </div>
       </div>

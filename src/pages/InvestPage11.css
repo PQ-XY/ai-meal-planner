@@ -4,7 +4,7 @@
   grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
   column-gap: 20px;  /* Space between items */
   row-gap:25px ;
-  width: 800px;  /* Adjust the width of the grid container */
+  width: max-content;  /* Adjust the width of the grid container */
   max-width: 1200px; /* Optional: Set a maximum width for large screens */
   margin: 0 auto;  /* Centers the grid horizontally */
 }
