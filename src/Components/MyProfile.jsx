@@ -4,7 +4,21 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { styled } from '@mui/material/styles';
+import Rating from '@mui/material/Rating';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './MyProfile.css'
+import { Link } from 'react-router-dom'
+
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: '#94B06E',
+  },
+  '& .MuiRating-iconHover': {
+    color: '#ff3d47',
+  },
+});
 
 export default function MyProfile() {
   return (
@@ -29,7 +43,98 @@ export default function MyProfile() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-
+            <div className='myProfileDetailBoard'>
+              <div className='myProfileDetailCard'>
+                <h1>Taste</h1>
+                <span className='myProfileRatingBox'>
+                  <h4>Sour</h4>
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={2}
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={1}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                </span>
+                <span className='myProfileRatingBox'>
+                  <h4>Sweet</h4>
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={1}
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={1}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                </span>
+                <span className='myProfileRatingBox'>
+                  <h4>Bitter</h4>
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={2}
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={1}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                </span>
+                <span className='myProfileRatingBox'>
+                  <h4>Spicy</h4>
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={2}
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={1}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                </span>
+                <span className='myProfileRatingBox'>
+                  <h4>Salty</h4>
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={2}
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={1}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                </span>
+              </div>
+              <div className='myProfileDetailCard'>
+                <h1>Dining Habits</h1>
+                <div>
+                  <li>Fitness</li>
+                  <li>Slim</li>
+                  <li>Fast & Easy</li>
+                  <li>Diet Therapy</li>
+                  <li>New Trend</li>
+                </div>
+              </div>
+              <div className='myProfileDetailCard myProfileDetailCard2'>
+                <div className='myProfileAllergyCard'>
+                  <h1>Allergy</h1>
+                  <div>
+                    <li>No allergy</li>
+                    <li>Milk</li>
+                  </div>
+                </div>
+                <Link to='/invest/1-1' style={{textDecoration:'none'}}>
+                  <button className='myProfileEditButton'>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 20.0002H21M3 20.0002H4.67454C5.16372 20.0002 5.40832 20.0002 5.63849 19.945C5.84256 19.896 6.03765 19.8152 6.2166 19.7055C6.41843 19.5818 6.59138 19.4089 6.93729 19.063L19.5 6.50023C20.3285 5.6718 20.3285 4.32865 19.5 3.50023C18.6716 2.6718 17.3285 2.6718 16.5 3.50023L3.93726 16.063C3.59136 16.4089 3.4184 16.5818 3.29472 16.7837C3.18506 16.9626 3.10425 17.1577 3.05526 17.3618C3 17.5919 3 17.8365 3 18.3257V20.0002Z" stroke="#94B06E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h1>Edit</h1>
+                  </button>
+                </Link>
+              </div>
+            </div>
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -25,4 +25,82 @@
             margin: 0;
         }
     }
+
+    .myProfileDetailBoard {
+        display: flex;
+        justify-content: space-between;
+
+        .myProfileDetailCard {
+            width: 308px;
+            height: 300px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 18px;
+            box-sizing: border-box;
+            padding: 20px;
+
+            h1 {
+                text-align: center;
+                font-family: 'Instrument Sans', serif;
+                font-size: 22px;
+                color: #94B06E;
+                font-weight: 700;
+                margin: 0px 0px 26px;
+            }
+
+            .myProfileRatingBox {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 15px;
+
+                h4 {
+                    font-family: 'Instrument Sans', serif;
+                    font-size: 18px;
+                    color: #111111;
+                    font-weight: 400;
+                    margin: 0;
+                    width: 80px;
+                }
+            }
+        }
+
+        .myProfileDetailCard2 {
+            border: none;
+            box-sizing: border-box;
+            padding: 0;
+
+            .myProfileAllergyCard {
+                width: 308px;
+                height: 192px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 18px;
+                box-sizing: border-box;
+                padding: 20px;
+            }
+        }
+
+        .myProfileEditButton {
+            width: 308px;
+            height: 72px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 18px;
+            background-color: #F9FBF8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 36px;
+
+            h1 {
+                color: #94B06E;
+                font-family: 'Instrument Sans', serif;
+                font-size: 24px;
+                font-weight: 700;
+                margin: 0 0 0 10px;
+            }
+        }
+
+        .myProfileEditButton:hover {
+            cursor: pointer;
+        }
+    }
 }
