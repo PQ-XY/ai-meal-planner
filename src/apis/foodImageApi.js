@@ -38,11 +38,16 @@ const generateFoodImage = async (prompt, style = 'realistic_image') => {
   }
 };
 
-// Test the function
-generateFoodImage('Eggplant casserole')
-  .then((url) => {
-    console.log('Successfully generated image URL:', url);
-  })
-  .catch((err) => {
-    console.error('Error during image generation:', err.message);
-  });
+module.exports = {
+  generateFoodImage,
+  apiClient,
+};
+
+// // Test the function
+// generateFoodImage('Eggplant casserole')
+//   .then((url) => {
+//     console.log('Successfully generated image URL:', url);
+//   })
+//   .catch((err) => {
+//     console.error('Error during image generation:', err.message);
+//   });
