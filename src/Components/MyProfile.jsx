@@ -21,6 +21,31 @@ const StyledRating = styled(Rating)({
 });
 
 export default function MyProfile() {
+
+  //get the tasteArray data from localStorage
+  const savedTastes = localStorage.getItem('tasteArray')
+  console.log(savedTastes)
+
+  const flavorArray = JSON.parse(savedTastes)
+
+  const SaltyFlavor = flavorArray.find((flavor) => flavor.title === "Salty");
+  const SourFlavor = flavorArray.find((flavor) => flavor.title === "Sour");
+  const SweetFlavor = flavorArray.find((flavor) => flavor.title === "Sweet");
+  const SpicyFlavor = flavorArray.find((flavor) => flavor.title === "Spicy");
+
+  //get the allergyArray data from localStorage
+  const savedAllergy = localStorage.getItem('allergyArray');
+  console.log(savedAllergy)
+
+  const allergyArray = JSON.parse(savedAllergy)
+
+  //get the dietArray data from localStorage
+  const savedDiets = localStorage.getItem('dietArray');
+
+  console.log(savedDiets)
+
+  const dietArray = JSON.parse(savedDiets)
+
   return (
     <div className='myProfileContainer'>
       <Accordion square={true} sx={{ borderRadius: '18px' }}>
@@ -47,10 +72,10 @@ export default function MyProfile() {
               <div className='myProfileDetailCard'>
                 <h1>Taste</h1>
                 <span className='myProfileRatingBox'>
-                  <h4>Sour</h4>
+                  <h4>{SaltyFlavor.title}</h4>
                   <StyledRating
                     name="customized-color"
-                    defaultValue={2}
+                    defaultValue={SaltyFlavor.level}
                     getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                     precision={1}
                     icon={<FavoriteIcon fontSize="inherit" />}
@@ -59,10 +84,10 @@ export default function MyProfile() {
                   />
                 </span>
                 <span className='myProfileRatingBox'>
-                  <h4>Sweet</h4>
+                  <h4>{SourFlavor.title}</h4>
                   <StyledRating
                     name="customized-color"
-                    defaultValue={1}
+                    defaultValue={SourFlavor.level}
                     getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                     precision={1}
                     icon={<FavoriteIcon fontSize="inherit" />}
@@ -71,10 +96,10 @@ export default function MyProfile() {
                   />
                 </span>
                 <span className='myProfileRatingBox'>
-                  <h4>Bitter</h4>
+                  <h4>{SweetFlavor.title}</h4>
                   <StyledRating
                     name="customized-color"
-                    defaultValue={2}
+                    defaultValue={SweetFlavor.level}
                     getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                     precision={1}
                     icon={<FavoriteIcon fontSize="inherit" />}
@@ -83,22 +108,10 @@ export default function MyProfile() {
                   />
                 </span>
                 <span className='myProfileRatingBox'>
-                  <h4>Spicy</h4>
+                  <h4>{SpicyFlavor.title}</h4>
                   <StyledRating
                     name="customized-color"
-                    defaultValue={2}
-                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-                    precision={1}
-                    icon={<FavoriteIcon fontSize="inherit" />}
-                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                    readOnly
-                  />
-                </span>
-                <span className='myProfileRatingBox'>
-                  <h4>Salty</h4>
-                  <StyledRating
-                    name="customized-color"
-                    defaultValue={2}
+                    defaultValue={SpicyFlavor.level}
                     getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                     precision={1}
                     icon={<FavoriteIcon fontSize="inherit" />}
@@ -110,19 +123,22 @@ export default function MyProfile() {
               <div className='myProfileDetailCard'>
                 <h1>Dining Habits</h1>
                 <div className='myProfileDetailContainer'>
-                  <li className='myProfileDetailItem'>Fitness</li>
-                  <li className='myProfileDetailItem'>Slim</li>
-                  <li className='myProfileDetailItem'>Fast & Easy</li>
-                  <li className='myProfileDetailItem'>Diet Therapy</li>
-                  <li className='myProfileDetailItem'>New Trend</li>
+                {dietArray.map((item, index) => (
+                      <li key={index} className='myProfileDetailItem'>
+                        {item}
+                      </li>
+                    ))}
                 </div>
               </div>
               <div className='myProfileDetailCard myProfileDetailCard2'>
                 <div className='myProfileAllergyCard'>
                   <h1>Allergy</h1>
                   <div className='myProfileDetailContainer'>
-                    <li className='myProfileDetailItem'>No allergy</li>
-                    <li className='myProfileDetailItem'>Milk</li>
+                    {allergyArray.map((item, index) => (
+                      <li key={index} className='myProfileDetailItem'>
+                        {item}
+                      </li>
+                    ))}
                   </div>
                 </div>
                 <Link to='/invest/1-1' style={{textDecoration:'none'}}>
