@@ -16,3 +16,13 @@
   flex-direction: column;
   gap: 30px;
 }
+
+@media (max-width: 850px) {
+  .taste-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 500px; /* Set the container width */
+    gap: 16px; /* Optional: adds spacing between the cards */
+  }
+}

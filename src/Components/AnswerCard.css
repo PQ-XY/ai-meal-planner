@@ -57,3 +57,32 @@
 .answer-card-title.clicked{
   color: #94B06E;
 }
+
+@media (max-width: 850px) {
+  .answer-card-container {
+    width: 150px; /* Adjust width to fit two cards per row */
+    height: 130px;
+  }
+  .answer-card-image {
+    width: 60px;             /* Set the width of the image */
+    height: 60px;            /* Set the height to create a square */
+  }
+  .answer-card-title{
+    font-family: 'Instrument Sans', serif;
+    color: #111111;
+    opacity: 80%;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 730px){
+  .answer-card-container {
+    width: 150px; /* Adjust width to fit two cards per row */
+    height: 120px;
+  }
+  .answer-card-image {
+    width: 60px;             /* Set the width of the image */
+    height: 60px;            /* Set the height to create a square */
+  }
+}

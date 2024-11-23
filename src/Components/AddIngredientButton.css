@@ -1,0 +1,34 @@
+.add-ingredient-button{
+  background-color: white;
+  border: none;
+  height: 59.5px;
+  width: 60px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: 0.15s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.159);
+}
+
+.add-ingredient-button:hover{
+  background-color: rgb(244, 244, 244);
+}
+
+.add-ingredient-button:active{
+  background-color: rgb(231, 231, 231);
+}
+
+.add-ingredient-add1 {
+  color: #94B06E;
+  font-size: 20px; /* Adjust the size of the '+' sign */
+}
+
+.add-ingredient-Add {
+  color: #94B06E;
+  font-size: 12px; /* Keep the 'Add' text size unchanged */
+}
