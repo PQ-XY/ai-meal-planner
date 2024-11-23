@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import {parseMealPlan} from './PlannerHelper'
+import AddIngredient from './AddIngredient';
+import AddIngredientButton from './AddIngredientButton'
+import stward from '../assets/images/ai.svg'
+import './Planner.css'
+import SideWindow from './SideWindow';
 
 // Function to parse the API response into structured details
 function parseMealDetails(responseText) {
@@ -132,9 +137,16 @@ export default function Planner() {
     }
   };
 
+  const [ingredientArray,setIngredient]=useState([{name:'',count:1}])
+
+  const addNewIngredient=()=>{
+    setIngredient((prevArray)=>[...prevArray,{name:'', count:1}])
+    console.log('added');
+  };
+
   return (
-    <div>
-      <h1>AI Planner</h1>
+    <div className='planner-page-layout'>
+      {/*
       <input
         type="text"
         placeholder="Enter your prompt"
@@ -142,8 +154,37 @@ export default function Planner() {
         onChange={(e) => setPrompt(e.target.value)}
       />
       <button onClick={handleClick}>Generate Meal Plan</button>
+      */}
+      <div className='planner-container'>
+        <div>
+          <div>
+            <p className='big-title'>Ingredients Steward</p>
+          </div>
+          <div class='button-question-container'>
+            <img className='planner-container-image' src={stward}></img>
+            <div className='planner-container-title'>
+              <p className='planner-container-title-big'>Stward</p>
+              <p className='planner-container-title-small'>What ingredients are left in your fridge? Let me help you to generate recipes!</p>
+              <div className='add-ingredient-container'>
+                {ingredientArray.map((item,index)=>(
+                  <AddIngredient key={index} name={item.name} count={item.count}/>
+                ))}
+                <AddIngredientButton onClick={addNewIngredient}/>
+                <button className='generate-button'>Generate recipes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Display the result */}
       {MealPlanResults && <p>Result: {MealPlanResults}</p>}
+      <div className="planner-sideWindowLayoutWrapper">
+        <div className='planner-sideWindowLayout'>
+          <SideWindow></SideWindow>
+        </div>
+        <div className='planner-sideWindow-extra'>
+        </div>
+      </div>
     </div>
   );
 }

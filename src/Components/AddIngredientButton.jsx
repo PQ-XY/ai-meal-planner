@@ -3,10 +3,10 @@ import React from 'react'
 import './AddIngredientButton.css'
 
 
-const AddIngredientButton = () => {
+const AddIngredientButton = ({onClick}) => {
   return (
     <div className='add-ingredient-button-container'>
-      <button className='add-ingredient-button'>
+      <button className='add-ingredient-button' onClick={onClick}>
         <p className='add-ingredient-add1'>
           +
         </p>

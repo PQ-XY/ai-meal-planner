@@ -10,17 +10,18 @@
   width: max-content;
   height: max-content;
   padding-right: 10px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.159);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.159);
   border-radius: 10px;
 }
 
 .ingredient-name-input{
   font-family: 'Instrument Sans', serif;
   border: none;
-  padding: 20px 10px;
+  padding: 20px 5px;
   font-size: 16px;
   background-color: none;
   text-align: center;
+  color: #94B06E;
 }
 
 .ingredient-name-input:focus{
