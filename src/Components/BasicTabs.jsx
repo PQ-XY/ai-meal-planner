@@ -99,7 +99,10 @@ function getWeekDates() {
   const weekDatesArray = getWeekDates();
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const today = new Date();
+  const dayOfWeek = today.getDay(); 
+
+  const [value, setValue] = React.useState(dayOfWeek);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

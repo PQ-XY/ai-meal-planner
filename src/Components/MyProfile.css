@@ -64,6 +64,24 @@
   width: 80px;
 }
 
+.myProfileContainer .myProfileDetailBoard .myProfileDetailCard .myProfileDetailContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.myProfileContainer .myProfileDetailBoard .myProfileDetailCard .myProfileDetailContainer .myProfileDetailItem {
+  color: #719048;
+  background-color: rgba(148, 176, 110, 0.4);
+  border-radius: 18px;
+  list-style-type: none;
+  font-family: 'Instrument Sans', serif;
+  font-size: 14px;
+  padding: 8px 20px 8px 20px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
 .myProfileContainer .myProfileDetailBoard .myProfileDetailCard2 {
   border: none;
   box-sizing: border-box;

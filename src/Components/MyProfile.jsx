@@ -109,20 +109,20 @@ export default function MyProfile() {
               </div>
               <div className='myProfileDetailCard'>
                 <h1>Dining Habits</h1>
-                <div>
-                  <li>Fitness</li>
-                  <li>Slim</li>
-                  <li>Fast & Easy</li>
-                  <li>Diet Therapy</li>
-                  <li>New Trend</li>
+                <div className='myProfileDetailContainer'>
+                  <li className='myProfileDetailItem'>Fitness</li>
+                  <li className='myProfileDetailItem'>Slim</li>
+                  <li className='myProfileDetailItem'>Fast & Easy</li>
+                  <li className='myProfileDetailItem'>Diet Therapy</li>
+                  <li className='myProfileDetailItem'>New Trend</li>
                 </div>
               </div>
               <div className='myProfileDetailCard myProfileDetailCard2'>
                 <div className='myProfileAllergyCard'>
                   <h1>Allergy</h1>
-                  <div>
-                    <li>No allergy</li>
-                    <li>Milk</li>
+                  <div className='myProfileDetailContainer'>
+                    <li className='myProfileDetailItem'>No allergy</li>
+                    <li className='myProfileDetailItem'>Milk</li>
                   </div>
                 </div>
                 <Link to='/invest/1-1' style={{textDecoration:'none'}}>
