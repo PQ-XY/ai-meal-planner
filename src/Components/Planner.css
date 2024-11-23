@@ -75,14 +75,18 @@ body {
   background-color: white;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
+  /* width: 500px;
+  background-color: white;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
   position: fixed;
   right: 0;
   top: 0;
-  transform: scale(0.7); /* Shrink by 20% */
+  transform: scale(0.7); 
   transform-origin: top right;
   height: 100%;
-  z-index: 100;
-} 
+  z-index: 100; */
+}  
 
 
 .generate-button{
@@ -106,7 +110,7 @@ body {
   background-color: #87a063;
 }
 
-.planner-sideWindow-extra{
+/* .planner-sideWindow-extra{
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
   background-color: white;
@@ -114,10 +118,10 @@ body {
   position: fixed;
   right: 0;
   width: 500px;
-  transform: scale(0.7); /* Shrink by 20% */
+  transform: scale(0.7);
   transform-origin: top right;
   height: 2000px;
-}
+} */
 
 @media (max-width: 1370px) {
   .add-ingredient-container{

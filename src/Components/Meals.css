@@ -3,13 +3,12 @@
 .mealPageContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .mealPageContainer .mealHeaderBox {
   width: 1408px;
   height: 184px;
-  margin-top: 70px;
-  margin-bottom: 35px;
   background: linear-gradient(to left, #688B39, #94B06E);
   border-radius: 18px;
   display: flex;

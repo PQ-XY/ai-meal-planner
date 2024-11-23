@@ -17,7 +17,7 @@ const WelcomePage = () => {
           <FunctionCard title='Flexible Adjustment' description1='Quickly delete, modify, and replace existing recipes' description2="It's all up to your personal preference!" image={adjustmentImage}/>
         </div>
         <div className='demo-button-container'>
-        <DemoButton />
+          <DemoButton />
         </div>
       </div>
   )

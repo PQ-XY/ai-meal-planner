@@ -2,16 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
 .sideWindowBox {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     .sideWindowHeader {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-top: 75px;
+        // margin-top: 75px;
 
         .sideWindowHeaderLogo {
             margin-right: 20px;
@@ -24,8 +25,8 @@
     }
 
     .sideWindowCardsBox {
-        margin-top:35px;
-        margin-bottom: 95px;
+        // margin-top:35px;
+        // margin-bottom: 95px;
         height: 680px;
         display: flex;
         flex-direction: column;
