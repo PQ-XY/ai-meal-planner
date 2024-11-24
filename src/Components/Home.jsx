@@ -43,9 +43,9 @@ export default function Home() {
         <div className='recommendation'>
           <Recommendation></Recommendation>
         </div>
-        <div className='aiAssistantBar'>
+        {/* <div className='aiAssistantBar'>
           <AIAssistantBar></AIAssistantBar>
-        </div>
+        </div> */}
       </div>
       <div className='sideWindowLayout'>
         <SideWindow></SideWindow>

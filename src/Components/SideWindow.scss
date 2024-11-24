@@ -33,7 +33,7 @@
         justify-content: space-between;
     }
 
-    .upcomingMealsButt {
+    .goToMealsButt {
         width: 400px;
         height: 80px;
         background-color: #94B06E;
@@ -43,5 +43,10 @@
         font-size: 24px;
         color:white;
         font-weight: 700;
+    }
+
+    .goToMealsButt:hover {
+        cursor: pointer;
+        background-color: #688B39;
     }
 }

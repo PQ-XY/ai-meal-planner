@@ -26,7 +26,7 @@ export default function NavBar() {
                 <button style={{background:isActive('/app/meals')?'black':'none'}}>
                     <Link className='navLink' to='/app/meals' style={{textDecoration:'none', color:isActive('/app/meals')?'white':'#E8EDD5'}}>
                         <NavMealLogo color={isActive('/app/meals')?'white':'#E8EDD5'}></NavMealLogo>
-                        Meal
+                        Meals
                     </Link>
                 </button>
                 <button style={{background:isActive('/app/home')?'black':'none'}}>

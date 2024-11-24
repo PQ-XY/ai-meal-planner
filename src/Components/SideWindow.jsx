@@ -1,6 +1,7 @@
 import React from 'react'
 import './SideWindow.css'
 import MealDialog from './MealDialog'
+import { Link } from 'react-router-dom'
 
 export default function SideWindow() {
   return (
@@ -22,7 +23,9 @@ export default function SideWindow() {
         <MealDialog title={'Dinner'} name={'Chicken Breast Salad'} src={'https://www.wellseasonedstudio.com/wp-content/uploads/2023/04/Grilled-chicken-salad-with-cucumbers-and-creamy-garlic-dressing-on-a-plate.jpg'}></MealDialog>
       </div>
       <div>
-        <button className='upcomingMealsButt'>Upcoming Meals</button>
+        <Link to='/app/meals' style={{textDecoration:'none'}}>
+          <button className='goToMealsButt'>Go to Meals</button>
+        </Link>
       </div>
     </div>
   )
