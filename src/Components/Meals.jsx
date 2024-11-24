@@ -82,9 +82,9 @@ export default function Meals() {
       <div className='basicTabsBox'>
         <BasicTabs></BasicTabs>
       </div>
-      <div>
+      {/* <div>
         <AIAssistantBar></AIAssistantBar>
-      </div>
+      </div> */}
     </div>
   )
 }

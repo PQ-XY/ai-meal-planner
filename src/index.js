@@ -34,8 +34,8 @@ root.render(
         </Route>
           <Route path='/loading' element={<LoadingPage />} />
         <Route path='/app' element={<App />}>
-          <Route path='/app/home' element={<Home />} />
           <Route path='/app/meals' element={<Meals />} />
+          <Route path='/app/home' element={<Home />} />
           <Route path='/app/planner' element={<Planner />} />
         </Route>
       </Routes>

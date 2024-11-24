@@ -7,6 +7,7 @@ import { Link, Outlet, useLocation} from 'react-router-dom'
 
 export default function NavBar() {
 
+    //update the button style based on the url
     const location = useLocation();
 
     const isActive = (path) => location.pathname === path;
@@ -22,16 +23,16 @@ export default function NavBar() {
                 </svg>
             </div>
             <div className='navBar'>
-                <button style={{background:isActive('/app/home')?'black':'none'}}>
-                    <Link className='navLink' to='/app/home' style={{textDecoration:'none', color:isActive('/app/home')?'white':'#E8EDD5'}}>
-                        <NavHomeLogo color={isActive('/app/home')?'white':'#E8EDD5'}></NavHomeLogo>
-                        Home
-                    </Link>
-                </button>
                 <button style={{background:isActive('/app/meals')?'black':'none'}}>
                     <Link className='navLink' to='/app/meals' style={{textDecoration:'none', color:isActive('/app/meals')?'white':'#E8EDD5'}}>
                         <NavMealLogo color={isActive('/app/meals')?'white':'#E8EDD5'}></NavMealLogo>
                         Meal
+                    </Link>
+                </button>
+                <button style={{background:isActive('/app/home')?'black':'none'}}>
+                    <Link className='navLink' to='/app/home' style={{textDecoration:'none', color:isActive('/app/home')?'white':'#E8EDD5'}}>
+                        <NavHomeLogo color={isActive('/app/home')?'white':'#E8EDD5'}></NavHomeLogo>
+                        Home
                     </Link>
                 </button>
                 <button style={{background:isActive('/app/planner')?'black':'none'}}>
