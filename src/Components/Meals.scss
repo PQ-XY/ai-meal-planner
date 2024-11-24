@@ -44,7 +44,9 @@
 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-bottom: 20px;
 
             h3 {
                 font-family: 'Instrument Sans', serif;
@@ -67,7 +69,7 @@
     
             .totalCaloriesBox {
     
-                width: 147px;
+                width: 190px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -78,6 +80,7 @@
                     font-size: 48px;
                     color: #688B39;
                     margin: 0;
+                    margin-bottom: 15px;
                 }
         
                 h2 {
@@ -95,7 +98,6 @@
     
                 .RadialBarChartBox {
                     width: 120px;
-                    height: 160px;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;

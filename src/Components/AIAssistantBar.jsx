@@ -20,7 +20,7 @@ export default function AIAssistantBar() {
         </div>
         <Paper
         component="form"
-        sx={{ p: '0px 20px', display: 'flex', alignItems: 'center', width: 909, height:80, borderRadius:100 }}
+        sx={{ p: '0px 20px', display: 'flex', alignItems: 'center', width: 809, height:80, borderRadius:100 }}
         >
         <InputBase
             sx={{ ml: 1, flex: 1}}

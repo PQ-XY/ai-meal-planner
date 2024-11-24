@@ -11,7 +11,7 @@ export default function SideWindowCard({title, name, src}) {
       <div className='sideWindowCardInfo'>
         <div className='sideWindowCardHeader'>
             <h3>{title}</h3>
-            <Checkbox></Checkbox>
+            {/* <div><Checkbox></Checkbox></div> */}
         </div>
         <p>
             {name}

@@ -60,8 +60,8 @@ export default function Meals() {
         </div>
         <div className='mealCaloriesInfoContainer'>
           <div className='totalCaloriesBox'>          
-            <h1>420 Cal</h1>
-            <h2>Low Calories</h2>
+            <h1>1420 Cal</h1>
+            <h2>Daily Calories</h2>
           </div>
           <div className='caloriesRadialBarChartBox'>
             <div className='RadialBarChartBox'>

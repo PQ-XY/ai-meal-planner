@@ -5,6 +5,7 @@ import AddIngredientButton from './AddIngredientButton'
 import stward from '../assets/images/ai.svg'
 import './Planner.css'
 import SideWindow from './SideWindow';
+import AIAssistantBar from './AIAssistantBar';
 
 // Function to parse the API response into structured details
 function parseMealDetails(responseText) {
@@ -156,7 +157,7 @@ export default function Planner() {
       <button onClick={handleClick}>Generate Meal Plan</button>
       */}
       <div className='planner-container'>
-        <div>
+        <div className='planner-container-scrollable'>
           <div>
             <p className='big-title'>Ingredients Steward</p>
           </div>
@@ -175,6 +176,9 @@ export default function Planner() {
             </div>
           </div>
         </div>
+        <div className='aiAssistantBar-container'>
+          <AIAssistantBar></AIAssistantBar>
+        </div>
       </div>
       {/* Display the result */}
       {MealPlanResults && <p>Result: {MealPlanResults}</p>}
@@ -182,8 +186,8 @@ export default function Planner() {
         <div className='planner-sideWindowLayout'>
           <SideWindow></SideWindow>
         </div>
-        <div className='planner-sideWindow-extra'>
-        </div>
+        {/* <div className='planner-sideWindow-extra'>
+        </div> */}
       </div>
     </div>
   );

@@ -31,6 +31,7 @@
 .sideWindowCardContainer .sideWindowCardInfo .sideWindowCardHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .sideWindowCardContainer .sideWindowCardInfo .sideWindowCardHeader h3 {
@@ -44,6 +45,7 @@
 }
 
 .sideWindowCardContainer:hover {
+  cursor: pointer;
   transform: scale(1.02);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   /* Add a deeper shadow */
