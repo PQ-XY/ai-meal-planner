@@ -3,6 +3,7 @@ import './Meals.css'
 import RadialBarChart from './RadialBarChart';
 import AIAssistantBar from './AIAssistantBar';
 import BasicTabs from './BasicTabs';
+import allDatas from '../data/test_data';
 
 export default function Meals() {
 
@@ -43,8 +44,36 @@ export default function Meals() {
       return ''; // Late night or early morning snack
     }
   };
-
   const currentMeal = getMealTime()
+
+  //get the current weekday today
+  const getDayofWeek = () => {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+  
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[dayOfWeek]
+  }
+  const currentDay = getDayofWeek();
+
+  //get meal data
+  const datas = allDatas()
+
+  const todayMeals = datas.filter(meal => meal.day === currentDay)
+  console.log(todayMeals)
+  const totalCalories = todayMeals.reduce((sum,meal)=> sum + meal.calories, 0)
+
+  //total Carbs
+  const totalCarbs = todayMeals.reduce((sum,meal)=> sum + meal.carbs, 0)
+  const totalCarbsPercentage = Math.ceil(totalCarbs / 225 * 100)
+
+  //total Protein
+  const totalProtein = todayMeals.reduce((sum,meal)=> sum + meal.protein, 0)
+  const totalProteinPercentage =Math.ceil(totalProtein / 56  * 100)
+
+  //total fat
+  const totalFat = todayMeals.reduce((sum,meal)=> sum + meal.fat, 0)
+  const totalFatPercentage = Math.ceil(totalFat / 60  * 100)
 
   return (
     <div className='mealPageContainer'>
@@ -60,20 +89,20 @@ export default function Meals() {
         </div>
         <div className='mealCaloriesInfoContainer'>
           <div className='totalCaloriesBox'>          
-            <h1>1420 Cal</h1>
-            <h2>Daily Calories</h2>
+            <h1>{totalCalories} Cal</h1>
+            <h2>{currentDay} Total Calories</h2>
           </div>
           <div className='caloriesRadialBarChartBox'>
             <div className='RadialBarChartBox'>
-              <RadialBarChart></RadialBarChart>
+              <RadialBarChart percentage={totalCarbsPercentage}></RadialBarChart>
               <h5>Carbs</h5>
             </div>
             <div className='RadialBarChartBox'>
-              <RadialBarChart></RadialBarChart>
+              <RadialBarChart percentage={totalProteinPercentage}></RadialBarChart>
               <h5>Protein</h5>
             </div>
             <div className='RadialBarChartBox'>
-              <RadialBarChart></RadialBarChart>
+              <RadialBarChart percentage={totalFatPercentage}></RadialBarChart>
               <h5>Fat</h5>
             </div>
           </div>

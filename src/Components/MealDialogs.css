@@ -48,7 +48,7 @@
   font-family: 'Instrument Sans', serif;
   font-size: 16px;
   color: #111111;
-  font-weight: 400;
+  font-weight: 700;
   margin-top: 20px;
   margin-bottom: 0;
 }
@@ -66,17 +66,17 @@
   margin: 0;
 }
 
-.mealDialogsContainer .dishInfo .dishSubInfo ul h5 {
+.mealDialogsContainer .dishInfo .dishSubInfo ul .dishIngredients {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.mealDialogsContainer .dishInfo .dishSubInfo ul .dishIngredients h5 {
   font-family: 'Instrument Sans', serif;
   font-size: 16px;
   color: #111111;
   font-weight: 400;
   margin: 0;
-}
-
-.mealDialogsContainer .dishInfo .dishSubInfo ul .dishIngredients {
-  display: flex;
-  margin-bottom: 12px;
 }
 
 .mealDialogsContainer .dishStepsContainer {

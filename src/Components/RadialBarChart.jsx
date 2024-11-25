@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const RadialBarChart = () => {
+const RadialBarChart = ({percentage}) => {
   const [chartOptions, setChartOptions] = useState({
-    series: [70],
+    series: [percentage],
     options: {
       chart: {
         type: 'radialBar',
