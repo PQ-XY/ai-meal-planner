@@ -1,14 +1,19 @@
-import React from 'react'
+
+import React, { useState, useEffect } from 'react';
+
 import './RecommendationCard.css'
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { generateFoodImage } from '../apis/foodImageApi';
 
-export default function RecommendationCard({src}) {
-
+export default function RecommendationCard({src, prompt="Delicious eggplant casserole" }) {
+  const [imageSrc, setImageSrc] = useState(src);
+  const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -16,14 +21,49 @@ export default function RecommendationCard({src}) {
     setAnchorEl(null);
   };
 
+  // Fetch the image dynamically
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const generatedImage = await generateFoodImage(prompt);
+        console.log('Generated Image URL:', generatedImage);
+        setImageSrc(generatedImage); // Update with the fetched image
+      } catch (error) {
+        console.error('Error fetching image:', error.message);
+        setImageSrc(src); // Fallback to the provided `src` prop if API fails
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    if (!src) {
+      fetchImage();
+    } else {
+      setLoading(false); // If `src` is provided, skip fetching
+    }
+  }, [src, prompt]);
+
+
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={src} alt="" />
+        {loading ? (
+          <p>Loading..</p>
+        ) : (
+          <img
+            className="recommendationCardImg"
+            src={imageSrc}
+            alt={prompt}
+            onError={(e) => {
+              e.target.style.display = 'none'; // Hide if the image fails
+            }}
+          />
+        )}
+      
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
-          <h3>Eggplant Casserole</h3>
+          <h3>{prompt}</h3>
           <div>
             <IconButton
               id="basic-button"

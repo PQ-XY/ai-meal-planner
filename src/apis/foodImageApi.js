@@ -1,53 +1,39 @@
-const axios = require('axios');
-const dotenv = require('dotenv');
+import axios from 'axios';
 
-// Load environment variables
-dotenv.config();
+// Use React's built-in process.env to access variables
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_TOKEN = process.env.REACT_APP_API_TOKEN;
 
-const RECRAFT_API_TOKEN = process.env.RECRAFT_API_TOKEN;
-const API_BASE_URL = process.env.API_BASE_URL;
 
-// Check if the environment variables are loaded
-if (!RECRAFT_API_TOKEN || !API_BASE_URL) {
-  console.error('Error: Missing RECRAFT_API_TOKEN or API_BASE_URL in .env file.');
-  process.exit(1); // Exit the script if variables are not loaded
-}
+console.log('API Base URL:', API_BASE_URL);
+console.log('API Token:', API_TOKEN);
 
-// Create an Axios instance
+// Create an Axios instance with the environment variables
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    Authorization: `Bearer ${RECRAFT_API_TOKEN}`,
+    Authorization: `Bearer ${API_TOKEN}`,
     'Content-Type': 'application/json',
   },
 });
 
-// Function to generate a food image
-const generateFoodImage = async (prompt, style = 'realistic_image') => {
+// Function to call the API (e.g., generate food image)
+export const generateFoodImage = async (prompt, style = 'realistic_image') => {
   try {
+    console.log('Requesting image generation for prompt:', prompt);
     const response = await apiClient.post('/images/generations', {
-      prompt, // Image description
-      style,  // Default style: 'realistic_image'
+      prompt,
+      style,
     });
-    const imageUrl = response.data.data[0].url;
-    console.log('Generated Image URL:', imageUrl);
-    return imageUrl; // Return the image URL
+    console.log('API Response:', response.data); // Log full API response
+    return response.data.data[0]?.url; // Extract and return the image URL
   } catch (error) {
     console.error('Error generating food image:', error.response?.data || error.message);
-    throw new Error('Failed to generate food image. Please try again.');
+    throw new Error('Failed to generate food image.');
   }
 };
 
-module.exports = {
-  generateFoodImage,
-  apiClient,
-};
 
-// // Test the function
-// generateFoodImage('Eggplant casserole')
-//   .then((url) => {
-//     console.log('Successfully generated image URL:', url);
-//   })
-//   .catch((err) => {
-//     console.error('Error during image generation:', err.message);
-//   });
+export default apiClient;
+
+
