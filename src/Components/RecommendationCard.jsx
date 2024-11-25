@@ -8,8 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { generateFoodImage } from '../apis/foodImageApi';
 
-export default function RecommendationCard({src, prompt="Delicious eggplant casserole" }) {
-  const [imageSrc, setImageSrc] = useState(src);
+export default function RecommendationCard({meal, prompt="Delicious eggplant casserole" }) {
+  const [imageSrc, setImageSrc] = useState(meal.mealImg);
   const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
