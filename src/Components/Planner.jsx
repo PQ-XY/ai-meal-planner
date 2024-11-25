@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {parseMealPlan} from './PlannerHelper'
 import AddIngredient from './AddIngredient';
 import AddIngredientButton from './AddIngredientButton'
@@ -138,12 +138,45 @@ export default function Planner() {
     }
   };
 
+  const [storedIngredients, setStoredIngredients] = useState([]);
+
+  const generateRecipes = () => {
+    // Store the current values into the final ingredients list when the button is clicked
+    const ingredientsToStore = ingredientArray.filter(item => item.name.trim() !== ''); // Exclude empty names
+    setStoredIngredients(ingredientsToStore); // Save to state
+    console.log('Ingredients to send:', ingredientsToStore); // Log to check the result
+    // Send the ingredientsToStore to the backend here
+    // Example: axios.post('/your-endpoint', { ingredients: ingredientsToStore });
+  };
+
   const [ingredientArray,setIngredient]=useState([{name:'',count:1}])
+  
+  // useEffect to track whenever the ingredientArray is updated
+  useEffect(() => {
+    console.log('ingredientArray updated:', ingredientArray);
+  }, [ingredientArray]); // Runs whenever ingredientArray changes
 
   const addNewIngredient=()=>{
     setIngredient((prevArray)=>[...prevArray,{name:'', count:1}])
     console.log('added');
   };
+
+  const handleNameChange = (index, newName) => {
+    setIngredient(prevArray => {
+      const updatedArray = [...prevArray];
+      updatedArray[index].name = newName;
+      return updatedArray;
+    });
+  };
+
+  const handleCountChange = (index, newCount) => {
+    setIngredient(prevArray => {
+      const updatedArray = [...prevArray];
+      updatedArray[index].count = newCount;
+      return updatedArray;
+    });
+  };
+  
 
   return (
     <div className='planner-page-layout'>
@@ -168,10 +201,11 @@ export default function Planner() {
               <p className='planner-container-title-small'>What ingredients are left in your fridge? Let me help you to generate recipes!</p>
               <div className='add-ingredient-container'>
                 {ingredientArray.map((item,index)=>(
-                  <AddIngredient key={index} name={item.name} count={item.count}/>
+                  <AddIngredient key={index} name={item.name} count={item.count} onNameChange={(newName) => handleNameChange(index, newName)}  // Handle name change
+                  onCountChange={(newCount) => handleCountChange(index, newCount)}/>
                 ))}
                 <AddIngredientButton onClick={addNewIngredient}/>
-                <button className='generate-button'>Generate recipes</button>
+                <button className='generate-button' onClick={generateRecipes}>Generate recipes</button>
               </div>
             </div>
           </div>

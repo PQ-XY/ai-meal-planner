@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import './AddIngredient.css'
+import React, { useState, useEffect } from 'react';
+import './AddIngredient.css';
 
-const AddIngredient = ({name,count}) => {
-  const [inputValue, setInputValue] = useState(count); // Initial value set to 1
-  const [inputName, setInputName]=useState(name);
+const AddIngredient = ({ name, count, onNameChange, onCountChange }) => {
+  const [inputValue, setInputValue] = useState(count); // Initial value set to count
+  const [inputName, setInputName] = useState(name);
+
+  useEffect(() => {
+    onCountChange(inputValue);
+  }, [inputValue]);
+
+  useEffect(() => {
+    onNameChange(inputName);
+  }, [inputName]);
 
   const handleValueChange = (event) => {
-    const newValue = parseInt(event.target.value, 10) || 0; // Make sure it's a number
+    const newValue = parseInt(event.target.value, 10) || 0; // Ensure it's a valid number
     setInputValue(newValue);
   };
 
-  const handleNameChange = (event)=>{
+  const handleNameChange = (event) => {
     setInputName(event.target.value);
-  }
+  };
 
   const decrementValue = () => {
     if (inputValue > 1) {
@@ -25,10 +33,10 @@ const AddIngredient = ({name,count}) => {
   };
 
   return (
-    <div className='ingredient-container'>
+    <div className="ingredient-container">
       <input
-        className='ingredient-name-input'
-        placeholder='Enter ingredient'
+        className="ingredient-name-input"
+        placeholder="Enter ingredient"
         onChange={handleNameChange}
         value={inputName}
       />
@@ -43,7 +51,7 @@ const AddIngredient = ({name,count}) => {
         <input
           className="base-NumberInput-input"
           value={inputValue}
-          onChange={(e) => handleValueChange(e)}
+          onChange={handleValueChange}
         />
         <button
           className="base-NumberInput-incrementButton"
