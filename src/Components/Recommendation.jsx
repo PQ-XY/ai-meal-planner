@@ -2,6 +2,7 @@ import React from 'react'
 import './Recommendation.css'
 import RecommendationCard from './RecommendationCard'
 
+
 export default function Recommendation({meals}) {
   return (
     <div className='recommendationContainer'>
@@ -28,11 +29,9 @@ export default function Recommendation({meals}) {
       </div>
       <h3 className='recommendationSub'>We have generated new recipes based on your taste and previous meals, come and try!</h3>
       <div className='recommendationCardsBox'>
-        {
-          meals.map((meal, index)=>(
-            <RecommendationCard key={index} meal={meal}></RecommendationCard>
-          ))
-        }
+        <RecommendationCard prompt="Delicious eggplant casserole" />
+        <RecommendationCard prompt="Classic French toast" />
+        <RecommendationCard prompt="Chicken and green beans" />
       </div>
     </div>
   )
