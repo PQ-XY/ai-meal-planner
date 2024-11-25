@@ -24,15 +24,21 @@ export default function RecommendationCard({src, prompt="Delicious eggplant cass
   // Fetch the image dynamically
   useEffect(() => {
     const fetchImage = async () => {
-      try {
-        const generatedImage = await generateFoodImage(prompt);
-        console.log('Generated Image URL:', generatedImage);
-        setImageSrc(generatedImage); // Update with the fetched image
-      } catch (error) {
-        console.error('Error fetching image:', error.message);
-        setImageSrc(src); // Fallback to the provided `src` prop if API fails
-      } finally {
-        setLoading(false); 
+      const cachedImage = localStorage.getItem(prompt); // Check local storage
+      if (cachedImage) {
+        setImageSrc(cachedImage); // Use cached image
+        setLoading(false);
+      } else {
+        try {
+          const generatedImage = await generateFoodImage(prompt);
+          setImageSrc(generatedImage); // Update with the fetched image
+          localStorage.setItem(prompt, generatedImage); // Cache the image
+        } catch (error) {
+          console.error('Error fetching image:', error.message);
+          setImageSrc(src); // Fallback to default if API fails
+        } finally {
+          setLoading(false);
+        }
       }
     };
 
