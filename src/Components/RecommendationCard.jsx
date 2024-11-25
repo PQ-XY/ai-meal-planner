@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { generateFoodImage } from '../apis/foodImageApi';
 
-export default function RecommendationCard({meal, prompt="Delicious eggplant casserole" }) {
+export default function RecommendationCard({meal}) {
   const [imageSrc, setImageSrc] = useState(meal.mealImg);
   const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,6 +20,8 @@ export default function RecommendationCard({meal, prompt="Delicious eggplant cas
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const url = generateFoodImage(meal.mealName)
 
     //format ingredients
     const formattedIngredients = meal.ingredients.map((ingredient, index) => {
@@ -33,7 +35,7 @@ export default function RecommendationCard({meal, prompt="Delicious eggplant cas
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={meal.mealImg} alt="" />
+        <img className='recommendationCardImg' src={url} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
