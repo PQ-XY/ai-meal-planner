@@ -29,9 +29,14 @@ export default function Recommendation({meals}) {
       </div>
       <h3 className='recommendationSub'>We have generated new recipes based on your taste and previous meals, come and try!</h3>
       <div className='recommendationCardsBox'>
-        <RecommendationCard prompt="Delicious eggplant casserole" />
+        {
+          meals.map((meal, index)=>(
+            <RecommendationCard key={index} meal={meal} />
+          ))
+        }
+        {/* <RecommendationCard prompt="Delicious eggplant casserole" />
         <RecommendationCard prompt="Classic French toast" />
-        <RecommendationCard prompt="Chicken and green beans" />
+        <RecommendationCard prompt="Chicken and green beans" /> */}
       </div>
     </div>
   )
