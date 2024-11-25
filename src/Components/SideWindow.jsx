@@ -2,8 +2,26 @@ import React from 'react'
 import './SideWindow.css'
 import MealDialog from './MealDialog'
 import { Link } from 'react-router-dom'
+import allDatas from '../data/test_data'
 
 export default function SideWindow() {
+
+  //get the current weekday today
+  const getDayofWeek = () => {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+  
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[dayOfWeek]
+  }
+  const currentDay = getDayofWeek();
+
+
+  //get data
+  const datas = allDatas()
+
+  const todayMeals = datas.filter(meal => meal.day === currentDay)
+
   return (
     <div className='sideWindowBox'>
       <div className='sideWindowHeader'>
@@ -17,10 +35,11 @@ export default function SideWindow() {
         </div>
         <h2>Today's Meal</h2>
       </div>
-      <div className='sideWindowCardsBox'>
-        <MealDialog title={'Breakfast'} name={'Egg Sandwich'} src={'https://www.simplyrecipes.com/thmb/5KEzbHplXxqFntM-jqrI0QdExR4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Easy-Egg-Salad-Sandwich-LEAD-22-8ecbb89abda34a84b649ff4c44bab525.JPG'}></MealDialog>
-        <MealDialog title={'Lunch'} name={'Beef Bibimbap'} src={'https://carlsbadcravings.com/wp-content/uploads/2023/09/Bibimbap-9.jpg'}></MealDialog>
-        <MealDialog title={'Dinner'} name={'Chicken Breast Salad'} src={'https://www.wellseasonedstudio.com/wp-content/uploads/2023/04/Grilled-chicken-salad-with-cucumbers-and-creamy-garlic-dressing-on-a-plate.jpg'}></MealDialog>
+      <div className='sideWindowCardsBox'>{
+          todayMeals.map((meal, index)=>(
+          <MealDialog key={index} meal={meal}></MealDialog>
+        ))
+        }
       </div>
       <div>
         <Link to='/app/meals' style={{textDecoration:'none'}}>

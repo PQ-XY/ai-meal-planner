@@ -2,13 +2,14 @@
     width: 1060px;
     height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     .aiAssistantLogo {
         width: 80px;
         height: 80px;
         border-radius: 100%;
+        margin-right: 30px;
         background-color: #94B06E;
         display: flex;
         justify-content: center;

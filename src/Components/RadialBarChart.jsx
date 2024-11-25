@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const RadialBarChart = () => {
+const RadialBarChart = ({percentage}) => {
   const [chartOptions, setChartOptions] = useState({
-    series: [70],
+    series: [percentage],
     options: {
       chart: {
         type: 'radialBar',
-        height: '100%',  // Set height to 100%
+        height: '70%',  // Set height to 100%
         width: '100%',   // Set width to 100%
       },
       plotOptions: {
@@ -41,7 +41,7 @@ const RadialBarChart = () => {
         options={chartOptions.options}
         series={chartOptions.series}
         type="radialBar"
-        height="100%"  // Set height to 100%
+        height="70%"  // Set height to 100%
         width="100%"   // Set width to 100%
       />
     </div>

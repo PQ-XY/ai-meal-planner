@@ -40,7 +40,9 @@
 .mealPageContainer .mealHeaderBox .mealHeaderMeals {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .mealPageContainer .mealHeaderBox .mealHeaderMeals h3 {
@@ -61,7 +63,7 @@
 }
 
 .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .totalCaloriesBox {
-  width: 147px;
+  width: 190px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +75,7 @@
   font-size: 48px;
   color: #688B39;
   margin: 0;
+  margin-bottom: 15px;
 }
 
 .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .totalCaloriesBox h2 {
@@ -90,7 +93,6 @@
 
 .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .caloriesRadialBarChartBox .RadialBarChartBox {
   width: 120px;
-  height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;

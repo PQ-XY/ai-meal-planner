@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import MealCard from './MealCard';
+import MealplanCardDialog from './MealplanCardDialog';
 import { styled } from '@mui/material/styles';
 import './BasicTabs.css'
+import allDatas from '../data/test_data';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -18,7 +19,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{pt:6}}>{children}</Box>}
     </div>
   );
 }
@@ -100,13 +101,27 @@ function getWeekDates() {
 
 export default function BasicTabs() {
   const today = new Date();
+  console.log(today)
   const dayOfWeek = today.getDay(); 
+  console.log(dayOfWeek)
 
   const [value, setValue] = React.useState(dayOfWeek);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  //test data format
+  const datas = allDatas()
+  console.log(datas)
+
+  const sundayMeals = datas.filter(meal => meal.day ==='Sunday')
+  const mondayMeals = datas.filter(meal => meal.day ==='Monday')
+  const tuesdayMeals = datas.filter(meal => meal.day ==='Tuesday')
+  const wednesdayMeals = datas.filter(meal => meal.day ==='Wednesday')
+  const thursdayMeals = datas.filter(meal => meal.day ==='Thursday')
+  const fridayMeals = datas.filter(meal => meal.day ==='Friday')
+  const saturdayMeals = datas.filter(meal => meal.day ==='Saturday')
 
   return (
     <Box sx={{ width: '100%'}}>
@@ -115,80 +130,66 @@ export default function BasicTabs() {
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[0]}</span>
             <span>Sunday</span>
-          </div>} {...a11yProps(0)}/>
+          </div>} value={0} {...a11yProps(0)}/>
           <StyledTab  label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[1]}</span>
             <span>Monday</span>
-          </div>} {...a11yProps(1)} /> 
+          </div>} value={1} {...a11yProps(1)} /> 
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[2]}</span>
             <span>Tuesday</span>
-          </div>} {...a11yProps(2)} />
+          </div>} value={2} {...a11yProps(2)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[3]}</span>
             <span>Wednesday</span>
-          </div>} {...a11yProps(3)} />
+          </div>} value={3} {...a11yProps(3)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[4]}</span>
             <span>Thursday</span>
-          </div>} {...a11yProps(4)} />
+          </div>} value={4} {...a11yProps(4)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[5]}</span>
             <span>Friday</span>
-          </div>} {...a11yProps(5)} />
+          </div>} value={5} {...a11yProps(5)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[6]}</span>
             <span>Saturday</span>
-          </div>} {...a11yProps(6)} />
+          </div>} value={6} {...a11yProps(6)} />
         </StyledTabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <div className='mealCardBox'>
-          <MealCard src={'https://www.sidechef.com/recipe/0fb38edd-6c28-434a-a14c-e930e69115d4.jpg?d=1408x1120'}></MealCard>
-          <MealCard src={'https://i.redd.it/roast-pork-belly-and-fatty-cha-siu-on-rice-if-i-could-only-v0-6e9zxs0wh7kd1.jpg?width=6000&format=pjpg&auto=webp&s=1cacbd01f211d137a7ea434e753f224c8ecfa0da'}></MealCard>
-          <MealCard src={'https://hikarimiso.com/wp-content/uploads/2024/05/Trimmed_03_Miso-Ramen_02_M.jpg'}></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {sundayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <div className='mealCardBox'>
-          <MealCard src={'https://hips.hearstapps.com/hmg-prod/images/ghk010124scrambledeggsthreeways-65942928cddc1.jpg?crop=0.356xw:0.801xh;0.313xw,0&resize=980:*'}></MealCard>
-          <MealCard src={'https://www.recipetineats.com/tachyon/2024/08/Cinnamon-breakfast-muffins-morning-glory-muffins_7-1.jpg'}></MealCard>
-          <MealCard src={'https://www.pumpkinnspice.com/wp-content/uploads/2016/03/easy-breakfast-quesadillas-13-1024x683.jpg'}></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {mondayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <div className='mealCardBox'>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {tuesdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <div className='mealCardBox'>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {wednesdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-      <div className='mealCardBox'>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {thursdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        <div className='mealCardBox'>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {fridayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
-        <div className='mealCardBox'>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
-          <MealCard></MealCard>
+        <div className='MealplanCardDialogBox'>
+          {saturdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
     </Box>

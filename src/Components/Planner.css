@@ -20,6 +20,11 @@ body {
   justify-content: space-between;
 }
 
+.planner-container-scrollable{
+  flex:1;
+  overflow-y: auto;
+}
+
 .big-title{
   margin-top: 40px;
   font-weight: bold;
@@ -42,6 +47,7 @@ body {
   align-items: flex-start;
   gap: 20px;
   height: 100%;
+
 }
 
 .planner-container-title p{
@@ -68,6 +74,11 @@ body {
 
 .planner-container-image{
   width: 55px;
+}
+
+.aiAssistantBar-container {
+  margin-top: auto;
+  margin-bottom: 40px;
 }
 
 .planner-sideWindowLayout{
