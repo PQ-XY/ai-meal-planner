@@ -39,9 +39,10 @@
   font-size: 24px;
 }
 
-.sideWindowCardContainer .sideWindowCardInfo p {
+.sideWindowCardContainer .sideWindowCardInfo .sideWindowCardMealName {
   font-family: 'Instrument Sans', serif;
   font-size: 16px;
+  text-align: center;
 }
 
 .sideWindowCardContainer:hover {

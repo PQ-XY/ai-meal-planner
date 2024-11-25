@@ -43,6 +43,9 @@
             font-size: 18px;
             font-weight: 500;
             padding: 0;
+            &:hover {
+                cursor: pointer;
+            }
 
             .regenerateLogo{
                 margin-left: 5px;

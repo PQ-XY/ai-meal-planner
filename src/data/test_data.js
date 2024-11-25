@@ -1,4 +1,4 @@
-let datas = [
+const datas = [
     // Monday
     {
       day: "Monday",

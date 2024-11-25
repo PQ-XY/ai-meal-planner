@@ -21,55 +21,23 @@ export default function RecommendationCard({src, prompt="Delicious eggplant cass
     setAnchorEl(null);
   };
 
-  // Fetch the image dynamically
-  useEffect(() => {
-    const fetchImage = async () => {
-      const cachedImage = localStorage.getItem(prompt); // Check local storage
-      if (cachedImage) {
-        setImageSrc(cachedImage); // Use cached image
-        setLoading(false);
-      } else {
-        try {
-          const generatedImage = await generateFoodImage(prompt);
-          setImageSrc(generatedImage); // Update with the fetched image
-          localStorage.setItem(prompt, generatedImage); // Cache the image
-        } catch (error) {
-          console.error('Error fetching image:', error.message);
-          setImageSrc(src); // Fallback to default if API fails
-        } finally {
-          setLoading(false);
-        }
+    //format ingredients
+    const formattedIngredients = meal.ingredients.map((ingredient, index) => {
+      // Add comma and space after each item except the last one
+      if (index === meal.ingredients.length - 1) {
+          return ingredient + ".";  // End the last ingredient with a period
       }
-    };
-
-    if (!src) {
-      fetchImage();
-    } else {
-      setLoading(false); // If `src` is provided, skip fetching
-    }
-  }, [src, prompt]);
-
+      return ingredient + ", ";  // Add a comma and space after each other ingredient
+      }).join('');
 
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        {loading ? (
-          <p>Loading..</p>
-        ) : (
-          <img
-            className="recommendationCardImg"
-            src={imageSrc}
-            alt={prompt}
-            onError={(e) => {
-              e.target.style.display = 'none'; // Hide if the image fails
-            }}
-          />
-        )}
-      
+        <img className='recommendationCardImg' src={meal.mealImg} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
-          <h3>{prompt}</h3>
+          <h3>{meal.mealName}</h3>
           <div>
             <IconButton
               id="basic-button"
@@ -108,9 +76,9 @@ export default function RecommendationCard({src, prompt="Delicious eggplant cass
                     </defs>
                 </svg>
             </div>
-            <h4>20 min</h4>
+            <h4>{meal.cookTime}</h4>
         </div>
-        <p>Eggplant, minced pork,  green onion, garlic, chili pepper</p>
+        <p>{formattedIngredients}</p>
       </div>
     </div>
   )

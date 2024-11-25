@@ -3,7 +3,7 @@ import './Recommendation.css'
 import RecommendationCard from './RecommendationCard'
 
 
-export default function Recommendation() {
+export default function Recommendation({meals}) {
   return (
     <div className='recommendationContainer'>
       <div className='recommendationHeader'>

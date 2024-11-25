@@ -4,6 +4,7 @@ import MyProfile from './MyProfile';
 import Recommendation from './Recommendation';
 import AIAssistantBar from './AIAssistantBar';
 import SideWindow from './SideWindow';
+import allDatas_recommendation from '../data/test_recommendation_data';
 
 export default function Home() {
 
@@ -24,6 +25,9 @@ export default function Home() {
     }
   };
 
+  //get recommendation data
+  const data_recommendation = allDatas_recommendation()
+
   return (
     <div className='homePageLayout'>
       <div className='mainPage'>
@@ -41,7 +45,7 @@ export default function Home() {
           <MyProfile></MyProfile>
         </div>
         <div className='recommendation'>
-          <Recommendation></Recommendation>
+          <Recommendation meals={data_recommendation}></Recommendation>
         </div>
         {/* <div className='aiAssistantBar'>
           <AIAssistantBar></AIAssistantBar>
