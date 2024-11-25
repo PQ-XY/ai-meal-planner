@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 .recommendationCardContainer {
   width: 308px;
-  height: 360px;
+  height: 400px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 18px;
   overflow: hidden;

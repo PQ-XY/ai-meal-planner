@@ -58,11 +58,10 @@ body {
 
 .homePageLayout .mainPage .recommendation {
   width: 1060px;
-  height: 532px;
+  height: 560px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 18px;
   background-color: white;
-  margin-bottom: 56px;
 }
 
 .homePageLayout .mainPage .aiAssistantBar {

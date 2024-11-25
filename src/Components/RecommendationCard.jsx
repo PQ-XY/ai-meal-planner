@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-export default function RecommendationCard({src}) {
+export default function RecommendationCard({meal}) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -16,14 +16,23 @@ export default function RecommendationCard({src}) {
     setAnchorEl(null);
   };
 
+    //format ingredients
+    const formattedIngredients = meal.ingredients.map((ingredient, index) => {
+      // Add comma and space after each item except the last one
+      if (index === meal.ingredients.length - 1) {
+          return ingredient + ".";  // End the last ingredient with a period
+      }
+      return ingredient + ", ";  // Add a comma and space after each other ingredient
+      }).join('');
+
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={src} alt="" />
+        <img className='recommendationCardImg' src={meal.mealImg} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
-          <h3>Eggplant Casserole</h3>
+          <h3>{meal.mealName}</h3>
           <div>
             <IconButton
               id="basic-button"
@@ -62,9 +71,9 @@ export default function RecommendationCard({src}) {
                     </defs>
                 </svg>
             </div>
-            <h4>20 min</h4>
+            <h4>{meal.cookTime}</h4>
         </div>
-        <p>Eggplant, minced pork,  green onion, garlic, chili pepper</p>
+        <p>{formattedIngredients}</p>
       </div>
     </div>
   )

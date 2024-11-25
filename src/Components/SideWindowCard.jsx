@@ -13,7 +13,7 @@ export default function SideWindowCard({meal}) {
             <h3>{meal.meal}</h3>
             {/* <div><Checkbox></Checkbox></div> */}
         </div>
-        <p>
+        <p className='sideWindowCardMealName'>
             {meal.mealName}
         </p>
       </div>

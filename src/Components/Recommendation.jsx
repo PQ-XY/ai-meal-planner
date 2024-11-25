@@ -2,7 +2,7 @@ import React from 'react'
 import './Recommendation.css'
 import RecommendationCard from './RecommendationCard'
 
-export default function Recommendation() {
+export default function Recommendation({meals}) {
   return (
     <div className='recommendationContainer'>
       <div className='recommendationHeader'>
@@ -28,9 +28,11 @@ export default function Recommendation() {
       </div>
       <h3 className='recommendationSub'>We have generated new recipes based on your taste and previous meals, come and try!</h3>
       <div className='recommendationCardsBox'>
-        <RecommendationCard src={'https://images.squarespace-cdn.com/content/v1/5e6cf5b11c1cd125b5215b2f/079c64db-72bb-4e82-b91f-f972d2fcf7c0/2.png'}></RecommendationCard>
-        <RecommendationCard src={'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2008/3/26/0/IE0309_French-Toast.jpg.rend.hgtvcom.1280.960.suffix/1431730431340.jpeg'}></RecommendationCard>
-        <RecommendationCard src={'https://www.eatwell101.com/wp-content/uploads/2019/03/chicken-and-green-beans-recipe4.jpg'}></RecommendationCard>
+        {
+          meals.map((meal, index)=>(
+            <RecommendationCard key={index} meal={meal}></RecommendationCard>
+          ))
+        }
       </div>
     </div>
   )
