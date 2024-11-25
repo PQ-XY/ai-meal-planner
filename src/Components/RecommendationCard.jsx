@@ -11,6 +11,7 @@ import { generateFoodImage } from '../apis/foodImageApi';
 export default function RecommendationCard({meal}) {
   const [imageSrc, setImageSrc] = useState(meal.mealImg);
   const [loading, setLoading] = useState(true);
+  const [url, setUrl] = useState();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -21,7 +22,11 @@ export default function RecommendationCard({meal}) {
     setAnchorEl(null);
   };
 
-  const url = generateFoodImage(meal.mealName)
+  generateFoodImage(meal.mealName).then(res => {
+    if (res && res.length && typeof res === 'string') {
+      setUrl(res);
+    }
+  })
 
     //format ingredients
     const formattedIngredients = meal.ingredients.map((ingredient, index) => {
