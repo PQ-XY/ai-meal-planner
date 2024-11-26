@@ -11,11 +11,15 @@ export default function Meals() {
     const today = new Date();
   
     // Find Sunday (start of the week)
-    const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+    // const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
   
     // Find Saturday (end of the week)
-    const lastDayOfWeek = new Date(firstDayOfWeek);
-    lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
+    // const lastDayOfWeek = new Date(firstDayOfWeek);
+    // lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
+
+    // Find 7th day
+    const lastDay = new Date(today);
+    lastDay.setDate(today.getDate() + 6);
   
     // Format dates as MM/DD
     const formatDate = (date) => {
@@ -24,7 +28,7 @@ export default function Meals() {
       return `${month}/${day}`;
     };
   
-    return `${formatDate(firstDayOfWeek)} - ${formatDate(lastDayOfWeek)}`;
+    return `${formatDate(today)} - ${formatDate(lastDay)}`;
   }
 
   // Get the current week's dates
@@ -59,7 +63,10 @@ export default function Meals() {
   //get meal data
   const datas = allDatas()
 
-  const todayMeals = datas.filter(meal => meal.day === currentDay)
+  const today = new Date();
+  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
+
+  const todayMeals = datas.filter(meal => meal.date === formattedDate)
   console.log(todayMeals)
   const totalCalories = todayMeals.reduce((sum,meal)=> sum + meal.calories, 0)
 
@@ -79,7 +86,7 @@ export default function Meals() {
     <div className='mealPageContainer'>
       <div className='mealHeaderBox'>
         <div className='mealHeaderWeek'>
-          <h1>Weekly Meals</h1>
+          <h1>7-day Meals</h1>
           <h2>{weekDates}</h2>
         </div>      
         <div className='mealHeaderMeals'>

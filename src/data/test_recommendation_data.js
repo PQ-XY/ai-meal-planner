@@ -1,7 +1,7 @@
 const datas_recommendation = [
     // recommendation
     {
-        day: "any",
+        date: "any",
         meal: "any",
         mealName: "Pancakes with Berries",
         mealImg: "https://www.allrecipes.com/thmb/ecb0XKvcrE7OyxBLX3OVEd30TbE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/686460-todds-famous-blueberry-pancakes-Dianne-1x1-1-9bd040b975634bce884847ce2090de16.jpg",
@@ -26,7 +26,7 @@ const datas_recommendation = [
         fat: 10
       }, 
       {
-        day: "any",
+        date: "any",
         meal: "any",
         mealName: "Chicken Caesar Wrap",
         mealImg: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Chicken-Caesar-Wraps_EXPS_FT24_44899_0507_JR_06.jpg",
@@ -49,7 +49,7 @@ const datas_recommendation = [
         fat: 15
       },
       {
-        day: "any",
+        date: "any",
         meal: "any",
         mealName: "Spaghetti Bolognese",
         mealImg: "https://windycitydinnerfairy.com/wp-content/uploads/2020/04/spaghetti-36.jpg",

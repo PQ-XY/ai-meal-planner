@@ -77,12 +77,12 @@ function getWeekDates() {
   const today = new Date();
 
   // Find Sunday (start of the week)
-  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+  // const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
 
-  // Create an array of dates from Sunday to Saturday
+  // Create an array of dates from today to the next 7 days
   const weekDates = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(startOfWeek); // Clone the start date
-    date.setDate(startOfWeek.getDate() + i); // Add `i` days to the Sunday
+    const date = new Date(today); // Clone the start date
+    date.setDate(today.getDate() + i); // Add `i` days to the Sunday
     return date;
   });
 
@@ -99,13 +99,30 @@ function getWeekDates() {
   // Get the current week's dates
   const weekDatesArray = getWeekDates();
 
-export default function BasicTabs() {
-  const today = new Date();
-  console.log(today)
-  const dayOfWeek = today.getDay(); 
-  console.log(dayOfWeek)
+  console.log(weekDatesArray)
 
-  const [value, setValue] = React.useState(dayOfWeek);
+  // Get the 7 days array
+  function getNext7Days() {
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date().getDay(); // Get the current day (0-6, where 0 is Sunday)
+    
+    // Generate an array of 7 days starting with today
+    const next7Days = Array.from({ length: 7 }, (_, i) => daysOfWeek[(today + i) % 7]);
+  
+    return next7Days;
+  }
+
+  const next7Days = getNext7Days()
+
+
+export default function BasicTabs() {
+
+  // const today = new Date();
+  // console.log(today)
+  // const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
+  // console.log(formattedDate)
+
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -115,13 +132,13 @@ export default function BasicTabs() {
   const datas = allDatas()
   console.log(datas)
 
-  const sundayMeals = datas.filter(meal => meal.day ==='Sunday')
-  const mondayMeals = datas.filter(meal => meal.day ==='Monday')
-  const tuesdayMeals = datas.filter(meal => meal.day ==='Tuesday')
-  const wednesdayMeals = datas.filter(meal => meal.day ==='Wednesday')
-  const thursdayMeals = datas.filter(meal => meal.day ==='Thursday')
-  const fridayMeals = datas.filter(meal => meal.day ==='Friday')
-  const saturdayMeals = datas.filter(meal => meal.day ==='Saturday')
+  const firstDayMeals = datas.filter(meal => meal.date === weekDatesArray[0])
+  const secondDayMeals = datas.filter(meal => meal.date === weekDatesArray[1])
+  const thirdDayMeals = datas.filter(meal => meal.date === weekDatesArray[2])
+  const fourthDayMeals = datas.filter(meal => meal.date === weekDatesArray[3])
+  const fifthDayMeals = datas.filter(meal => meal.date === weekDatesArray[4])
+  const sixthDayMeals = datas.filter(meal => meal.date === weekDatesArray[5])
+  const seventhDayMeals = datas.filter(meal => meal.date === weekDatesArray[6])
 
   return (
     <Box sx={{ width: '100%'}}>
@@ -129,67 +146,67 @@ export default function BasicTabs() {
         <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[0]}</span>
-            <span>Sunday</span>
-          </div>} value={0} {...a11yProps(0)}/>
+            <span>{next7Days[0]}</span>
+          </div>} {...a11yProps(0)}/>
           <StyledTab  label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[1]}</span>
-            <span>Monday</span>
-          </div>} value={1} {...a11yProps(1)} /> 
+            <span>{next7Days[1]}</span>
+          </div>} {...a11yProps(1)} /> 
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[2]}</span>
-            <span>Tuesday</span>
-          </div>} value={2} {...a11yProps(2)} />
+            <span>{next7Days[2]}</span>
+          </div>} {...a11yProps(2)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[3]}</span>
-            <span>Wednesday</span>
-          </div>} value={3} {...a11yProps(3)} />
+            <span>{next7Days[3]}</span>
+          </div>} {...a11yProps(3)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[4]}</span>
-            <span>Thursday</span>
-          </div>} value={4} {...a11yProps(4)} />
+            <span>{next7Days[4]}</span>
+          </div>} {...a11yProps(4)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[5]}</span>
-            <span>Friday</span>
-          </div>} value={5} {...a11yProps(5)} />
+            <span>{next7Days[5]}</span>
+          </div>} {...a11yProps(5)} />
           <StyledTab label={<div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <span>{weekDatesArray[6]}</span>
-            <span>Saturday</span>
-          </div>} value={6} {...a11yProps(6)} />
+            <span>{next7Days[6]}</span>
+          </div>} {...a11yProps(6)} />
         </StyledTabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className='MealplanCardDialogBox'>
-          {sundayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className='MealplanCardDialogBox'>
-          {mondayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className='MealplanCardDialogBox'>
-          {tuesdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className='MealplanCardDialogBox'>
-          {wednesdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className='MealplanCardDialogBox'>
-          {thursdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className='MealplanCardDialogBox'>
-          {fridayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className='MealplanCardDialogBox'>
-          {saturdayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
     </Box>

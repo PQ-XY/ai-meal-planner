@@ -7,20 +7,22 @@ import allDatas from '../data/test_data'
 export default function SideWindow() {
 
   //get the current weekday today
-  const getDayofWeek = () => {
-    const today = new Date();
-    const dayOfWeek = today.getDay();
+  // const getDayofWeek = () => {
+  //   const today = new Date();
+  //   const dayOfWeek = today.getDay();
   
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return days[dayOfWeek]
-  }
-  const currentDay = getDayofWeek();
+  //   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  //   return days[dayOfWeek]
+  // }
+  // const currentDay = getDayofWeek();
 
+  const today = new Date();
+  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
 
   //get data
   const datas = allDatas()
 
-  const todayMeals = datas.filter(meal => meal.day === currentDay)
+  const todayMeals = datas.filter(meal => meal.date === formattedDate)
 
   return (
     <div className='sideWindowBox'>

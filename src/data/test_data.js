@@ -1,7 +1,7 @@
 const datas = [
-    // Monday
+    // day 1
     {
-      day: "Monday",
+      date: "11/26",
       meal: "Breakfast",
       mealName: "Oatmeal with Fresh Berries",
       mealImg:"https://www.pcrm.org/sites/default/files/Oatmeal%20and%20Berries.jpg",
@@ -18,7 +18,7 @@ const datas = [
       fat: 4
     },
     {
-      day: "Monday",
+      date: "11/26",
       meal: "Lunch",
       mealName: "Grilled Chicken Salad",
       mealImg:"https://hips.hearstapps.com/hmg-prod/images/grilled-chicken-salad-index-6628169554c88.jpg?crop=0.6667863339915036xw:1xh;center,top&resize=1200:*",
@@ -41,7 +41,7 @@ const datas = [
       fat: 20
     },
     {
-      day: "Monday",
+      date: "11/26",
       meal: "Dinner",
       mealName: "Baked Salmon with Quinoa and Steamed Veggies",
       mealImg:"https://cdn.prod.website-files.com/65ea1d4b982c267288ce4bca/668455aa31b7768a8f964bf7_matthuesart_Grilled_Salmon_with_Quinoa_and_Steamed_Broccoli_c690c998-0991-468a-aadc-aa6b48f297ec.png",
@@ -65,9 +65,9 @@ const datas = [
       fat: 18
     },
   
-    // Tuesday
+    // day 2
     {
-      day: "Tuesday",
+      date: "11/27",
       meal: "Breakfast",
       mealName: "Greek Yogurt with Granola and Honey",
       mealImg:"https://images.squarespace-cdn.com/content/v1/57b72830be65946ef827cd7b/1540402764288-KDU93BNXXB8X4KV8QWX1/IMG_9013.JPG",
@@ -88,7 +88,7 @@ const datas = [
       fat: 8
     },
     {
-      day: "Tuesday",
+      date: "11/27",
       meal: "Lunch",
       mealName: "Turkey and Avocado Wrap",
       mealImg:"https://www.tasteofhome.com/wp-content/uploads/2018/01/Turkey-Guacamole-Wraps_EXPS_SDAM18_27746_B12_07_1b.jpg",
@@ -111,7 +111,7 @@ const datas = [
       fat: 15
     },
     {
-      day: "Tuesday",
+      date: "11/27",
       meal: "Dinner",
       mealName: "Stir-Fried Tofu with Vegetables and Rice",
       mealImg:"https://www.simplyrecipes.com/thmb/eSjn6vsdKpQIdrD4msJcO41Wm84=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Spicy-Tofu-Stirfry-LEAD-3-3da17681605c41688be8742e045f71f5.jpg",
@@ -135,9 +135,9 @@ const datas = [
       fat: 10
     },
   
-    // Wednesday
+    // day 3
     {
-      day: "Wednesday",
+      date: "11/28",
       meal: "Breakfast",
       mealName: "Smoothie Bowl",
       mealImg:"https://images.themodernproper.com/billowy-turkey/production/posts/2021/Smoothie-Bowl-8.jpeg?w=960&h=960&q=82&fm=jpg&fit=crop&dm=1641225383&s=139a98620a1c262e385ffe030a55cbc2",
@@ -159,7 +159,7 @@ const datas = [
       fat: 8
     },
     {
-      day: "Wednesday",
+      date: "11/28",
       meal: "Lunch",
       mealName: "Quinoa Salad with Chickpeas",
       mealImg:"https://www.wellplated.com/wp-content/uploads/2021/04/Chickpea-Quinoa-Salad.jpg",
@@ -182,7 +182,7 @@ const datas = [
       fat: 10
     },
     {
-      day: "Wednesday",
+      date: "11/28",
       meal: "Dinner",
       mealName: "Grilled Shrimp with Zucchini Noodles",
       mealImg:"https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/01/Zucchini-Noodles-Pasta-with-Shrimp-1.jpg",
@@ -206,9 +206,9 @@ const datas = [
       fat: 12
     },
   
-    // Thursday
+    // day 4
     {
-        day: "Thursday",
+        date: "11/29",
         meal: "Breakfast",
         mealName: "Avocado Toast with Egg",
         mealImg:"https://www.inspiredtaste.net/wp-content/uploads/2018/08/Avocado-Toast-Recipe-1200.jpg",
@@ -231,7 +231,7 @@ const datas = [
         fat: 20
     },
     {
-        day: "Thursday",
+        date: "11/29",
         meal: "Lunch",
         mealName: "Veggie Wrap",
         mealImg:"https://tastesbetterfromscratch.com/wp-content/uploads/2014/04/Veggie-Wrap-2.jpg",
@@ -254,7 +254,7 @@ const datas = [
         fat: 15
     },
     {
-        day: "Thursday",
+        date: "11/29",
         meal: "Dinner",
         mealName: "Chicken Stir-Fry with Rice",
         mealImg:"https://www.saltandlavender.com/wp-content/uploads/2020/07/teriyaki-chicken-stir-fry-11.jpg",
@@ -277,9 +277,9 @@ const datas = [
         fat: 12
     },
     
-    // Friday
+    // day 5
     {
-        day: "Friday",
+        date: "11/30",
         meal: "Breakfast",
         mealName: "Banana Pancakes",
         mealImg:"https://www.allrecipes.com/thmb/6x0Lw9L4MEU8INHnK4tXGRV9XWI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20334-banana-pancakes-i-DDMFS-4x3-9f291f03044247d48c9ec26917952402.jpg",
@@ -301,7 +301,7 @@ const datas = [
         fat: 8
     },
     {
-        day: "Friday",
+        date: "11/30",
         meal: "Lunch",
         mealName: "Grilled Cheese and Tomato Soup",
         mealImg:"https://grilledcheesesocial.com/wp-content/uploads/2024/01/grilled-cheese-tomato-soup-grilled-cheese-social-18.jpg",
@@ -321,7 +321,7 @@ const datas = [
         fat: 18
     },
     {
-        day: "Friday",
+        date: "11/30",
         meal: "Dinner",
         mealName: "Beef Tacos",
         mealImg:"https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg",
@@ -343,9 +343,9 @@ const datas = [
         fat: 20
     },
     
-    // Saturday
+    // day 6
     {
-        day: "Saturday",
+        date: "12/1",
         meal: "Breakfast",
         mealName: "Smoothie with Peanut Butter",
         mealImg:"https://www.simplyrecipes.com/thmb/z2BhuKnd7RCHViYFg1E4J_IGkS0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Peanut-Butter-Banana-Smoothie-LEAD-4_RECIRC-af849a5c756143aa88c80b727a44cbaf.jpg",
@@ -366,7 +366,7 @@ const datas = [
         fat: 10
     },
     {
-        day: "Saturday",
+        date: "12/1",
         meal: "Lunch",
         mealName: "Caprese Sandwich",
         mealImg:"https://www.sweetteaandthyme.com/wp-content/uploads/2022/08/Chicken-Caprese-Sandwich-forefront.jpg",
@@ -389,7 +389,7 @@ const datas = [
         fat: 20
     },
     {
-        day: "Saturday",
+        date: "12/1",
         meal: "Dinner",
         mealName: "Spaghetti with Marinara Sauce",
         mealImg:"https://katesbestrecipes.com/wp-content/uploads/2022/09/marinara-sauce.jpg",
@@ -411,9 +411,9 @@ const datas = [
         fat: 15
     },
     
-    // Sunday
+    // day 7
     {
-        day: "Sunday",
+        date: "12/2",
         meal: "Breakfast",
         mealName: "French Toast",
         mealImg:"https://cdn.loveandlemons.com/wp-content/uploads/2024/08/french-toast-recipe.jpg",
@@ -435,7 +435,7 @@ const datas = [
         fat: 10
     },
     {
-        day: "Sunday",
+        date: "12/2",
         meal: "Lunch",
         mealName: "Avocado and Tuna Salad",
         mealImg:"https://www.eatingwell.com/thmb/D1iahUFGe68dfoITIQQ9Fu_dtCo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/avocado-tuna-salad-8c192192175c4e9bb6d55300dd842fbe.jpg",
@@ -456,7 +456,7 @@ const datas = [
         fat: 20
     },
     {
-        day: "Sunday",
+        date: "12/2",
         meal: "Dinner",
         mealName: "Roast Chicken with Mashed Potatoes",
         mealImg:"https://media.blueapron.com/culinary/recipe/4233/square_image/65d4ac7d7173c4ef1464b2ed51b5b2f7.jpg?format=pjpg&quality=80&width=1300",

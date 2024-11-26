@@ -41,10 +41,29 @@ export default function MyProfile() {
 
   //get the dietArray data from localStorage
   const savedDiets = localStorage.getItem('dietArray');
-
   console.log(savedDiets)
 
   const dietArray = JSON.parse(savedDiets)
+
+  //get the mealsArray data from localStorage
+  const savedMeals = localStorage.getItem('mealsArray');
+  console.log(savedMeals)
+
+  const mealsArray = JSON.parse(savedMeals)
+
+  //get the cuisineArray data from localStorage
+  const savedCuisines = localStorage.getItem('cuisineArray');
+  console.log(savedCuisines)
+
+  const cuisineArray = JSON.parse(savedCuisines)
+
+  //get the kitArray data from localStorage
+  const savedKits = localStorage.getItem('kitArray');
+  console.log(savedKits)
+
+  const kitArray = JSON.parse(savedKits)
+
+
 
   return (
     <div className='myProfileContainer'>
@@ -122,12 +141,35 @@ export default function MyProfile() {
               </div>
               <div className='myProfileDetailCard'>
                 <h1>Dining Habits</h1>
-                <div className='myProfileDetailContainer'>
-                {dietArray.map((item, index) => (
-                      <li key={index} className='myProfileDetailItem'>
-                        {item}
-                      </li>
-                    ))}
+                <div className='myProfileDetailCardBox'>
+                  <div className='myProfileDetailContainer'>
+                    {mealsArray.map((item, index) => (
+                          <li key={index} className='myProfileDetailItem'>
+                            {item}
+                          </li>
+                        ))}
+                  </div>
+                  <div className='myProfileDetailContainer'>
+                    {dietArray.map((item, index) => (
+                          <li key={index} className='myProfileDetailItem'>
+                            {item}
+                          </li>
+                        ))}
+                  </div>
+                  <div className='myProfileDetailContainer'>
+                    {cuisineArray.map((item, index) => (
+                          <li key={index} className='myProfileDetailItem'>
+                            {item}
+                          </li>
+                        ))}
+                  </div>
+                  <div className='myProfileDetailContainer'>
+                    {kitArray.map((item, index) => (
+                          <li key={index} className='myProfileDetailItem'>
+                            {item}
+                          </li>
+                        ))}
+                  </div>
                 </div>
               </div>
               <div className='myProfileDetailCard myProfileDetailCard2'>

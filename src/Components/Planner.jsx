@@ -210,9 +210,9 @@ export default function Planner() {
             </div>
           </div>
         </div>
-        <div className='aiAssistantBar-container'>
+        {/* <div className='aiAssistantBar-container'>
           <AIAssistantBar></AIAssistantBar>
-        </div>
+        </div> */}
       </div>
       {/* Display the result */}
       {MealPlanResults && <p>Result: {MealPlanResults}</p>}

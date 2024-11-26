@@ -62,22 +62,27 @@
                     width: 80px;
                 }
             }
-            
-            .myProfileDetailContainer{
-                display: flex;
-                flex-wrap: wrap;
-                align-content: space-between;
 
-                .myProfileDetailItem{
-                    color: #719048;
-                    background-color:rgba(148, 176, 110,.4);
-                    border-radius: 18px;
-                    list-style-type: none;
-                    font-family: 'Instrument Sans', serif;
-                    font-size: 14px;
-                    padding: 8px 20px 8px 20px;
-                    margin-right: 15px;
-                    margin-bottom: 15px;
+            .myProfileDetailCardBox {
+                overflow-y: auto;
+                height: 200px;
+
+                .myProfileDetailContainer{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-between;
+    
+                    .myProfileDetailItem{
+                        color: #719048;
+                        background-color:rgba(148, 176, 110,.4);
+                        border-radius: 18px;
+                        list-style-type: none;
+                        font-family: 'Instrument Sans', serif;
+                        font-size: 14px;
+                        padding: 8px 20px 8px 20px;
+                        margin-right: 15px;
+                        margin-bottom: 15px;
+                    }
                 }
             }
         }
@@ -94,6 +99,24 @@
                 border-radius: 18px;
                 box-sizing: border-box;
                 padding: 20px;
+
+                .myProfileDetailContainer{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-between;
+    
+                    .myProfileDetailItem{
+                        color: #719048;
+                        background-color:rgba(148, 176, 110,.4);
+                        border-radius: 18px;
+                        list-style-type: none;
+                        font-family: 'Instrument Sans', serif;
+                        font-size: 14px;
+                        padding: 8px 20px 8px 20px;
+                        margin-right: 15px;
+                        margin-bottom: 15px;
+                    }
+                }
             }
         }
 

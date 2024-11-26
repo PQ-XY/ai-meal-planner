@@ -63,7 +63,7 @@
 }
 
 .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .totalCaloriesBox {
-  width: 190px;
+  width: 240px;
   display: flex;
   flex-direction: column;
   justify-content: center;
