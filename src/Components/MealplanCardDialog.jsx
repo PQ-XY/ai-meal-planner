@@ -97,7 +97,14 @@ export default function MealplanCardDialog({meal}) {
             </div>
             <h4>{meal.cookTime}</h4>
         </div>
-        <p>{formattedIngredients}</p>
+        <div className='mealTotalCalories'>
+          <p>Calories: {meal.calories} Cal</p>
+        </div>
+        <div className='mealNutritionFacts'>
+            <p>Carbohydrate: {meal.carbs}g</p>
+            <p>Protein: {meal.protein}g</p>
+            <p>Fat: {meal.fat}g</p>
+        </div>
       </div>
       </div>
       <BootstrapDialog

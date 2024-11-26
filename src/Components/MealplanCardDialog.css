@@ -44,7 +44,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   height: 100px;
 }
 
@@ -52,7 +52,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .mealCardContainer .mealCardInfo .preparationTimeBox h4 {
@@ -68,7 +68,16 @@
   margin-right: 10px;
 }
 
-.mealCardContainer .mealCardInfo p {
+.mealCardContainer .mealCardInfo .mealTotalCalories {
+  font-family: 'Instrument Sans', serif;
+  margin: 0;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.mealCardContainer .mealCardInfo .mealNutritionFacts {
+  display: flex;
+  gap: 10px;
   font-family: 'Instrument Sans', serif;
   margin: 0;
   font-size: 16px;

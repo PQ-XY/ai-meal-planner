@@ -41,7 +41,7 @@
             display: flex;
             justify-content: space-between;
             align-items:baseline;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             height: 100px;
         }
 
@@ -49,7 +49,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
             h4 {
                 font-family: 'Instrument Sans', serif;
@@ -65,7 +65,16 @@
            }
         }
 
-        p {
+        .mealTotalCalories {
+            font-family: 'Instrument Sans', serif;
+            margin: 0;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .mealNutritionFacts {
+            display: flex;
+            gap: 10px;
             font-family: 'Instrument Sans', serif;
             margin: 0;
             font-size: 16px;

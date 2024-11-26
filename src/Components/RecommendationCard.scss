@@ -12,7 +12,6 @@
         width: 308px;
         height: 200px;
         overflow: hidden;
-        margin-bottom: 10px;
 
         .recommendationCardImg {
             width: 100%;
@@ -24,17 +23,18 @@
     .recommendationCardInfo {
         padding: 15px;
 
-        h3 {
-            font-family: 'Instrument Sans', serif;
-            margin: 0;
-            font-size: 22px;
-        }
-
         .recommendationCardHeader {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+            align-items:baseline;
+            height:80px;
+            margin-bottom: 15px;
+
+            h3 {
+                font-family: 'Instrument Sans', serif;
+                margin: 0;
+                font-size: 22px;
+            }
         }
 
         .preparationTimeBox {
@@ -57,10 +57,19 @@
            }
         }
 
-        p {
+        .mealTotalCalories {
             font-family: 'Instrument Sans', serif;
             margin: 0;
-            font-size: 16px;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .mealNutritionFacts {
+            display: flex;
+            gap: 10px;
+            font-family: 'Instrument Sans', serif;
+            margin: 0;
+            font-size: 14px;
         }
     }
 }

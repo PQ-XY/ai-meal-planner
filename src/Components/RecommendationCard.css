@@ -12,7 +12,6 @@
   width: 308px;
   height: 200px;
   overflow: hidden;
-  margin-bottom: 10px;
 }
 
 .recommendationCardContainer .recommendationCardImgBox .recommendationCardImg {
@@ -25,17 +24,18 @@
   padding: 15px;
 }
 
-.recommendationCardContainer .recommendationCardInfo h3 {
-  font-family: 'Instrument Sans', serif;
-  margin: 0;
-  font-size: 22px;
-}
-
 .recommendationCardContainer .recommendationCardInfo .recommendationCardHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  align-items: baseline;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.recommendationCardContainer .recommendationCardInfo .recommendationCardHeader h3 {
+  font-family: 'Instrument Sans', serif;
+  margin: 0;
+  font-size: 22px;
 }
 
 .recommendationCardContainer .recommendationCardInfo .preparationTimeBox {
@@ -58,10 +58,19 @@
   margin-right: 10px;
 }
 
-.recommendationCardContainer .recommendationCardInfo p {
+.recommendationCardContainer .recommendationCardInfo .mealTotalCalories {
   font-family: 'Instrument Sans', serif;
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.recommendationCardContainer .recommendationCardInfo .mealNutritionFacts {
+  display: flex;
+  gap: 10px;
+  font-family: 'Instrument Sans', serif;
+  margin: 0;
+  font-size: 14px;
 }
 
 .recommendationCardContainer:hover {
