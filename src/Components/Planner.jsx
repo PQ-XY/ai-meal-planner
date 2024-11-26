@@ -6,6 +6,8 @@ import stward from '../assets/images/ai.svg'
 import './Planner.css'
 import SideWindow from './SideWindow';
 import AIAssistantBar from './AIAssistantBar';
+import RecommendationCard from './RecommendationCard';
+import allDatas_planner from '../data/test_planner_data';
 
 // Function to parse the API response into structured details
 function parseMealDetails(responseText) {
@@ -176,6 +178,9 @@ export default function Planner() {
       return updatedArray;
     });
   };
+
+  //test planner data
+  const planner_data = allDatas_planner()
   
 
   return (
@@ -206,6 +211,19 @@ export default function Planner() {
                 ))}
                 <AddIngredientButton onClick={addNewIngredient}/>
                 <button className='generate-button' onClick={generateRecipes}>Generate recipes</button>
+              </div>
+            </div>
+          </div>
+          <div class='button-question-container'>
+            <img className='planner-container-image' src={stward}></img>
+            <div className='planner-container-title'>
+              <p className='planner-container-title-big'>Stward</p>
+              <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
+              <div className='add-ingredient-container'>
+                {planner_data.map((meal,index)=>(
+                  <RecommendationCard key={index} meal={meal}/>
+                ))}
+                <button className='generate-button' onClick={generateRecipes}>Re-generate</button>
               </div>
             </div>
           </div>
