@@ -20,12 +20,13 @@ const FunctionCard = ({title,description1,description2,image}) => {
                 {description1}
                 </p>
             </div>
+            {description2===''?'':
             <div className='card-bottom-paragraph'>
                 <span className='card-bottom-description' style={{ marginRight: '8px' }}>·</span>
                 <p className='card-bottom-description'>
                 {description2}
                 </p>
-            </div>
+            </div>}
           </div>
       </div>
     </div>
