@@ -16,6 +16,7 @@ import InvestPage22 from './pages/InvestPage22';
 import InvestPage31 from './pages/InvestPage31';
 import InvestPage13 from './pages/InvestPage13';
 import LoadingPage from './pages/LoadingPage';
+import LoginPage from './pages/LoginPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,7 @@ root.render(
     <Routes>
         {/* Set the default route to WelcomePage */}
         <Route path="/" element={<WelcomePage />} />
+        <Route path='/login' element={<LoginPage/>}/>
         <Route path="/invest" element={<InvestLayout />}>
           <Route path="/invest/1-1" element={<InvestPage11 />} />
           <Route path="/invest/1-2" element={<InvestPage12 />} />

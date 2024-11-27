@@ -5,7 +5,7 @@ p{
 }
 .card-container{
   background-color: white;
-  height: 420px;
+  height: 430px;
   width: 300px;
   border-radius: 15px;
   display: flex;
@@ -42,10 +42,10 @@ p{
 }
 
 .card-bottom-description{
-  color: #E8EDD5;
+  color: #eff3e3;
   font-family: "Instrument Sans", serif;
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight:400;
   font-style: normal;
 }

@@ -11,7 +11,7 @@ import './InvestPage31.css'
 const InvestPage31 = () => {
   const [tasteArray, setGridArray5] = useState(() => {
     const savedTastes = localStorage.getItem('tasteArray');
-    return savedTastes ? JSON.parse(savedTastes) : [];
+    return savedTastes ? JSON.parse(savedTastes) : [{title:'Sour',level:3},{title:'Sweet',level:3},{title:'Spicy',level:3},{title:'Salty',level:3}];
   });
 
   // Update the state in localStorage whenever it changes

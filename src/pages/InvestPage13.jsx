@@ -17,7 +17,7 @@ const InvestPage13 = () => {
   // State to store selected cuisines
   const [allergyArray, setGridArray6] = useState(() => {
     const savedAllergy = localStorage.getItem('allergyArray');
-    return savedAllergy ? JSON.parse(savedAllergy) : [];
+    return savedAllergy ? JSON.parse(savedAllergy) : ['No allergy'];
   });
 
   // Function to add a new selected cuisine to the array

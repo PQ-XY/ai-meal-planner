@@ -16,7 +16,7 @@ const InvestPage22 = () => {
 
   const [kitArray, setGridArray4] = useState(() => {
     const savedKits = localStorage.getItem('kitArray');
-    return savedKits ? JSON.parse(savedKits) : [];
+    return savedKits ? JSON.parse(savedKits) : ['Wok'];
   });
 
   const addNewCard2 = (newItem) => {

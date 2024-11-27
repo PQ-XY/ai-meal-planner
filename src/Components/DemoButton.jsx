@@ -6,7 +6,7 @@ const DemoButton = () => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/invest/1-1'); // Navigate to /invest
+    navigate('/login'); // Navigate to /invest
   };
 
   return (

@@ -13,7 +13,7 @@ import './InvestPage11.css'
 const InvestPage12 = () => {
   const [dietArray, setGridArray2] = useState(() => {
     const savedDiets = localStorage.getItem('dietArray');
-    return savedDiets ? JSON.parse(savedDiets) : [];
+    return savedDiets ? JSON.parse(savedDiets) : ['Fast & Easy'];
   });
 
   // Update the state in localStorage whenever it changes
