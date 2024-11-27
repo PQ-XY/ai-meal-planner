@@ -122,4 +122,69 @@
     
 }
 
+@media screen and (max-width: 1600px){
+    .mealPageContainer {
+
+        width: 1008px;
+    
+        .mealHeaderBox {
+            width: 1008px;
+      
+            .mealHeaderWeek {
+                margin-left: 30px;
+    
+                h1 {
+                    font-size: 38px;
+                }
+    
+                h2 {
+                    font-size: 26px;
+                }
+            }
+    
+            .mealHeaderMeals {
+                padding-top: 20px;
+                padding-bottom: 20px;
+    
+                h3 {
+                    font-size: 20px;
+                }
+    
+            }
+    
+            .mealCaloriesInfoContainer {
+    
+                width: 600px;
+        
+                .totalCaloriesBox {
+        
+                    width: 240px;
+
+                    h1 {
+                        font-size: 36px;
+                    }
+            
+                }
+        
+                .caloriesRadialBarChartBox {
+        
+                    .RadialBarChartBox {
+                        width: 120px;
+        
+                        h5 {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+            
+        }
+    
+        // .basicTabsBox {
+        //     margin-bottom: 62px;
+        // }
+        
+    }
+}
+
 

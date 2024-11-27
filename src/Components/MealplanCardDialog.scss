@@ -231,3 +231,47 @@
 .dishFinishedButton:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width:1600px) {
+
+    .mealCardContainer {
+        width: 315px;
+        height: 470px;
+    
+        .mealCardImgBox {
+            width: 315px;
+            height: 240px;
+        }
+    
+        .mealCardInfo {
+            padding: 15px;
+    
+            h3 {
+                font-size: 24px;
+            }
+    
+            .mealCardHeader {
+                margin-bottom: 20px;
+            }
+    
+            .preparationTimeBox {
+                margin-bottom: 10px;
+    
+                h4 {
+                    font-size: 16px;
+                }
+
+            }
+    
+            .mealTotalCalories {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+    
+            .mealNutritionFacts {
+                font-size: 14px;
+            }
+        }
+    }
+
+}

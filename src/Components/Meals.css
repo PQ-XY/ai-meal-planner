@@ -106,3 +106,43 @@
   color: #688B39;
   margin: 0;
 }
+
+@media screen and (max-width: 1600px) {
+  .mealPageContainer {
+    width: 1008px;
+  }
+  .mealPageContainer .mealHeaderBox {
+    width: 1008px;
+  }
+  .mealPageContainer .mealHeaderBox .mealHeaderWeek {
+    margin-left: 30px;
+  }
+  .mealPageContainer .mealHeaderBox .mealHeaderWeek h1 {
+    font-size: 38px;
+  }
+  .mealPageContainer .mealHeaderBox .mealHeaderWeek h2 {
+    font-size: 26px;
+  }
+  .mealPageContainer .mealHeaderBox .mealHeaderMeals {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .mealPageContainer .mealHeaderBox .mealHeaderMeals h3 {
+    font-size: 20px;
+  }
+  .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer {
+    width: 600px;
+  }
+  .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .totalCaloriesBox {
+    width: 240px;
+  }
+  .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .totalCaloriesBox h1 {
+    font-size: 36px;
+  }
+  .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .caloriesRadialBarChartBox .RadialBarChartBox {
+    width: 120px;
+  }
+  .mealPageContainer .mealHeaderBox .mealCaloriesInfoContainer .caloriesRadialBarChartBox .RadialBarChartBox h5 {
+    font-size: 16px;
+  }
+}
