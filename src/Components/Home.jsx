@@ -28,12 +28,15 @@ export default function Home() {
   //get recommendation data
   const data_recommendation = allDatas_recommendation()
 
+  //get nick name
+  const clientNickName = JSON.parse(localStorage.getItem('userName'))
+
   return (
     <div className='homePageLayout'>
       <div className='mainPage'>
         <div className='headerContainer'>
           <div className='header'>
-            <h1>Hi, Annie</h1>
+            <h1>Hi, {clientNickName}</h1>
             <h2>{formattedDate}</h2>
           </div>
           <div className='subHeader'>
