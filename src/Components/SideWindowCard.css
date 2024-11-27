@@ -53,3 +53,23 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   /* Add a deeper shadow */
 }
+
+@media screen and (max-width: 1630px) {
+  .sideWindowCardContainer {
+    width: 300px;
+    height: 180px;
+  }
+  .sideWindowCardContainer .sideWindowCardImgBox {
+    width: 50%;
+    overflow: hidden;
+  }
+  .sideWindowCardContainer .sideWindowCardInfo {
+    width: 50%;
+  }
+  .sideWindowCardContainer .sideWindowCardInfo .sideWindowCardHeader h3 {
+    font-size: 18px;
+  }
+  .sideWindowCardContainer .sideWindowCardInfo .sideWindowCardMealName {
+    font-size: 14px;
+  }
+}

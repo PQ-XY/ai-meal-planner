@@ -231,7 +231,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1630px) {
   .mealCardContainer {
     width: 315px;
     height: 470px;

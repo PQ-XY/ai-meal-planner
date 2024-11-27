@@ -79,3 +79,50 @@
     transform: scale(1.02); 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add a deeper shadow */
 }
+
+@media screen and (max-width:1600px) {
+
+    .recommendationCardContainer {
+        width: 244px;
+        height: 400px;
+    
+        .recommendationCardImgBox {
+            width: 244px;
+            height: 200px;
+    
+        }
+    
+        .recommendationCardInfo {
+            padding: 15px;
+    
+            .recommendationCardHeader {
+    
+                h3 {
+                    font-size: 18px;
+                }
+            }
+    
+            .preparationTimeBox {
+                margin-bottom: 10px;
+    
+                h4 {
+                    font-size: 14px;
+                }
+
+            }
+    
+            .mealTotalCalories {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+    
+            .mealNutritionFacts {
+                display: flex;
+                gap: 5px;
+                font-family: 'Instrument Sans', serif;
+                margin: 0;
+                font-size: 12px;
+            }
+        }
+    }
+}

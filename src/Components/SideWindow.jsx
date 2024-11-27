@@ -44,7 +44,7 @@ export default function SideWindow() {
         }
       </div>
       <div>
-        <Link to='/app/meals' style={{textDecoration:'none'}}>
+        <Link to='/app/meals' style={{p:0, textDecoration:'none'}}>
           <button className='goToMealsButt'>Go to Meals</button>
         </Link>
       </div>

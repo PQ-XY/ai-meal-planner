@@ -234,12 +234,8 @@ export default function Planner() {
       </div>
       {/* Display the result */}
       {MealPlanResults && <p>Result: {MealPlanResults}</p>}
-      <div className="planner-sideWindowLayoutWrapper">
-        <div className='planner-sideWindowLayout'>
-          <SideWindow></SideWindow>
-        </div>
-        {/* <div className='planner-sideWindow-extra'>
-        </div> */}
+      <div className='planner-sideWindowLayout'>
+        <SideWindow></SideWindow>
       </div>
     </div>
   );

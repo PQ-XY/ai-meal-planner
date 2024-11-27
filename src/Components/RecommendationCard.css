@@ -78,3 +78,37 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   /* Add a deeper shadow */
 }
+
+@media screen and (max-width: 1630px) {
+  .recommendationCardContainer {
+    width: 244px;
+    height: 400px;
+  }
+  .recommendationCardContainer .recommendationCardImgBox {
+    width: 244px;
+    height: 200px;
+  }
+  .recommendationCardContainer .recommendationCardInfo {
+    padding: 15px;
+  }
+  .recommendationCardContainer .recommendationCardInfo .recommendationCardHeader h3 {
+    font-size: 18px;
+  }
+  .recommendationCardContainer .recommendationCardInfo .preparationTimeBox {
+    margin-bottom: 10px;
+  }
+  .recommendationCardContainer .recommendationCardInfo .preparationTimeBox h4 {
+    font-size: 14px;
+  }
+  .recommendationCardContainer .recommendationCardInfo .mealTotalCalories {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .recommendationCardContainer .recommendationCardInfo .mealNutritionFacts {
+    display: flex;
+    gap: 5px;
+    font-family: 'Instrument Sans', serif;
+    margin: 0;
+    font-size: 12px;
+  }
+}

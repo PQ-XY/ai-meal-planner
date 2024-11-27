@@ -69,12 +69,13 @@ body {
 
 .homePageLayout .sideWindowLayout {
   width: 500px;
+  height: 100%;
   background-color: white;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1630px) {
   .homePageLayout {
     width: 100%;
   }

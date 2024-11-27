@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
 .sideWindowBox {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
 
     .sideWindowHeader {
         display: flex;
@@ -25,9 +25,7 @@
     }
 
     .sideWindowCardsBox {
-        // margin-top:35px;
-        // margin-bottom: 95px;
-        height: 680px;
+        height: 660px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -48,5 +46,51 @@
     .goToMealsButt:hover {
         cursor: pointer;
         background-color: #688B39;
+    }
+}
+
+@media screen and (max-width:1600px) {
+    .sideWindowBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    
+        .sideWindowHeader {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            // margin-top: 75px;
+    
+            .sideWindowHeaderLogo {
+                margin-right: 20px;
+            }
+    
+            h2 {
+                font-size: 28px;
+                margin: 0;
+            }
+        }
+    
+        .sideWindowCardsBox {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    
+        .goToMealsButt {
+            width: 300px;
+            height: 60px;
+            background-color: #94B06E;
+            border:0;
+            border-radius: 18px;
+            font-family: 'Instrument Sans', serif;
+            font-size: 20px;
+            color:white;
+            font-weight: 700;
+        }
+
     }
 }
