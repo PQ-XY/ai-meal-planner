@@ -21,12 +21,13 @@ export default function RecommendationCard({meal}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  generateFoodImage(meal.mealName).then(res => {
+  
+  //disable the food generator for prompt api testing
+ /*generateFoodImage(meal.mealName).then(res => {
     if (res && res.length && typeof res === 'string') {
       setUrl(res);
     }
-  })
+  })*/
 
     //format ingredients
     const formattedIngredients = meal.ingredients.map((ingredient, index) => {

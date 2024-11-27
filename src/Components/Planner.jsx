@@ -45,7 +45,7 @@ function parseMealDetails(responseText) {
   // Extract calories
   const caloriesMatch = responseText.match(/Total Calories:\s*(\d+)/);
   if (caloriesMatch) {
-      details.calories = parseInt(caloriesMatch[1], 10);
+      details.calories = caloriesMatch[1];
   }
 
   return details;
@@ -64,7 +64,7 @@ export default function Planner() {
         // Creating a session for the AI model
         const s = await window.ai.languageModel.create({
           systemPrompt:
-            'You are an expert meal planner who can help people meal prep and design the meal plans',
+            `You are an expert meal planner who can help people meal prep and design the meal plans based on the number of meals from the user information. The list should consider the user's cuisine preferences, taste ratings, and dietary restrictions. Don't include any meals that contain food that is allergic to the user`,
           temperature: 1,
           topK: 3,
         });
@@ -77,18 +77,19 @@ export default function Planner() {
           tasteRating: [2, 3, 4, 2] // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
         }
         const planTemplate = `**User Information:\n 
-        - **Number of meals per day:** ${user_info["numMeal"]}\n 
+        - **Number of meals per day:** ${user_info["numMeals"]}\n 
         - **Number of days for the meal plan:** ${user_info["numDays"]}\n 
         - **Allergies and dietary restrictions:** ${user_info["allergies"]}\n
         - **Preferred cuisine(s):** ${user_info["preference"]}\n
         - **Available kitchenware:** ${user_info["kitchenware"]}\n
         **Task:** 
-        Create a list of unique meals for each day based on the number of meals from the user information. The list should consider the user's cuisine preferences, taste ratings, and dietary restrictions.\n
-        Please only provide the meal plan strictly following the output template\n
+        Create a list of unique meals for each day\n
+        Please only provide the meal plan strictly following the output template (Only change the format when the number of meals per day is not 3)\n
         **Output Template:**\n
         Day 1:\n
         Breakfast: Avocado Toast\n
         Lunch: Grilled Chicken Caesar Salad\n
+        Dinner: Chicken Pasta\n
         Day 2:\n
         Breakfast:...\n`
 
@@ -107,10 +108,15 @@ export default function Planner() {
               for (let i = 0; i < mealNames.length; i++) {
                   const mealName = mealNames[i];
 
-                  const mealTemplate = `Provide detailed information for the meal "${mealName}" in the following format:\n\n` +
-                `Meal Name: [Meal Name]\nIngredients:\n- [Ingredient 1]\n- [Ingredient 2]\n...\n` +
-                `Recipe:\nStep 1 [Instruction 1]\nStep 2 [Instruction 2]\n...\n` +
-                `Total Calories: [Calories]`
+                  const mealTemplate = `Provide detailed information for the meal "${mealName}". Please strictly follow the format below:\n` +
+                `Meal Name: [Meal Name]\n
+                Ingredients:\n
+                - [Ingredient 1]\n
+                - [Ingredient 2]\n...` +
+                `Recipe:\n
+                Step 1 [Instruction 1]\n
+                Step 2 [Instruction 2]\n...` +
+                `Total Calories: [Calories] (numeric output only)`
     
                   // Fetch meal details from the API
                   const promptRst = await s.prompt(mealTemplate);
@@ -128,7 +134,6 @@ export default function Planner() {
               }
           }
       }
-      console.log('success!');
       console.log(mealPlan);
       return mealPlan;
       } catch (error) {

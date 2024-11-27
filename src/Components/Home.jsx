@@ -7,6 +7,7 @@ import SideWindow from './SideWindow';
 import allDatas_recommendation from '../data/test_recommendation_data';
 
 export default function Home() {
+  console.log(localStorage.getItem('mealPlanResult'));
 
   const today = new Date();
   const formattedDate = today.toLocaleDateString()
