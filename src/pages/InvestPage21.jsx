@@ -18,7 +18,7 @@ const InvestPage21 = () => {
   // State to store selected cuisines
   const [cuisineArray, setGridArray3] = useState(() => {
     const savedCuisines = localStorage.getItem('cuisineArray');
-    return savedCuisines ? JSON.parse(savedCuisines) : [];
+    return savedCuisines ? JSON.parse(savedCuisines) : ['Asian cuisine'];
   });
 
   // Function to add a new selected cuisine to the array

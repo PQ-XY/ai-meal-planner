@@ -11,7 +11,7 @@ const InvestPage11 = () => {
   // Retrieve the stored clicked state from localStorage, or use an empty array as default
   const [mealsArray, setGridArray1] = useState(() => {
     const savedMeals = localStorage.getItem('mealsArray');
-    return savedMeals ? JSON.parse(savedMeals) : [];
+    return savedMeals ? JSON.parse(savedMeals) : ['Dinner','Launch'];
   });
 
   // Update the state in localStorage whenever it changes
