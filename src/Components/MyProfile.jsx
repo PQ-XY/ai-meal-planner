@@ -67,7 +67,7 @@ export default function MyProfile() {
 
   return (
     <div className='myProfileContainer'>
-      <Accordion square={true} sx={{ borderRadius: '18px' }}>
+      <Accordion square={true} sx={{ border:'none', boxShadow: 'none', borderRadius: '18px' }}>
         <AccordionSummary
           expandIcon={<MenuOutlinedIcon style={{color:'#94B06E'}}/>}
           aria-controls="panel1-content"

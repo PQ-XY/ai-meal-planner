@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 .myProfileContainer {
   border-radius: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .myProfileContainer .header {
@@ -106,6 +105,8 @@
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  overflow-y: auto;
+  height: 90px;
 }
 
 .myProfileContainer .myProfileDetailBoard .myProfileDetailCard2 .myProfileAllergyCard .myProfileDetailContainer .myProfileDetailItem {
@@ -142,4 +143,23 @@
 
 .myProfileContainer .myProfileDetailBoard .myProfileEditButton:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 1630px) {
+  .myProfileContainer .myProfileDetailBoard .myProfileDetailCard {
+    width: 240px;
+    height: 300px;
+  }
+  .myProfileContainer .myProfileDetailBoard .myProfileDetailCard .myProfileDetailCardBox {
+    overflow-y: auto;
+    height: 200px;
+  }
+  .myProfileContainer .myProfileDetailBoard .myProfileDetailCard2 .myProfileAllergyCard {
+    width: 240px;
+    height: 192px;
+  }
+  .myProfileContainer .myProfileDetailBoard .myProfileEditButton {
+    width: 240px;
+    height: 72px;
+  }
 }

@@ -19,10 +19,9 @@ body {
   justify-content: space-between;
 }
 
-.planner-container-scrollable{
+/* .planner-container-scrollable{
   flex:1;
-  overflow-y: auto;
-}
+} */
 
 .big-title{
   margin-top: 40px;
@@ -41,11 +40,14 @@ body {
 
 .planner-container{
   margin-left: 35px;
+  margin-right: 35px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
-  height: 100%;
+  /* gap: 20px; */
+  overflow-y: auto;
+  flex:1;
+  height: 100vh;
 
 }
 

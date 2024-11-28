@@ -3,7 +3,7 @@
 .myProfileContainer {
 
     border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    // border: 1px solid rgba(0, 0, 0, 0.2);
 
     .header {
         display: flex;
@@ -104,7 +104,9 @@
                     display: flex;
                     flex-wrap: wrap;
                     align-content: space-between;
-    
+                    overflow-y: auto;
+                    height: 90px;
+                       
                     .myProfileDetailItem{
                         color: #719048;
                         background-color:rgba(148, 176, 110,.4);
@@ -142,6 +144,42 @@
 
         .myProfileEditButton:hover {
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width:1630px) {
+
+    .myProfileContainer {
+    
+        .myProfileDetailBoard {
+    
+            .myProfileDetailCard {
+                width: 240px;
+                height: 300px;
+  
+                .myProfileDetailCardBox {
+                    overflow-y: auto;
+                    height: 200px;
+
+                }
+            }
+    
+            .myProfileDetailCard2 {
+    
+                .myProfileAllergyCard {
+                    width: 240px;
+                    height: 192px;
+    
+                }
+            }
+    
+            .myProfileEditButton {
+                width: 240px;
+                height: 72px;
+    
+            }
+
         }
     }
 }

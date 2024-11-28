@@ -129,16 +129,31 @@ export default function BasicTabs() {
   };
 
   //test data format
-  const datas = allDatas()
-  console.log(datas)
+  // const datas = allDatas()
+  // console.log(datas)
 
-  const firstDayMeals = datas.filter(meal => meal.date === weekDatesArray[0])
-  const secondDayMeals = datas.filter(meal => meal.date === weekDatesArray[1])
-  const thirdDayMeals = datas.filter(meal => meal.date === weekDatesArray[2])
-  const fourthDayMeals = datas.filter(meal => meal.date === weekDatesArray[3])
-  const fifthDayMeals = datas.filter(meal => meal.date === weekDatesArray[4])
-  const sixthDayMeals = datas.filter(meal => meal.date === weekDatesArray[5])
-  const seventhDayMeals = datas.filter(meal => meal.date === weekDatesArray[6])
+  // const firstDayMeals = datas.filter(meal => meal.date === weekDatesArray[0])
+  // const secondDayMeals = datas.filter(meal => meal.date === weekDatesArray[1])
+  // const thirdDayMeals = datas.filter(meal => meal.date === weekDatesArray[2])
+  // const fourthDayMeals = datas.filter(meal => meal.date === weekDatesArray[3])
+  // const fifthDayMeals = datas.filter(meal => meal.date === weekDatesArray[4])
+  // const sixthDayMeals = datas.filter(meal => meal.date === weekDatesArray[5])
+  // const seventhDayMeals = datas.filter(meal => meal.date === weekDatesArray[6])
+
+  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
+  console.log(localStorage.getItem('mealPlanResult'))
+
+  const firstDayMeals = datas['Day 1']
+  console.log(firstDayMeals)
+  console.log(firstDayMeals['Breakfast']['0']['name'])
+  console.log(firstDayMeals['Breakfast']['0']['details'])
+  const secondDayMeals = datas['Day 2']
+  console.log(secondDayMeals)
+  const thirdDayMeals = datas['Day 3']
+  const fourthDayMeals = datas['Day 4']
+  const fifthDayMeals = datas['Day 5']
+  const sixthDayMeals = datas['Day 6']
+  const seventhDayMeals = datas['Day 7']
 
   return (
     <Box sx={{ width: '100%'}}>
