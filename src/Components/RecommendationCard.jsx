@@ -7,21 +7,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { generateFoodImage } from '../apis/foodImageApi';
-import baseImg1 from '../assets/foodImgs/img_1.jpg'
-import baseImg2 from '../assets/foodImgs/img_2.jpg'
-import baseImg3 from '../assets/foodImgs/img_3.jpg'
-import baseImg4 from '../assets/foodImgs/img_4.jpg'
-import baseImg5 from '../assets/foodImgs/img_5.jpg'
 
 export default function RecommendationCard({meal}) {
   const [imageSrc, setImageSrc] = useState(meal.mealImg);
   const [loading, setLoading] = useState(true);
-  // const [url, setUrl] = useState(); disable this line
+  const [url, setUrl] = useState();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const urls = [baseImg1, baseImg2, baseImg3, baseImg4, baseImg5];
-  const index = Math.floor(Math.random() * 5);
-  const AimUrl = urls[index];
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -49,7 +41,7 @@ export default function RecommendationCard({meal}) {
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={AimUrl} alt="" />
+        <img className='recommendationCardImg' src={url} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
