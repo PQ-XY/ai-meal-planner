@@ -16,6 +16,8 @@ body {
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .homePageLayout .mainPage .headerContainer {

@@ -6,7 +6,7 @@ import stward from '../assets/images/ai.svg'
 import './Planner.css'
 import SideWindow from './SideWindow';
 import AIAssistantBar from './AIAssistantBar';
-import RecommendationCard from './RecommendationCard';
+import RecommendationCard_IngredientBase from './RecommendationCard_IngredientBase';
 import allDatas_planner from '../data/test_planner_data';
 
 // Function to parse the API response into structured details
@@ -224,9 +224,9 @@ export default function Planner() {
             <div className='planner-container-title'>
               <p className='planner-container-title-big'>Stward</p>
               <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
-              <div className='add-ingredient-container'>
+              <div className='add-ingredient-card-container'>
                 {planner_data.map((meal,index)=>(
-                  <RecommendationCard key={index} meal={meal}/>
+                  <RecommendationCard_IngredientBase key={index} meal={meal}/>
                 ))}
                 <button className='generate-button' onClick={generateRecipes}>Re-generate</button>
               </div>

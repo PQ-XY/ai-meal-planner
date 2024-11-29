@@ -17,6 +17,8 @@ body {
         flex-direction: column;
         justify-content: center;
         margin:auto;
+        height: 100vh;
+        overflow-y: auto;
 
         .headerContainer {
             width: 1060px;

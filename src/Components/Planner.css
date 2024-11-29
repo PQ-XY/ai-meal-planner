@@ -38,6 +38,16 @@ body {
   flex-wrap: wrap;
 }
 
+.add-ingredient-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:20px;
+    width:657px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
 .planner-container{
   margin-left: 35px;
   margin-right: 35px;
@@ -116,7 +126,19 @@ body {
 @media (max-width: 1670px) {
   .add-ingredient-container{
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
+    gap:20px;
+    width:640px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+
+  .add-ingredient-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     gap:20px;
     width:640px;
     margin-top: 15px;
