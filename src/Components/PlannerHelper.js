@@ -59,50 +59,65 @@ export function parseMealPlan(mealPlanText) {
     return sortedMealPlan;
 }
 
-// Function to parse the API response into structured details
-export function parseMealDetails(responseText) {
-    const details = {
-        name: "",
-        ingredients: [],
-        recipe: [],
-        calories: 0,
-        carbs: 0,
-        protein: 0,
-        fat: 0
+// Function to parse the API response into structured meal details
+export function parseMealDetails(responseText, mealType) {
+    const meal = {
+      meal: mealType,   // Assign the provided meal type (e.g., Breakfast, Lunch, Dinner)
+      mealName: "",
+      ingredients: [],
+      cookTime: "",     // Initialize cook time
+      steps: [],
+      calories: 0,
+      carbs: 0,
+      protein: 0,
+      fat: 0
     };
   
     // Extract the meal name
     const mealNameMatch = responseText.match(/Meal Name:\s*(.+)/);
     if (mealNameMatch) {
-        details.name = mealNameMatch[1];
+      meal.mealName = mealNameMatch[1];
     }
   
     // Extract ingredients
     const ingredientsMatch = responseText.match(/Ingredients:\s*([\s\S]*?)Recipe:/);
     if (ingredientsMatch) {
-        details.ingredients = ingredientsMatch[1]
-            .trim()
-            .split("\n")
-            .map(item => item.replace(/^-/, "").trim());
+      meal.ingredients = ingredientsMatch[1]
+        .trim()
+        .split("\n")
+        .map(item => item.replace(/^-/, "").trim());
     }
   
-    // Extract recipe steps
-    const recipeMatch = responseText.match(/Recipe:\s*([\s\S]*?)Total Calories:/);
+    // Extract recipe steps (everything after "Recipe:")
+    const recipeMatch = responseText.match(/Recipe:\s*([\s\S]*)/);
     if (recipeMatch) {
-        details.recipe = recipeMatch[1]
-            .trim()
-            .split("\n")
-            .map(step => step.trim());
+      meal.steps = recipeMatch[1]
+        .trim()
+        .split("\n")
+        .map(step => step.trim());
     }
   
-    // Extract calories
-    const caloriesMatch = responseText.match(/Total Calories:\s*(\d+)/);
-    if (caloriesMatch) {
-        details.calories = caloriesMatch[1];
-    }
+    // Utility function to extract the first number from text
+    const extractFirstNumber = text => {
+      const match = text.match(/\d+/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
   
-    return details;
-  }
+    // Extract calories, carbs, protein, and fat
+    const caloriesMatch = responseText.match(/Total Calories:\s*([\d\s\S]*)/);
+    meal.calories = caloriesMatch ? extractFirstNumber(caloriesMatch[1]) : 0;
+  
+    const carbsMatch = responseText.match(/Carbs:\s*([\d\s\S]*)/);
+    meal.carbs = carbsMatch ? extractFirstNumber(carbsMatch[1]) : 0;
+  
+    const proteinMatch = responseText.match(/Protein:\s*([\d\s\S]*)/);
+    meal.protein = proteinMatch ? extractFirstNumber(proteinMatch[1]) : 0;
+  
+    const fatMatch = responseText.match(/Fat:\s*([\d\s\S]*)/);
+    meal.fat = fatMatch ? extractFirstNumber(fatMatch[1]) : 0;
+  
+    return meal;
+}
 
 export async function mealPlanGenerator(userInfo){
     const { available } = await window.ai.languageModel.capabilities();
@@ -181,13 +196,10 @@ Please always return english and not code. Also don't return any text back with 
   
                     console.log(promptRst);
   
-                    const mealDetails = parseMealDetails(promptRst);
-      
+                    const mealDetails = parseMealDetails(promptRst, mealType);
+                    console.log(mealDetails);
                     // Add the meal details back to the meal plan
-                    mealPlan[day][mealType][i] = {
-                        name: mealName,
-                        details: mealDetails, // Include ingredients, recipe, and calories
-                    };
+                    mealPlan[day][mealType] = mealDetails;
                     console.log(mealPlan);
                 }
             }
@@ -195,70 +207,6 @@ Please always return english and not code. Also don't return any text back with 
         return mealPlan;
       } catch (error) {
         console.error('Error analyzing the prompt:', error);
-      }
-    } else {
-      console.error('Model not ready');
-    }
-};
-
-export async function mealDetailGenerator(mealPlan){
-    const { available } = await window.ai.languageModel.capabilities();
-    if (available !== 'no') {
-      try {
-        // Creating a session for the AI model
-        const s = await window.ai.languageModel.create({
-          systemPrompt:
-            'You are an expert meal planner who can help people meal prep and design the meal plans',
-          temperature: 1,
-          topK: 3,
-        });
-        for (const day in mealPlan) {
-          const meals = mealPlan[day];
-    
-          // Iterate through each meal type (Breakfast, Lunch, Dinner)
-          for (const mealType in meals) {
-              const mealNames = meals[mealType];
-    
-              // Iterate through each meal name and fetch details
-              for (let i = 0; i < mealNames.length; i++) {
-                  const mealName = mealNames[i];
-
-                  const mealTemplate = `Provide detailed information for the meal "${mealName}" strictly following the format below:\n` +
-                `Meal Name: Tuna Salad Sandwiches on Whole Wheat Bread\n
-                Ingredients:\n
-                - 3 cans (5oz each) tuna in water, drained\n
-                - 1/2 cup mayonnaise\n
-                - Tomato slices (optional)\n
-                ...\n
-                Recipe:\n
-                Step 1: Drain the tuna and set aside\n
-                Step 2: In a medium bowl, whisk together mayonnaise, lemon juice, garlic, salt, and pepper.\n
-                Step 3:...\n
-                Total Calories: 300\n
-                carbs: 45,\n
-                protein: 25,\n
-                fat: 18
-                `
-    
-                  // Fetch meal details from the API
-                  const promptRst = await s.prompt(mealTemplate);
-
-                  console.log(promptRst);
-
-                  const mealDetails = parseMealDetails(promptRst);
-    
-                  // Add the meal details back to the meal plan
-                  mealPlan[day][mealType][i] = {
-                      name: mealName,
-                      details: mealDetails, // Include ingredients, recipe, and calories
-                  };
-                  console.log(mealPlan);
-              }
-          }
-        }
-        return mealPlan;
-      } catch (error) {
-        console.error('Error analyzing the prompt when generating details:', error);
       }
     } else {
       console.error('Model not ready');
