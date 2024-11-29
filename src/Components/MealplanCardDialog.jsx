@@ -11,6 +11,7 @@ import './MealplanCardDialog.css'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import baseImg5 from '../assets/foodImgs/img_5.jpg'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -44,12 +45,14 @@ export default function MealplanCardDialog({day, meal}) {
   const mealTime = meal[0]
   const mealDetails = meal[1]
 
+  const AimUrl = baseImg5; // Default to baseImg5
+
 
   return (
     <React.Fragment>
       <div className='mealCardContainer'>
       <div className='mealCardImgBox' onClick={handleClickOpen}>
-        <img className='mealCardImg' src={mealDetails.mealImg} alt="" />
+        <img className='mealCardImg' src={AimUrl} alt="" />
       </div>
       <div className='mealCardInfo'>
         <div className='mealCardHeader'>
@@ -138,7 +141,7 @@ export default function MealplanCardDialog({day, meal}) {
           <div className='mealDialogsContainer'>
             <div className='dishInfo'>
               <div className='dishImgContainer'>
-                <img src={mealDetails.mealImg} alt="" />
+                <img src={AimUrl} alt="" />
               </div>
               <div className='dishSubInfo'>
                 <h3>Dishes</h3>

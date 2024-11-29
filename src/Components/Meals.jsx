@@ -61,26 +61,28 @@ export default function Meals() {
   const currentDay = getDayofWeek();
 
   //get meal data
-  const datas = allDatas()
+  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
+  const firstDayMeals = Object.entries(datas['Day 1'])
 
-  const today = new Date();
-  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
+  // const today = new Date();
+  // const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
 
-  const todayMeals = datas.filter(meal => meal.date === formattedDate)
-  console.log(todayMeals)
-  const totalCalories = todayMeals.reduce((sum,meal)=> sum + meal.calories, 0)
+  // const todayMeals = datas.filter(meal => meal.date === formattedDate)
+  // console.log(todayMeals)
+
+  const totalCalories = firstDayMeals.reduce((sum,meal)=> sum + meal[1].calories, 0)
 
   //total Carbs
-  const totalCarbs = todayMeals.reduce((sum,meal)=> sum + meal.carbs, 0)
-  const totalCarbsPercentage = Math.ceil(totalCarbs / 225 * 100)
+  const totalCarbs = firstDayMeals.reduce((sum,meal)=> sum + meal[1].carbs, 0)
+  const totalCarbsPercentage = Math.ceil(totalCarbs * 4 / totalCalories)
 
   //total Protein
-  const totalProtein = todayMeals.reduce((sum,meal)=> sum + meal.protein, 0)
-  const totalProteinPercentage =Math.ceil(totalProtein / 56  * 100)
+  const totalProtein = firstDayMeals.reduce((sum,meal)=> sum + meal[1].protein, 0)
+  const totalProteinPercentage =Math.ceil(totalProtein * 4 / totalCalories)
 
   //total fat
-  const totalFat = todayMeals.reduce((sum,meal)=> sum + meal.fat, 0)
-  const totalFatPercentage = Math.ceil(totalFat / 60  * 100)
+  const totalFat = firstDayMeals.reduce((sum,meal)=> sum + meal[1].fat, 0)
+  const totalFatPercentage = Math.ceil(totalFat * 9/ totalCalories)
 
   return (
     <div className='mealPageContainer'>

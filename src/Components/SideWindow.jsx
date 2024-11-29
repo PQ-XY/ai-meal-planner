@@ -16,13 +16,13 @@ export default function SideWindow() {
   // }
   // const currentDay = getDayofWeek();
 
-  const today = new Date();
-  const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
+  // const today = new Date();
+  // const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
+  // const todayMeals = datas.filter(meal => meal.date === formattedDate)
 
-  //get data
-  const datas = allDatas()
+  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
 
-  const todayMeals = datas.filter(meal => meal.date === formattedDate)
+  const firstDayMeals = Object.entries(datas['Day 1'])
 
   return (
     <div className='sideWindowBox'>
@@ -38,8 +38,8 @@ export default function SideWindow() {
         <h2>Today's Meal</h2>
       </div>
       <div className='sideWindowCardsBox'>{
-          todayMeals.map((meal, index)=>(
-          <MealDialog key={index} meal={meal}></MealDialog>
+          firstDayMeals.map((meal, index)=>(
+          <MealDialog key={index}  day={'Day 1'} meal={meal}></MealDialog>
         ))
         }
       </div>

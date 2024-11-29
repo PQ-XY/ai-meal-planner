@@ -25,7 +25,7 @@ const LoadingPage = () => {
         const tasteRatings = [SweetFlavor, SourFlavor, SpicyFlavor, SaltyFlavor];
         let userInfo = {
           mealTypes: localStorage.getItem('mealsArray'),
-          numDays: "2", // number of days, e.g. 7 days
+          numDays: "7", // number of days, e.g. 7 days
           allergies: localStorage.getItem('allergyArray'), // any allergies or restrictions, e.g., peanuts, gluten-free, lactose intolerance
           preference: localStorage.getItem('cuisineArray'), // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
           kitchenware: localStorage.getItem('kitArray'), // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker

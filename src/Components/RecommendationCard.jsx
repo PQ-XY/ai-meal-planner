@@ -33,14 +33,14 @@ export default function RecommendationCard({meal}) {
     }
   })*/
 
-    //format ingredients
-    const formattedIngredients = meal.ingredients.map((ingredient, index) => {
-      // Add comma and space after each item except the last one
-      if (index === meal.ingredients.length - 1) {
-          return ingredient + ".";  // End the last ingredient with a period
-      }
-      return ingredient + ", ";  // Add a comma and space after each other ingredient
-      }).join('');
+    // //format ingredients
+    // const formattedIngredients = meal.ingredients.map((ingredient, index) => {
+    //   // Add comma and space after each item except the last one
+    //   if (index === meal.ingredients.length - 1) {
+    //       return ingredient + ".";  // End the last ingredient with a period
+    //   }
+    //   return ingredient + ", ";  // Add a comma and space after each other ingredient
+    //   }).join('');
 
   return (
     <div className='recommendationCardContainer'>
