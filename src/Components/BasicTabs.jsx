@@ -139,21 +139,20 @@ export default function BasicTabs() {
   // const fifthDayMeals = datas.filter(meal => meal.date === weekDatesArray[4])
   // const sixthDayMeals = datas.filter(meal => meal.date === weekDatesArray[5])
   // const seventhDayMeals = datas.filter(meal => meal.date === weekDatesArray[6])
-
-  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
+  
   console.log(localStorage.getItem('mealPlanResult'))
+  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
 
-  const firstDayMeals = datas['Day 1']
+  const firstDayMeals = Object.entries(datas['Day 1'])
+  console.log(typeof firstDayMeals)
   console.log(firstDayMeals)
-  console.log(firstDayMeals['Breakfast']['0']['name'])
-  console.log(firstDayMeals['Breakfast']['0']['details'])
-  const secondDayMeals = datas['Day 2']
-  console.log(secondDayMeals)
-  const thirdDayMeals = datas['Day 3']
-  const fourthDayMeals = datas['Day 4']
-  const fifthDayMeals = datas['Day 5']
-  const sixthDayMeals = datas['Day 6']
-  const seventhDayMeals = datas['Day 7']
+
+  const secondDayMeals = Object.entries(datas['Day 2'])
+  // const thirdDayMeals = Object.entries(datas['Day 2'])
+  // const fourthDayMeals = Object.entries(datas['Day 2'])
+  // const fifthDayMeals = Object.entries(datas['Day 2'])
+  // const sixthDayMeals = Object.entries(datas['Day 2'])
+  // const seventhDayMeals = Object.entries(datas['Day 2'])
 
   return (
     <Box sx={{ width: '100%'}}>
@@ -191,37 +190,37 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className='MealplanCardDialogBox'>
-          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 1'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className='MealplanCardDialogBox'>
-          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className='MealplanCardDialogBox'>
-          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className='MealplanCardDialogBox'>
-          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className='MealplanCardDialogBox'>
-          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className='MealplanCardDialogBox'>
-          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className='MealplanCardDialogBox'>
-          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} meal={meal}></MealplanCardDialog>))}
+          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
         </div>
       </CustomTabPanel>
     </Box>
