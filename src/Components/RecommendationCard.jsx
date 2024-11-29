@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { generateFoodImage } from '../apis/foodImageApi';
-import baseImg1 from '../assets/foodImgs/img_1.jpg'
+import baseImg5 from '../assets/foodImgs/img_5.jpg'
 
 
 export default function RecommendationCard({meal}) {
@@ -16,7 +16,7 @@ export default function RecommendationCard({meal}) {
   // const [url, setUrl] = useState(); disable this line
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const AimUrl = baseImg1; // Default to baseImg1
+  const AimUrl = baseImg5; // Default to baseImg5
 
 
   const handleClick = (event) => {
