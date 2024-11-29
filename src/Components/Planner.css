@@ -108,22 +108,18 @@ body {
 
 
 @media (max-width: 1630px) {
+  .planner-sideWindowLayout{
+    width: 400px;
+  } 
+}
+
+@media (max-width: 1670px) {
   .add-ingredient-container{
     display: flex;
     flex-direction: row;
     gap:20px;
-    width:400px;
+    width:640px;
     margin-top: 15px;
     flex-wrap: wrap;
   }
-  .planner-container-title{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 400px;
-    margin-left: 20px;
-  }
-  .planner-sideWindowLayout{
-    width: 400px;
-  } 
 }
