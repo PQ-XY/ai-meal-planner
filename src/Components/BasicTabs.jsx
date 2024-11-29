@@ -200,27 +200,27 @@ export default function BasicTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className='MealplanCardDialogBox'>
-          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className='MealplanCardDialogBox'>
-          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className='MealplanCardDialogBox'>
-          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className='MealplanCardDialogBox'>
-          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className='MealplanCardDialogBox'>
-          {/* {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))} */}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
     </Box>
