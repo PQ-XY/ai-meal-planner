@@ -154,6 +154,7 @@ export default function BasicTabs() {
 
     //re-generate a new meal object(new api call)
     const newMealObject = {
+      meal:mealTime,
       mealName: "Grilled Salmon",
       calories: 500,
       carbs:20,
