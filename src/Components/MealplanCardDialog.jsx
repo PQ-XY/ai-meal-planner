@@ -23,6 +23,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function MealplanCardDialog({day, meal}) {
+
+  console.log(day)
+  console.log(meal)
+  const mealTime = meal[0]
+  const mealDetails = meal[1]
+
+  const AimUrl = baseImg5; // Default to baseImg5
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -41,11 +48,19 @@ export default function MealplanCardDialog({day, meal}) {
     setAnchorEl(null);
   };
 
-  console.log(meal)
-  const mealTime = meal[0]
-  const mealDetails = meal[1]
+  //get meal data from local storage
+  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
 
-  const AimUrl = baseImg5; // Default to baseImg5
+  //handle delete meal from localStorage
+  const handlePopupClose_delete = (day, mealTime) => {
+    setAnchorEl(null);
+
+    if (datas && datas[day] && datas[day].mealTime) {
+      delete datas[day].mealTime;
+    }
+
+    localStorage.setItem("mealPlanResult", JSON.stringify(datas));
+  };
 
 
   return (
@@ -76,7 +91,7 @@ export default function MealplanCardDialog({day, meal}) {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handlePopupClose}>Delete</MenuItem>
+              <MenuItem onClick={handlePopupClose_delete(day, mealTime)}>Delete</MenuItem>
               <MenuItem onClick={handlePopupClose}>Regenerate</MenuItem>
             </Menu>
           </div>
