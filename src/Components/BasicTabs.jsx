@@ -128,6 +128,23 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
+    //state for data for re-render
+  const[mealData, setMealData] = React.useState(()=> {
+    const savedData = localStorage.getItem('mealPlanResult');
+    return savedData ? JSON.parse(savedData) : {};
+  });
+
+  const handle_deleteMeal = (day, mealTime) => {
+
+    const updatedData = {...mealData}
+
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      delete updatedData[day][mealTime];
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
+  };
+
   //test data format
   // const datas = allDatas()
   // console.log(datas)
@@ -141,18 +158,18 @@ export default function BasicTabs() {
   // const seventhDayMeals = datas.filter(meal => meal.date === weekDatesArray[6])
   
   console.log(localStorage.getItem('mealPlanResult'))
-  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
+  // const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
 
-  const firstDayMeals = Object.entries(datas['Day 1'])
+  const firstDayMeals = Object.entries(mealData['Day 1'])
   console.log(typeof firstDayMeals)
   console.log(firstDayMeals)
 
-  const secondDayMeals = Object.entries(datas['Day 2'])
-  const thirdDayMeals = Object.entries(datas['Day 3'])
-  const fourthDayMeals = Object.entries(datas['Day 4'])
-  const fifthDayMeals = Object.entries(datas['Day 5'])
-  const sixthDayMeals = Object.entries(datas['Day 6'])
-  const seventhDayMeals = Object.entries(datas['Day 7'])
+  const secondDayMeals = Object.entries(mealData['Day 2'])
+  const thirdDayMeals = Object.entries(mealData['Day 3'])
+  const fourthDayMeals = Object.entries(mealData['Day 4'])
+  const fifthDayMeals = Object.entries(mealData['Day 5'])
+  const sixthDayMeals = Object.entries(mealData['Day 6'])
+  const seventhDayMeals = Object.entries(mealData['Day 7'])
 
   return (
     <Box sx={{ width: '100%'}}>
@@ -190,37 +207,37 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className='MealplanCardDialogBox'>
-          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 1'} meal={meal}></MealplanCardDialog>))}
+          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 1'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className='MealplanCardDialogBox'>
-          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal}></MealplanCardDialog>))}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className='MealplanCardDialogBox'>
-          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 3'} meal={meal}></MealplanCardDialog>))}
+          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 3'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className='MealplanCardDialogBox'>
-          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 4'} meal={meal}></MealplanCardDialog>))}
+          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 4'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className='MealplanCardDialogBox'>
-          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 5'} meal={meal}></MealplanCardDialog>))}
+          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 5'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className='MealplanCardDialogBox'>
-          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 6'} meal={meal}></MealplanCardDialog>))}
+          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 6'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className='MealplanCardDialogBox'>
-          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 7'} meal={meal}></MealplanCardDialog>))}
+          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 7'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
     </Box>
