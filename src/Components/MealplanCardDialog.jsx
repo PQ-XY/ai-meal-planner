@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function MealplanCardDialog({day, meal, onDelete}) {
+export default function MealplanCardDialog({day, meal, onDelete, onGenerate}) {
 
   console.log(typeof day)
   console.log(meal)
@@ -79,7 +79,7 @@ export default function MealplanCardDialog({day, meal, onDelete}) {
               }}
             >
               <MenuItem onClick={()=> {handlePopupClose(); onDelete(day, mealTime)}}>Delete</MenuItem>
-              <MenuItem onClick={handlePopupClose}>Regenerate</MenuItem>
+              <MenuItem onClick={()=> {handlePopupClose(); onGenerate(day, mealTime)}}>Regenerate</MenuItem>
             </Menu>
           </div>
         </div>

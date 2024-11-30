@@ -4,6 +4,7 @@ import MyProfile from './MyProfile';
 import Recommendation from './Recommendation';
 import AIAssistantBar from './AIAssistantBar';
 import SideWindow from './SideWindow';
+import { useState } from 'react';
 import allDatas_recommendation from '../data/test_recommendation_data';
 
 export default function Home() {
@@ -30,6 +31,23 @@ export default function Home() {
 
   //get nick name
   const clientNickName = JSON.parse(localStorage.getItem('userName'))
+
+  //state for data for re-render
+  const[mealData, setMealData] = useState(()=> {
+    const savedData = localStorage.getItem('mealPlanResult');
+    return savedData ? JSON.parse(savedData) : {};
+  });
+
+  const handle_replaceMeal = (day, mealTime) => {
+
+    const updatedData = {...mealData}
+
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      delete updatedData[day][mealTime];
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
+  };
 
   return (
     <div className='homePageLayout'>

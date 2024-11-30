@@ -128,12 +128,14 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-    //state for data for re-render
+
+  //state for data for re-render
   const[mealData, setMealData] = React.useState(()=> {
     const savedData = localStorage.getItem('mealPlanResult');
     return savedData ? JSON.parse(savedData) : {};
   });
 
+  //delete the meal card 
   const handle_deleteMeal = (day, mealTime) => {
 
     const updatedData = {...mealData}
@@ -143,6 +145,39 @@ export default function BasicTabs() {
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
     }
+  };
+
+  //replace the meal card 
+  const handel_regenerateMeal = (day, mealTime) => {
+
+    const updatedData = {...mealData}
+
+    //re-generate a new meal object(new api call)
+    const newMealObject = {
+      mealName: "Grilled Salmon",
+      calories: 500,
+      carbs:20,
+      fat: 12,
+      protein:10,
+      cookTime:"",
+      ingredients: ["Salmon", "Garlic", "Butter"],
+      steps:["step 1: Pat the salmon fillet dry with paper towels.",
+            "step 2: For a more intense flavor, marinate the salmon in the olive oil, lemon juice, herbs, garlic powder, salt, and pepper for at least 30 minutes or up to overnight in the refrigerator.",
+            "step 3: Heat a grill to medium-high heat. ",
+            "step 4: Place the marinated salmon fillet skin-side down on the hot grill.",
+            "step 5: Grill for 5-7 minutes per side, or until cooked through and flakes easily with a fork.",
+            "step 6: Use a meat thermometer to ensure the salmon reaches an internal temperature of 145°F (63°C) for safety.",
+            "step 7: emove the salmon from the grill and let it rest for 2-3 minutes before serving.",
+            "step 8: Flake the cooked salmon and serve on a plate with your favorite sides.",
+      ]
+    };
+
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      updatedData[day][mealTime] = newMealObject;
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
+
   };
 
   //test data format
@@ -207,37 +242,37 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className='MealplanCardDialogBox'>
-          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 1'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {firstDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 1'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className='MealplanCardDialogBox'>
-          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {secondDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 2'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className='MealplanCardDialogBox'>
-          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 3'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {thirdDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 3'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className='MealplanCardDialogBox'>
-          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 4'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {fourthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 4'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className='MealplanCardDialogBox'>
-          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 5'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {fifthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 5'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className='MealplanCardDialogBox'>
-          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 6'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {sixthDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 6'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className='MealplanCardDialogBox'>
-          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 7'} meal={meal} onDelete={handle_deleteMeal}></MealplanCardDialog>))}
+          {seventhDayMeals.map((meal,index) => (<MealplanCardDialog key={index} day={'Day 7'} meal={meal} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></MealplanCardDialog>))}
         </div>
       </CustomTabPanel>
     </Box>
