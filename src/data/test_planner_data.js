@@ -1,9 +1,9 @@
 const planner_data = [
     {
-        date: "any",
+        // date: "any",
         meal: "any",
         mealName: "Sweet and Sour Chicken",
-        mealImg: "https://www.dinneratthezoo.com/wp-content/uploads/2020/02/sweet-and-sour-chicken-2.jpg",
+        // mealImg: "https://www.dinneratthezoo.com/wp-content/uploads/2020/02/sweet-and-sour-chicken-2.jpg",
         ingredients: [
           "1/2 lb chicken breast, diced",
           "1/4 cup cornstarch",
@@ -15,11 +15,11 @@ const planner_data = [
         ],
         cookTime: "25 minutes",
         steps: [
-          "Coat chicken pieces with cornstarch.",
-          "Heat oil in a pan and fry chicken until golden brown.",
-          "Add bell peppers and pineapple chunks to the pan and stir-fry for 3 minutes.",
-          "Mix in sweet and sour sauce and soy sauce, then simmer for 5 minutes.",
-          "Serve with steamed rice."
+          "Step 1: Coat chicken pieces with cornstarch.",
+          "Step 2: Heat oil in a pan and fry chicken until golden brown.",
+          "Step 3: Add bell peppers and pineapple chunks to the pan and stir-fry for 3 minutes.",
+          "Step 4: Mix in sweet and sour sauce and soy sauce, then simmer for 5 minutes.",
+          "Step 5: Serve with steamed rice."
         ],
         calories: 480,
         carbs: 45,
@@ -27,10 +27,10 @@ const planner_data = [
         fat: 18
       },
       {
-        date: "any",
+        // date: "any",
         meal: "any",
         mealName: "Mapo Tofu",
-        mealImg: "https://omnivorescookbook.com/wp-content/uploads/2017/04/1702_Mapo-Tofu_001.jpg",
+        // mealImg: "https://omnivorescookbook.com/wp-content/uploads/2017/04/1702_Mapo-Tofu_001.jpg",
         ingredients: [
           "1 block of tofu (firm, cubed)",
           "1/2 cup ground pork",
@@ -42,11 +42,11 @@ const planner_data = [
         ],
         cookTime: "20 minutes",
         steps: [
-          "Heat a pan and dry toast Sichuan peppercorns, then grind them into powder.",
-          "Cook ground pork in the pan until browned.",
-          "Add chili bean paste, soy sauce, and chicken broth, stirring until combined.",
-          "Gently mix in tofu cubes and simmer for 5 minutes.",
-          "Sprinkle with ground Sichuan peppercorns and green onions before serving."
+          "Step 1: Heat a pan and dry toast Sichuan peppercorns, then grind them into powder.",
+          "Step 2: Cook ground pork in the pan until browned.",
+          "Step 3: Add chili bean paste, soy sauce, and chicken broth, stirring until combined.",
+          "Step 4: Gently mix in tofu cubes and simmer for 5 minutes.",
+          "Step 5: Sprinkle with ground Sichuan peppercorns and green onions before serving."
         ],
         calories: 400,
         carbs: 10,

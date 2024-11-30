@@ -10,7 +10,7 @@ import { generateFoodImage } from '../apis/foodImageApi';
 import baseImg5 from '../assets/foodImgs/img_5.jpg'
 
 
-export default function RecommendationCard({meal}) {
+export default function RecommendationCard({meal, onReplaceMeal}) {
   const [imageSrc, setImageSrc] = useState(meal.mealImg);
   const [loading, setLoading] = useState(true);
   // const [url, setUrl] = useState(); disable this line
@@ -69,9 +69,9 @@ export default function RecommendationCard({meal}) {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Replace Breakfast</MenuItem>
-              <MenuItem onClick={handleClose}>Replace Lunch</MenuItem>
-              <MenuItem onClick={handleClose}>Replace Dinner</MenuItem>
+              <MenuItem onClick={()=> {handleClose(); onReplaceMeal("Day 1", "Breakfast", meal)}}>Replace Breakfast</MenuItem>
+              <MenuItem onClick={()=> {handleClose(); onReplaceMeal("Day 1", "Lunch", meal)}}>Replace Lunch</MenuItem>
+              <MenuItem onClick={()=> {handleClose(); onReplaceMeal("Day 1", "Dinner", meal)}}>Replace Dinner</MenuItem>
             </Menu>
           </div>
         </div>

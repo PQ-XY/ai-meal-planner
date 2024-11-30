@@ -3,7 +3,7 @@ import './Recommendation.css'
 import RecommendationCard from './RecommendationCard'
 
 
-export default function Recommendation({meals}) {
+export default function Recommendation({meals, onReplaceMeal}) {
   return (
     <div className='recommendationContainer'>
       <div className='recommendationHeader'>
@@ -31,7 +31,7 @@ export default function Recommendation({meals}) {
       <div className='recommendationCardsBox'>
         {
           meals.map((meal, index)=>(
-            <RecommendationCard key={index} meal={meal} />
+            <RecommendationCard key={index} meal={meal} onReplaceMeal={onReplaceMeal}/>
           ))
         }
         {/* <RecommendationCard prompt="Delicious eggplant casserole" />

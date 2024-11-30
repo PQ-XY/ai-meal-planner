@@ -187,6 +187,27 @@ export default function Planner() {
   //test planner data
   const planner_data = allDatas_planner()
   
+  //state for data for re-render
+  const[mealData, setMealData] = useState(()=> {
+    const savedData = localStorage.getItem('mealPlanResult');
+    return savedData ? JSON.parse(savedData) : {};
+  });
+
+  //replace meal function
+  const handle_replaceMeal = (day, mealTime, meal) => {
+
+    const updatedData = {...mealData};
+
+    if (!updatedData[day]) {
+      updatedData[day] ={};
+    };
+
+      meal.meal = mealTime;
+      updatedData[day][mealTime] = meal;
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+  
+  };
 
   return (
     <div className='planner-page-layout'>
@@ -226,7 +247,7 @@ export default function Planner() {
               <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
               <div className='add-ingredient-card-container'>
                 {planner_data.map((meal,index)=>(
-                  <RecommendationCard_IngredientBase key={index} meal={meal}/>
+                  <RecommendationCard_IngredientBase key={index} meal={meal} onReplaceMeal={handle_replaceMeal}/>
                 ))}
                 <button className='generate-button' onClick={generateRecipes}>Re-generate</button>
               </div>

@@ -26,7 +26,7 @@ export default function Home() {
     }
   };
 
-  //get recommendation data
+  //get recommendation data (recommendation api call)
   const data_recommendation = allDatas_recommendation()
 
   //get nick name
@@ -38,15 +38,20 @@ export default function Home() {
     return savedData ? JSON.parse(savedData) : {};
   });
 
-  const handle_replaceMeal = (day, mealTime) => {
+  //replace meal function
+  const handle_replaceMeal = (day, mealTime, meal) => {
 
-    const updatedData = {...mealData}
+    const updatedData = {...mealData};
 
-    if (updatedData[day] && updatedData[day][mealTime]) {
-      delete updatedData[day][mealTime];
+    if (!updatedData[day]) {
+      updatedData[day] ={};
+    };
+
+      meal.meal = mealTime;
+      updatedData[day][mealTime] = meal;
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
-    }
+  
   };
 
   return (
@@ -66,7 +71,7 @@ export default function Home() {
           <MyProfile></MyProfile>
         </div>
         <div className='recommendation'>
-          <Recommendation meals={data_recommendation}></Recommendation>
+          <Recommendation meals={data_recommendation} onReplaceMeal={handle_replaceMeal}></Recommendation>
         </div>
         {/* <div className='aiAssistantBar'>
           <AIAssistantBar></AIAssistantBar>
