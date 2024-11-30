@@ -20,7 +20,7 @@ export default function SideWindowCard({meal}) {
             {/* <div><Checkbox></Checkbox></div> */}
         </div>
         <p className='sideWindowCardMealName'>
-            {mealDetails.mealName}
+            {mealDetails.mealName.replace(/\s*\([^)]*\)/g, '')}
         </p>
       </div>
     </div>
