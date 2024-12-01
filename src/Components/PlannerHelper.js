@@ -70,8 +70,7 @@ export function parseMealDetails(responseText, mealType) {
       calories: 0,
       carbs: 0,
       protein: 0,
-      fat: 0,
-      cookTime: ""
+      fat: 0
     };
   
     // Extract the meal name
@@ -95,7 +94,8 @@ export function parseMealDetails(responseText, mealType) {
       meal.steps = recipeMatch[1]
         .trim()
         .split("\n")
-        .map(step => step.trim());
+        .map(step => step.trim())
+        .filter(step => step.length > 0); // Remove empty lines
     }
   
     // Utility function to extract the first number from text
