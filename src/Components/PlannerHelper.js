@@ -70,7 +70,8 @@ export function parseMealDetails(responseText, mealType) {
       calories: 0,
       carbs: 0,
       protein: 0,
-      fat: 0
+      fat: 0,
+      cookTime: ""
     };
   
     // Extract the meal name
@@ -89,7 +90,7 @@ export function parseMealDetails(responseText, mealType) {
     }
   
     // Extract recipe steps (everything after "Recipe:")
-    const recipeMatch = responseText.match(/Recipe:\s*([\s\S]*)/);
+    const recipeMatch = responseText.match(/Recipe:\s*([\s\S]*)Total Calories/);
     if (recipeMatch) {
       meal.steps = recipeMatch[1]
         .trim()
@@ -104,7 +105,7 @@ export function parseMealDetails(responseText, mealType) {
     };
   
     // Extract calories, carbs, protein, and fat
-    const caloriesMatch = responseText.match(/Total Calories:\s*([\d\s\S]*)/);
+    const caloriesMatch = responseText.match(/Calories:\s*([\d\s\S]*)/);
     meal.calories = caloriesMatch ? extractFirstNumber(caloriesMatch[1]) : 0;
   
     const carbsMatch = responseText.match(/Carbs:\s*([\d\s\S]*)/);
@@ -115,6 +116,11 @@ export function parseMealDetails(responseText, mealType) {
   
     const fatMatch = responseText.match(/Fat:\s*([\d\s\S]*)/);
     meal.fat = fatMatch ? extractFirstNumber(fatMatch[1]) : 0;
+
+    const cookTimeMatch = responseText.match(/Cooktime:\s*(.+)/);
+    if (cookTimeMatch) {
+      meal.cookTime = cookTimeMatch[1];
+    }
   
     return meal;
 }
@@ -130,14 +136,6 @@ export async function mealPlanGenerator(userInfo){
           temperature: 1,
           topK: 3,
         });
-        var user_info = {
-          numMeals: "3", // number of meals required per day, e.g., 3 meals + 1 snack, or lunch + dinne
-          numDays: "7", // number of days, e.g. 7 days
-          allergies: "peanuts, peanut butter", // any allergies or restrictions, e.g., peanuts, gluten-free, lactose intolerance
-          preference: "Chinese", // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
-          kitchenware: "wok, fry pan, air fryer", // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker
-          tasteRating: [2, 3, 4, 2] // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
-        }
         const planTemplate = `**User Information:\n 
 - **Number of meals per day:** ${userInfo["mealTypes"]}\n 
 - **Number of days for the meal plan:** ${userInfo["numDays"]}\n 
@@ -185,9 +183,10 @@ Step 1: Drain the tuna and set aside\n
 Step 2: In a medium bowl, whisk together mayonnaise, lemon juice, garlic, salt, and pepper.\n
 Step 3:...\n
 Total Calories: 300\n
-carbs: 45,\n
-protein: 25,\n
-fat: 18\n\n
+Carbs: 45,\n
+Protein: 25,\n
+Fat: 18\n
+Cooktime: 25 mins\n\n
 Please always return english and not code. Also don't return any text back with accents`
       
                     // Fetch meal details from the API
@@ -205,6 +204,57 @@ Please always return english and not code. Also don't return any text back with 
             }
           }
         return mealPlan;
+      } catch (error) {
+        console.error('Error analyzing the prompt:', error);
+      }
+    } else {
+      console.error('Model not ready');
+    }
+};
+
+export async function ingreToMeal(ingredients){
+    const { available } = await window.ai.languageModel.capabilities();
+    if (available !== 'no') {
+      try {
+        // Creating a session for the AI model
+        const s = await window.ai.languageModel.create({
+          systemPrompt:
+            'You are an expert meal planner who can help people meal prep and design the meal plans',
+          temperature: 1,
+          topK: 3,
+        });
+        var ingreStr = "";
+        for (const index in ingredients){
+            console.log(ingredients[index]["count"]);
+            console.log(ingredients[index]["name"]);
+            ingreStr = ingreStr + " " + ingredients[index]["count"].toString();
+            ingreStr = ingreStr + " " + ingredients[index]["name"];
+            console.log(ingreStr);
+        }
+        const promptTemplate = `I currently have a list of the following ingredients: ${ingreStr}. Can you provide me two meals? Provide detailed information for the meal strictly following the format below:\n**Output Template:**\nMeal 1:\n\nMeal Name: Tuna Salad Sandwiches on Whole Wheat Bread\n
+Ingredients:\n
+- 3 cans (5oz each) tuna in water, drained\n
+- 1/2 cup mayonnaise\n
+- Tomato slices (optional)\n
+...\n
+Recipe:\n
+Step 1: Drain the tuna and set aside\n
+Step 2: In a medium bowl, whisk together mayonnaise, lemon juice, garlic, salt, and pepper.\n
+Step 3:...\n
+Total Calories: 300\n
+Carbs: 45,\n
+Protein: 25,\n
+Fat: 18\n
+Cooktime: 25 mins\n\n
+Meal 2:\n\n
+...
+Please always return english and not code. Also don't return any text back with accents`
+
+        console.log(promptTemplate);
+        // Run the AI analysis based on the prompt
+        const promptRst = await s.prompt(promptTemplate);
+        console.log(promptRst);
+        return promptRst;
       } catch (error) {
         console.error('Error analyzing the prompt:', error);
       }

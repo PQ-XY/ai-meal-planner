@@ -8,6 +8,7 @@ import SideWindow from './SideWindow';
 import AIAssistantBar from './AIAssistantBar';
 import RecommendationCard_IngredientBase from './RecommendationCard_IngredientBase';
 import allDatas_planner from '../data/test_planner_data';
+import { ingreToMeal } from './PlannerHelper';
 
 // Function to parse the API response into structured details
 function parseMealDetails(responseText) {
@@ -56,103 +57,16 @@ export default function Planner() {
   const [prompt, setPrompt] = useState('');
   const [MealPlanResults, setMealPlanResults] = useState('');
 
-  // Function to call the API and get the result
-  const handleClick = async () => {
-    const { available } = await window.ai.languageModel.capabilities();
-    if (available !== 'no') {
-      try {
-        // Creating a session for the AI model
-        const s = await window.ai.languageModel.create({
-          systemPrompt:
-            `You are an expert meal planner who can help people meal prep and design the meal plans based on the number of meals from the user information. The list should consider the user's cuisine preferences, taste ratings, and dietary restrictions. Don't include any meals that contain food that is allergic to the user`,
-          temperature: 1,
-          topK: 3,
-        });
-        var user_info = {
-          numMeals: "2", // number of meals required per day, e.g., 3 meals + 1 snack, or lunch + dinne
-          numDays: "3", // number of days, e.g. 7 days
-          allergies: "peanuts, peanut butter", // any allergies or restrictions, e.g., peanuts, gluten-free, lactose intolerance
-          preference: "Chinese", // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
-          kitchenware: "wok, fry pan, air fryer", // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker
-          tasteRating: [2, 3, 4, 2] // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
-        }
-        const planTemplate = `**User Information:\n 
-        - **Number of meals per day:** ${user_info["numMeals"]}\n 
-        - **Number of days for the meal plan:** ${user_info["numDays"]}\n 
-        - **Allergies and dietary restrictions:** ${user_info["allergies"]}\n
-        - **Preferred cuisine(s):** ${user_info["preference"]}\n
-        - **Available kitchenware:** ${user_info["kitchenware"]}\n
-        **Task:** 
-        Create a list of unique meals for each day\n
-        Please only provide the meal plan strictly following the output template (Only change the format when the number of meals per day is not 3)\n
-        **Output Template:**\n
-        Day 1:\n
-        Breakfast: Avocado Toast\n
-        Lunch: Grilled Chicken Caesar Salad\n
-        Dinner: Chicken Pasta\n
-        Day 2:\n
-        Breakfast:...\n`
-
-        // Run the AI analysis based on the prompt
-        const promptRst = await s.prompt(planTemplate);
-        setMealPlanResults(promptRst);
-        let mealPlan = parseMealPlan(promptRst);
-        for (const day in mealPlan) {
-          const meals = mealPlan[day];
-    
-          // Iterate through each meal type (Breakfast, Lunch, Dinner)
-          for (const mealType in meals) {
-              const mealNames = meals[mealType];
-    
-              // Iterate through each meal name and fetch details
-              for (let i = 0; i < mealNames.length; i++) {
-                  const mealName = mealNames[i];
-
-                  const mealTemplate = `Provide detailed information for the meal "${mealName}". Please strictly follow the format below:\n` +
-                `Meal Name: [Meal Name]\n
-                Ingredients:\n
-                - [Ingredient 1]\n
-                - [Ingredient 2]\n...` +
-                `Recipe:\n
-                Step 1 [Instruction 1]\n
-                Step 2 [Instruction 2]\n...` +
-                `Total Calories: [Calories] (numeric output only)`
-    
-                  // Fetch meal details from the API
-                  const promptRst = await s.prompt(mealTemplate);
-
-                  console.log(promptRst);
-
-                  const mealDetails = parseMealDetails(promptRst);
-    
-                  // Add the meal details back to the meal plan
-                  mealPlan[day][mealType][i] = {
-                      name: mealName,
-                      details: mealDetails, // Include ingredients, recipe, and calories
-                  };
-                  console.log(mealPlan);
-              }
-          }
-      }
-      console.log(mealPlan);
-      return mealPlan;
-      } catch (error) {
-        console.error('Error analyzing the prompt:', error);
-        setMealPlanResults('An error occurred while analyzing the prompt.');
-      }
-    } else {
-      console.error('Model not ready');
-    }
-  };
-
   const [storedIngredients, setStoredIngredients] = useState([]);
 
-  const generateRecipes = () => {
+  const generateRecipes = async () => {
     // Store the current values into the final ingredients list when the button is clicked
     const ingredientsToStore = ingredientArray.filter(item => item.name.trim() !== ''); // Exclude empty names
     setStoredIngredients(ingredientsToStore); // Save to state
     console.log('Ingredients to send:', ingredientsToStore); // Log to check the result
     // Send the ingredientsToStore to the backend here
+    const mealGenerated = await ingreToMeal(ingredientsToStore);
+    console.log(mealGenerated);
     // Example: axios.post('/your-endpoint', { ingredients: ingredientsToStore });
   };
 
