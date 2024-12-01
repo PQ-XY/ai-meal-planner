@@ -43,8 +43,9 @@ export default function Home() {
 
     const updatedData = {...mealData};
 
+    // Step 2: Check if "Day 2" exists
     if (!updatedData[day]) {
-      updatedData[day] ={};
+      updatedData[day] = {}; // Create Day 2 if it doesn't exist
     };
 
       meal.meal = mealTime;
