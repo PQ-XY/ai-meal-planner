@@ -43,13 +43,22 @@ export default function Home() {
 
     const updatedData = {...mealData};
 
-    // Step 2: Check if "Day 2" exists
+    // Step 2: Check if the day exists
     if (!updatedData[day]) {
-      updatedData[day] = {}; // Create Day 2 if it doesn't exist
+      updatedData[day] = {Breakfast: {}, Lunch: {}, Dinner: {} }; // Create the day if it doesn't exist
     };
 
       meal.meal = mealTime;
       updatedData[day][mealTime] = meal;
+
+      const orderedData = {
+        Breakfast: updatedData[day].Breakfast || {}, // Keep Breakfast
+        Lunch: updatedData[day].Lunch || {},         // Keep Lunch
+        Dinner: updatedData[day].Dinner || {}        // Keep Dinner
+      }
+
+      updatedData[day] = orderedData;
+
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
   
