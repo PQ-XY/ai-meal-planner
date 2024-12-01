@@ -28,9 +28,14 @@ export default function MealDialogs({day, meal}) {
   const handleClose = () => {
     setOpen(false);
   };
-
+ 
+  console.log(meal);
+  
   const mealTime = meal[0]
   const mealDetails = meal[1]
+
+  console.log(meal[1])
+  console.log(mealDetails.mealName);
 
   const AimUrl = baseImg5; 
 
@@ -93,7 +98,7 @@ export default function MealDialogs({day, meal}) {
               <ul className='dishSteps'>
                 {mealDetails.steps.map((step, index)=>(
                     <li key={index} className='dishStepsHeader'>Step {index + 1}
-                      <li className='dishStepsDetail'>{step}</li>
+                      <li className='dishStepsDetail'>{step.replace(/^Step \d+\:\s*/, "").replace(/^\d+\.\s*/, "")}</li>
                     </li>
                   ))}
               </ul>

@@ -142,6 +142,7 @@ export default function BasicTabs() {
 
     if (updatedData[day] && updatedData[day][mealTime]) {
       delete updatedData[day][mealTime];
+      console.log(updatedData[day]);
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
     }

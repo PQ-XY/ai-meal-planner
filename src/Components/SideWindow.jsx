@@ -4,7 +4,7 @@ import MealDialog from './MealDialog'
 import { Link } from 'react-router-dom'
 import allDatas from '../data/test_data'
 
-export default function SideWindow() {
+export default function SideWindow({mealData}) {
 
   //get the current weekday today
   // const getDayofWeek = () => {
@@ -20,9 +20,7 @@ export default function SideWindow() {
   // const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
   // const todayMeals = datas.filter(meal => meal.date === formattedDate)
 
-  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
-
-  const firstDayMeals = Object.entries(datas['Day 1'])
+  const firstDayMeals = Object.entries(mealData['Day 1'])
 
   return (
     <div className='sideWindowBox'>

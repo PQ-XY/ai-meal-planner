@@ -42,27 +42,35 @@ export default function Home() {
   const handle_replaceMeal = (day, mealTime, meal) => {
 
     const updatedData = {...mealData};
+    console.log(updatedData);
+    
 
-    // Step 2: Check if the day exists
+    // Step 1: Check if the day exists
     if (!updatedData[day]) {
-      updatedData[day] = {Breakfast: {}, Lunch: {}, Dinner: {} }; // Create the day if it doesn't exist
+      updatedData[day] = {}; // Create the day if it doesn't exist
     };
 
-      meal.meal = mealTime;
-      updatedData[day][mealTime] = meal;
+    console.log(day);
+    console.log(mealTime);
+    console.log(meal);
+    console.log(updatedData[day][mealTime]);
+    
+    // Step 2: Replace or add the meal
+    updatedData[day][mealTime] = { ...meal, meal: mealTime}; // Avoid directly mutating the `meal` object
 
-      const orderedData = {
-        Breakfast: updatedData[day].Breakfast || {}, // Keep Breakfast
-        Lunch: updatedData[day].Lunch || {},         // Keep Lunch
-        Dinner: updatedData[day].Dinner || {}        // Keep Dinner
-      }
+    // Step 3: Enforce the correct order of meals
+    updatedData[day] = {
+      Breakfast: updatedData[day].Breakfast || {}, // Always maintain Breakfast
+      Lunch: updatedData[day].Lunch || {},         // Always maintain Lunch
+      Dinner: updatedData[day].Dinner || {}        // Always maintain Dinner
+    }
 
-      updatedData[day] = orderedData;
-
-      setMealData(updatedData);
-      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    setMealData(updatedData);
+    localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
   
   };
+
+  console.log(mealData)
 
   return (
     <div className='homePageLayout'>
@@ -88,7 +96,7 @@ export default function Home() {
         </div> */}
       </div>
       <div className='sideWindowLayout'>
-        <SideWindow></SideWindow>
+        <SideWindow mealData={mealData}></SideWindow>
       </div>
     </div>
   )
