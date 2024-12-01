@@ -3,7 +3,7 @@ import './Recommendation.css'
 import RecommendationCard from './RecommendationCard'
 
 
-export default function Recommendation({meals, onReplaceMeal}) {
+export default function Recommendation({meals, onReplaceMeal, onRegenerate}) {
   return (
     <div className='recommendationContainer'>
       <div className='recommendationHeader'>
@@ -18,7 +18,7 @@ export default function Recommendation({meals, onReplaceMeal}) {
             </div>
             <h2>Recommendation</h2>
         </div>
-        <button className='regenerate'>
+        <button className='regenerate' onClick={onRegenerate}>
             Re-generate
             <div className='regenerateLogo'>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

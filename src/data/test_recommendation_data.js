@@ -1,79 +1,79 @@
 const datas_recommendation = [
-    // recommendation
-    {
-        // date: "any",
-        meal: "any",
-        mealName: "Pancakes with Berries",
-        // mealImg: "https://www.allrecipes.com/thmb/ecb0XKvcrE7OyxBLX3OVEd30TbE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/686460-todds-famous-blueberry-pancakes-Dianne-1x1-1-9bd040b975634bce884847ce2090de16.jpg",
-        ingredients: [
-          "1 cup all-purpose flour",
-          "1 tbsp sugar",
-          "1 tsp baking powder",
-          "1 egg",
-          "1/2 cup milk",
-          "1/2 cup mixed fresh berries"
-        ],
-        cookTime: "20 minutes",
-        steps: [
-          "1. Mix flour, sugar, and baking powder in a bowl.",
-          "2. In another bowl, whisk egg and milk, then combine with dry ingredients.",
-          "3. Cook batter on a hot griddle until bubbles form and flip.",
-          "4. Serve topped with fresh berries."
-        ],
-        calories: 320,
-        carbs: 45,
-        protein: 8,
-        fat: 10
-      }, 
-      {
-        // date: "any",
-        meal: "any",
-        mealName: "Chicken Caesar Wrap",
-        // mealImg: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Chicken-Caesar-Wraps_EXPS_FT24_44899_0507_JR_06.jpg",
-        ingredients: [
-          "1 whole-grain tortilla",
-          "1 cup romaine lettuce",
-          "1/2 cup grilled chicken slices",
-          "2 tbsp Caesar dressing",
-          "1 tbsp grated Parmesan cheese"
-        ],
-        cookTime: "15 minutes",
-        steps: [
-          "1. Spread Caesar dressing on the tortilla.",
-          "2. Layer lettuce, grilled chicken, and Parmesan cheese.",
-          "3. Roll tightly and slice in half before serving."
-        ],
-        calories: 450,
-        carbs: 35,
-        protein: 30,
-        fat: 15
-      },
-      {
-        // date: "any",
-        meal: "any",
-        mealName: "Spaghetti Bolognese",
-        // mealImg: "https://windycitydinnerfairy.com/wp-content/uploads/2020/04/spaghetti-36.jpg",
-        ingredients: [
-          "1 cup cooked spaghetti",
-          "1/2 cup ground beef",
-          "1/2 cup marinara sauce",
-          "1/4 cup diced onions",
-          "1 tbsp olive oil",
-          "Salt and pepper"
-        ],
-        cookTime: "30 minutes",
-        steps: [
-          "1. Heat olive oil in a pan and sauté onions.",
-          "2. Add ground beef, season with salt and pepper, and cook until browned.",
-          "3. Mix in marinara sauce and simmer for 10 minutes.",
-          "4. Serve over cooked spaghetti."
-        ],
-        calories: 550,
-        carbs: 55,
-        protein: 25,
-        fat: 18
-      },
-  ];
+  {
+    meal: "any",
+    mealName: "Avocado Toast with Poached Eggs",
+    ingredients: [
+      "2 slices whole grain bread",
+      "1 ripe avocado",
+      "2 eggs",
+      "1 tbsp olive oil",
+      "Salt and pepper to taste",
+      "Optional: chili flakes, lemon juice"
+    ],
+    cookTime: "10 minutes",
+    steps: [
+      "Toast the bread slices until golden brown.",
+      "Mash the avocado with a fork, adding salt, pepper, and optional chili flakes or lemon juice.",
+      "Poach the eggs in simmering water for about 3-4 minutes.",
+      "Spread the mashed avocado on the toasted bread, top with the poached eggs, and drizzle with olive oil."
+    ],
+    calories: 350,
+    carbs: 30,
+    protein: 12,
+    fat: 20
+  },
+  {
+    meal: "any",
+    mealName: "Vegan Buddha Bowl",
+    ingredients: [
+      "1 cup cooked quinoa",
+      "1/2 cup chickpeas, roasted",
+      "1/2 cup cucumber, sliced",
+      "1/4 cup shredded carrots",
+      "1/4 cup cherry tomatoes, halved",
+      "1/4 cup hummus",
+      "2 tbsp tahini",
+      "Lemon wedge for garnish"
+    ],
+    cookTime: "15 minutes",
+    steps: [
+      "Cook quinoa according to package instructions.",
+      "Roast chickpeas in the oven at 400°F for 20 minutes.",
+      "Assemble the bowl with quinoa, roasted chickpeas, cucumber, carrots, and cherry tomatoes.",
+      "Add a dollop of hummus and drizzle with tahini sauce.",
+      "Garnish with a lemon wedge."
+    ],
+    calories: 450,
+    carbs: 55,
+    protein: 15,
+    fat: 18
+  },
+  {
+    meal: "any",
+    mealName: "Spaghetti Aglio e Olio",
+    ingredients: [
+      "200g spaghetti",
+      "4 cloves garlic, thinly sliced",
+      "1/4 cup olive oil",
+      "1 tsp red pepper flakes",
+      "Salt to taste",
+      "1/4 cup fresh parsley, chopped",
+      "Grated Parmesan (optional)"
+    ],
+    cookTime: "20 minutes",
+    steps: [
+      "Cook spaghetti according to package instructions.",
+      "While pasta is cooking, heat olive oil in a pan and sauté the garlic until golden brown.",
+      "Add red pepper flakes, then drain pasta and add to the garlic oil mixture.",
+      "Toss the pasta in the oil, then add parsley and toss again.",
+      "Serve with grated Parmesan, if desired."
+    ],
+    calories: 400,
+    carbs: 60,
+    protein: 12,
+    fat: 15
+  }
+];
 
   export default function allDatas_recommendation () {
     return datas_recommendation

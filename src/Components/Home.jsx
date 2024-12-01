@@ -6,6 +6,7 @@ import AIAssistantBar from './AIAssistantBar';
 import SideWindow from './SideWindow';
 import { useState } from 'react';
 import allDatas_recommendation from '../data/test_recommendation_data';
+import allDatas_recommendation2 from '../data/test_recommendation_data2'
 
 export default function Home() {
 
@@ -28,6 +29,14 @@ export default function Home() {
 
   //get recommendation data (recommendation api call)
   const data_recommendation = allDatas_recommendation()
+  const data_recommendation2 = allDatas_recommendation2()
+
+  const [recommendationData, setRecommendationData] = useState(false)
+
+  //handle regenerate recommended meals
+  const handle_regenerate = () => {
+    setRecommendationData(!recommendationData);
+  }
 
   //get nick name
   const clientNickName = JSON.parse(localStorage.getItem('userName'))
@@ -89,7 +98,7 @@ export default function Home() {
           <MyProfile></MyProfile>
         </div>
         <div className='recommendation'>
-          <Recommendation meals={data_recommendation} onReplaceMeal={handle_replaceMeal}></Recommendation>
+          <Recommendation meals={recommendationData?data_recommendation:data_recommendation2} onReplaceMeal={handle_replaceMeal} onRegenerate={handle_regenerate}></Recommendation>
         </div>
         {/* <div className='aiAssistantBar'>
           <AIAssistantBar></AIAssistantBar>

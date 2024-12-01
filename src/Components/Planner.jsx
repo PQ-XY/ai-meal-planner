@@ -9,6 +9,7 @@ import AIAssistantBar from './AIAssistantBar';
 import RecommendationCard_IngredientBase from './RecommendationCard_IngredientBase';
 import allDatas_planner from '../data/test_planner_data';
 import { ingreToMeal } from './PlannerHelper';
+import allDatas_planner2 from '../data/test_planner_data2';
 
 // Function to parse the API response into structured details
 function parseMealDetails(responseText) {
@@ -100,6 +101,14 @@ export default function Planner() {
 
   //test planner data
   const planner_data = allDatas_planner()
+  const planner_data2 = allDatas_planner2()
+
+  const [reGenerate, setReGenerate] = useState(false)
+
+  //handle re-generate
+  const handle_regenerate = () => {
+    setReGenerate(!reGenerate);
+  }
   
   //state for data for re-render
   const[mealData, setMealData] = useState(()=> {
@@ -122,6 +131,12 @@ export default function Planner() {
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
   
   };
+
+  const [showCard, setShowCard] = useState(false);
+
+  const handleShowCard = () => {
+    setShowCard(!showCard)
+  }
 
   return (
     <div className='planner-page-layout'>
@@ -150,23 +165,25 @@ export default function Planner() {
                   onCountChange={(newCount) => handleCountChange(index, newCount)}/>
                 ))}
                 <AddIngredientButton onClick={addNewIngredient}/>
-                <button className='generate-button' onClick={generateRecipes}>Generate recipes</button>
+                <button className='generate-button' onClick={handleShowCard}>Generate recipes</button>
               </div>
             </div>
           </div>
-          <div class='button-question-container'>
-            <img className='planner-container-image' src={stward}></img>
-            <div className='planner-container-title'>
-              <p className='planner-container-title-big'>Stward</p>
-              <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
-              <div className='add-ingredient-card-container'>
-                {planner_data.map((meal,index)=>(
-                  <RecommendationCard_IngredientBase key={index} meal={meal} onReplaceMeal={handle_replaceMeal}/>
-                ))}
-                <button className='generate-button' onClick={generateRecipes}>Re-generate</button>
-              </div>
+          {showCard && (
+              <div class='button-question-container'>
+                <img className='planner-container-image' src={stward}></img>
+                <div className='planner-container-title'>
+                  <p className='planner-container-title-big'>Stward</p>
+                  <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
+                  <div className='add-ingredient-card-container'>
+                    {(reGenerate?planner_data:planner_data2).map((meal,index)=>(
+                      <RecommendationCard_IngredientBase key={index} meal={meal} onReplaceMeal={handle_replaceMeal}/>
+                    ))}
+                    <button className='generate-button' onClick={handle_regenerate}>Re-generate</button>
+                  </div>
+                </div>
             </div>
-          </div>
+          )}
         </div>
         {/* <div className='aiAssistantBar-container'>
           <AIAssistantBar></AIAssistantBar>
