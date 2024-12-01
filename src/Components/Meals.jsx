@@ -7,6 +7,59 @@ import allDatas from '../data/test_data';
 
 export default function Meals() {
 
+  //state for data for re-render
+  const[mealData, setMealData] = React.useState(()=> {
+    const savedData = localStorage.getItem('mealPlanResult');
+    return savedData ? JSON.parse(savedData) : {};
+  });
+
+  //delete the meal card 
+  const handle_deleteMeal = (day, mealTime) => {
+
+    const updatedData = {...mealData}
+
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      delete updatedData[day][mealTime];
+      console.log(updatedData[day]);
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
+  };
+
+  //replace the meal card 
+  const handel_regenerateMeal = (day, mealTime) => {
+
+    const updatedData = {...mealData}
+
+    //re-generate a new meal object(new api call)
+    const newMealObject = {
+      meal:mealTime,
+      mealName: "Grilled Salmon",
+      calories: 500,
+      carbs:20,
+      fat: 12,
+      protein:10,
+      cookTime:"",
+      ingredients: ["Salmon", "Garlic", "Butter"],
+      steps:["step 1: Pat the salmon fillet dry with paper towels.",
+            "step 2: For a more intense flavor, marinate the salmon in the olive oil, lemon juice, herbs, garlic powder, salt, and pepper for at least 30 minutes or up to overnight in the refrigerator.",
+            "step 3: Heat a grill to medium-high heat. ",
+            "step 4: Place the marinated salmon fillet skin-side down on the hot grill.",
+            "step 5: Grill for 5-7 minutes per side, or until cooked through and flakes easily with a fork.",
+            "step 6: Use a meat thermometer to ensure the salmon reaches an internal temperature of 145°F (63°C) for safety.",
+            "step 7: emove the salmon from the grill and let it rest for 2-3 minutes before serving.",
+            "step 8: Flake the cooked salmon and serve on a plate with your favorite sides.",
+      ]
+    };
+
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      updatedData[day][mealTime] = newMealObject;
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
+
+  };
+
   function getCurrentWeekDates() {
     const today = new Date();
   
@@ -61,8 +114,7 @@ export default function Meals() {
   const currentDay = getDayofWeek();
 
   //get meal data
-  const datas = JSON.parse(localStorage.getItem('mealPlanResult'))
-  const firstDayMeals = Object.entries(datas['Day 1'])
+  const firstDayMeals = Object.entries(mealData['Day 1'])
 
   // const today = new Date();
   // const formattedDate = `${today.getMonth() + 1}/${today.getDate()}`;
@@ -83,6 +135,7 @@ export default function Meals() {
   //total fat
   const totalFat = firstDayMeals.reduce((sum,meal)=> sum + meal[1].fat, 0)
   const totalFatPercentage = Math.ceil(totalFat * 9/ totalCalories * 100)
+  
 
   return (
     <div className='mealPageContainer'>
@@ -103,22 +156,22 @@ export default function Meals() {
           </div>
           <div className='caloriesRadialBarChartBox'>
             <div className='RadialBarChartBox'>
-              <RadialBarChart percentage={totalCarbsPercentage}></RadialBarChart>
+              <RadialBarChart key={totalCarbsPercentage} percentage={totalCarbsPercentage}></RadialBarChart>
               <h5>Carbs</h5>
             </div>
             <div className='RadialBarChartBox'>
-              <RadialBarChart percentage={totalProteinPercentage}></RadialBarChart>
+              <RadialBarChart key={totalProteinPercentage} percentage={totalProteinPercentage}></RadialBarChart>
               <h5>Protein</h5>
             </div>
             <div className='RadialBarChartBox'>
-              <RadialBarChart percentage={totalFatPercentage}></RadialBarChart>
+              <RadialBarChart key={totalFatPercentage} percentage={totalFatPercentage}></RadialBarChart>
               <h5>Fat</h5>
             </div>
           </div>
         </div>
       </div>
       <div className='basicTabsBox'>
-        <BasicTabs></BasicTabs>
+        <BasicTabs mealData={mealData} onDelete={handle_deleteMeal} onGenerate={handel_regenerateMeal}></BasicTabs>
       </div>
       {/* <div>
         <AIAssistantBar></AIAssistantBar>

@@ -175,7 +175,7 @@ export default function Planner() {
       {/* Display the result */}
       {MealPlanResults && <p>Result: {MealPlanResults}</p>}
       <div className='planner-sideWindowLayout'>
-        <SideWindow></SideWindow>
+        <SideWindow mealData={mealData}></SideWindow>
       </div>
     </div>
   );
