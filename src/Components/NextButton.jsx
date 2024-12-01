@@ -41,7 +41,7 @@ const NextButton = () => {
   };
 
   const handleSkipClick=()=>{
-    navigate('/app/home');
+    navigate('/loading');
   }
 
   return (
