@@ -15,10 +15,10 @@ const datas_recommendation = [
         ],
         cookTime: "20 minutes",
         steps: [
-          "step 1: Mix flour, sugar, and baking powder in a bowl.",
-          "step 2: In another bowl, whisk egg and milk, then combine with dry ingredients.",
-          "step 3: Cook batter on a hot griddle until bubbles form and flip.",
-          "step 4: Serve topped with fresh berries."
+          "1. Mix flour, sugar, and baking powder in a bowl.",
+          "2. In another bowl, whisk egg and milk, then combine with dry ingredients.",
+          "3. Cook batter on a hot griddle until bubbles form and flip.",
+          "4. Serve topped with fresh berries."
         ],
         calories: 320,
         carbs: 45,
@@ -39,9 +39,9 @@ const datas_recommendation = [
         ],
         cookTime: "15 minutes",
         steps: [
-          "step 1: Spread Caesar dressing on the tortilla.",
-          "step 2: Layer lettuce, grilled chicken, and Parmesan cheese.",
-          "step 3: Roll tightly and slice in half before serving."
+          "1. Spread Caesar dressing on the tortilla.",
+          "2. Layer lettuce, grilled chicken, and Parmesan cheese.",
+          "3. Roll tightly and slice in half before serving."
         ],
         calories: 450,
         carbs: 35,
@@ -63,10 +63,10 @@ const datas_recommendation = [
         ],
         cookTime: "30 minutes",
         steps: [
-          "step 1: Heat olive oil in a pan and sauté onions.",
-          "step 2: Add ground beef, season with salt and pepper, and cook until browned.",
-          "step 3: Mix in marinara sauce and simmer for 10 minutes.",
-          "step 4: Serve over cooked spaghetti."
+          "1. Heat olive oil in a pan and sauté onions.",
+          "2. Add ground beef, season with salt and pepper, and cook until browned.",
+          "3. Mix in marinara sauce and simmer for 10 minutes.",
+          "4. Serve over cooked spaghetti."
         ],
         calories: 550,
         carbs: 55,

@@ -15,11 +15,11 @@ const planner_data = [
         ],
         cookTime: "25 minutes",
         steps: [
-          "Step 1: Coat chicken pieces with cornstarch.",
-          "Step 2: Heat oil in a pan and fry chicken until golden brown.",
-          "Step 3: Add bell peppers and pineapple chunks to the pan and stir-fry for 3 minutes.",
-          "Step 4: Mix in sweet and sour sauce and soy sauce, then simmer for 5 minutes.",
-          "Step 5: Serve with steamed rice."
+          "1. Coat chicken pieces with cornstarch.",
+          "2. Heat oil in a pan and fry chicken until golden brown.",
+          "3. Add bell peppers and pineapple chunks to the pan and stir-fry for 3 minutes.",
+          "4. Mix in sweet and sour sauce and soy sauce, then simmer for 5 minutes.",
+          "5. Serve with steamed rice."
         ],
         calories: 480,
         carbs: 45,
@@ -42,11 +42,11 @@ const planner_data = [
         ],
         cookTime: "20 minutes",
         steps: [
-          "Step 1: Heat a pan and dry toast Sichuan peppercorns, then grind them into powder.",
-          "Step 2: Cook ground pork in the pan until browned.",
-          "Step 3: Add chili bean paste, soy sauce, and chicken broth, stirring until combined.",
-          "Step 4: Gently mix in tofu cubes and simmer for 5 minutes.",
-          "Step 5: Sprinkle with ground Sichuan peppercorns and green onions before serving."
+          "1. Heat a pan and dry toast Sichuan peppercorns, then grind them into powder.",
+          "2. Cook ground pork in the pan until browned.",
+          "3. Add chili bean paste, soy sauce, and chicken broth, stirring until combined.",
+          "4. Gently mix in tofu cubes and simmer for 5 minutes.",
+          "5. Sprinkle with ground Sichuan peppercorns and green onions before serving."
         ],
         calories: 400,
         carbs: 10,

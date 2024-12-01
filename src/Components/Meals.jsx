@@ -74,15 +74,15 @@ export default function Meals() {
 
   //total Carbs
   const totalCarbs = firstDayMeals.reduce((sum,meal)=> sum + meal[1].carbs, 0)
-  const totalCarbsPercentage = Math.ceil(totalCarbs * 4 / totalCalories)
+  const totalCarbsPercentage = Math.ceil(totalCarbs * 4 / totalCalories * 100)
 
   //total Protein
   const totalProtein = firstDayMeals.reduce((sum,meal)=> sum + meal[1].protein, 0)
-  const totalProteinPercentage =Math.ceil(totalProtein * 4 / totalCalories)
+  const totalProteinPercentage =Math.ceil(totalProtein * 4 / totalCalories * 100)
 
   //total fat
   const totalFat = firstDayMeals.reduce((sum,meal)=> sum + meal[1].fat, 0)
-  const totalFatPercentage = Math.ceil(totalFat * 9/ totalCalories)
+  const totalFatPercentage = Math.ceil(totalFat * 9/ totalCalories * 100)
 
   return (
     <div className='mealPageContainer'>

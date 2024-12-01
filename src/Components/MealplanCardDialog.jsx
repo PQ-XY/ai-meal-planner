@@ -163,7 +163,7 @@ export default function MealplanCardDialog({day, meal, onDelete, onGenerate}) {
               <ul className='dishSteps'>
                 {mealDetails.steps.map((step, index)=>(
                   <li key={index} className='dishStepsHeader'>Step {index + 1}
-                    <li className='dishStepsDetail'>{step}</li>
+                    <li className='dishStepsDetail'>{step.replace(/^\d+\.\s*/, "")}</li>
                   </li>
                 ))}
               </ul>
