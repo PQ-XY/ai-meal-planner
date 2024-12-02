@@ -2,6 +2,7 @@ const datas_recommendation2 = [
     {
       meal: "Breakfast",
       mealName: "Chia Pudding with Fresh Fruit",
+      mealImg:"https://www.archanaskitchen.com//images/archanaskitchen/1-Author/Sowpernica/Almondmilk_Chia_Pudding.jpg",
       ingredients: [
         "3 tbsp chia seeds",
         "1 cup almond milk",
@@ -24,6 +25,7 @@ const datas_recommendation2 = [
     {
       meal: "Lunch",
       mealName: "Grilled Chicken Salad",
+      mealImg:"https://www.eatingbirdfood.com/wp-content/uploads/2023/06/grilled-chicken-salad-hero.jpg",
       ingredients: [
         "1 chicken breast, grilled and sliced",
         "4 cups mixed greens (spinach, arugula, etc.)",
@@ -49,6 +51,7 @@ const datas_recommendation2 = [
     {
       meal: "Dinner",
       mealName: "Beef Stir-Fry with Veggies",
+      mealImg:"https://www.wellplated.com/wp-content/uploads/2020/05/Beef-Stir-Fry.jpg",
       ingredients: [
         "200g beef strips",
         "1 tbsp soy sauce",

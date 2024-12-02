@@ -2,6 +2,7 @@ const datas_recommendation = [
   {
     meal: "any",
     mealName: "Avocado Toast with Poached Eggs",
+    mealImg:"https://data.thefeedfeed.com/static/2021/04/06/1617726496606c8c20a7a82.jpg",
     ingredients: [
       "2 slices whole grain bread",
       "1 ripe avocado",
@@ -25,6 +26,7 @@ const datas_recommendation = [
   {
     meal: "any",
     mealName: "Vegan Buddha Bowl",
+    mealImg:"https://simplyceecee.co/wp-content/uploads/2018/07/veganbuddhabowl-2.jpg",
     ingredients: [
       "1 cup cooked quinoa",
       "1/2 cup chickpeas, roasted",
@@ -51,6 +53,7 @@ const datas_recommendation = [
   {
     meal: "any",
     mealName: "Spaghetti Aglio e Olio",
+    mealImg:"https://www.simplyrecipes.com/thmb/gjS-FSuYnqK3fclkE2fWhYl1VWQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Spaghetti-Aglio-e-Olio-LEAD-2-c8e7e8c6edb04a8691463c6ea8cd4ba1.jpg",
     ingredients: [
       "200g spaghetti",
       "4 cloves garlic, thinly sliced",

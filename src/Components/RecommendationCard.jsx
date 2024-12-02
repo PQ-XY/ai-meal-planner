@@ -45,7 +45,7 @@ export default function RecommendationCard({meal, onReplaceMeal}) {
   return (
     <div className='recommendationCardContainer'>
       <div className='recommendationCardImgBox'>
-        <img className='recommendationCardImg' src={AimUrl} alt="" />
+        <img className='recommendationCardImg' src={meal.mealImg} alt="" />
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>

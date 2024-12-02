@@ -2,6 +2,7 @@ const planner_data2 = [
     {
         meal: "any",
         mealName: "Tofu Stir-Fry with Vegetables",
+        mealImg:"https://www.funfoodfrolic.com/wp-content/uploads/2020/03/Tofu-Stir-Fry-Thumbnail.jpg",
         ingredients: [
           "200g firm tofu, pressed and cubed",
           "1 tbsp soy sauce",
@@ -32,6 +33,7 @@ const planner_data2 = [
       {
         meal: "any",
         mealName: "Grilled Chicken with Avocado Salsa",
+        mealImg:"https://oursaltykitchen.com/wp-content/uploads/2020/03/chicken-avocado-salsa-featured-image.jpg",
         ingredients: [
           "1 chicken breast, grilled and sliced",
           "1 avocado, diced",

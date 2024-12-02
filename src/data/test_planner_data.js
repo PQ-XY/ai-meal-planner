@@ -3,7 +3,7 @@ const planner_data = [
         // date: "any",
         meal: "any",
         mealName: "Sweet and Sour Chicken",
-        // mealImg: "https://www.dinneratthezoo.com/wp-content/uploads/2020/02/sweet-and-sour-chicken-2.jpg",
+        mealImg: "https://www.recipetineats.com/tachyon/2015/10/Sweet-Sour-Chicken_600px1-Featured.jpg",
         ingredients: [
           "1/2 lb chicken breast, diced",
           "1/4 cup cornstarch",
@@ -30,7 +30,7 @@ const planner_data = [
         // date: "any",
         meal: "any",
         mealName: "Mapo Tofu",
-        // mealImg: "https://omnivorescookbook.com/wp-content/uploads/2017/04/1702_Mapo-Tofu_001.jpg",
+        mealImg: "https://www.cookwithmanali.com/wp-content/uploads/2021/03/Vegan-Mapo-Tofu-500x500.jpg",
         ingredients: [
           "1 block of tofu (firm, cubed)",
           "1/2 cup ground pork",

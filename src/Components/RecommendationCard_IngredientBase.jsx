@@ -45,7 +45,7 @@ export default function RecommendationCard_IngredientBase({meal, onReplaceMeal})
   return (
     <div className='recommendationCard_IngredientBaseContainer'>
       <div className='recommendationCard_IngredientBaseImgBox'>
-        <img className='recommendationCard_IngredientBaseImg' src={AimUrl} alt="" />
+        <img className='recommendationCard_IngredientBaseImg' src={meal.mealImg} alt="" />
       </div>
       <div className='recommendationCard_IngredientBaseInfo'>
         <div className='recommendationCard_IngredientBaseHeader'>
