@@ -165,7 +165,7 @@ export default function Planner() {
                   onCountChange={(newCount) => handleCountChange(index, newCount)}/>
                 ))}
                 <AddIngredientButton onClick={addNewIngredient}/>
-                <button className='generate-button' onClick={handleShowCard}>Generate recipes</button>
+                <button className='generate-button' onClick={generateRecipes}>Generate recipes</button>
               </div>
             </div>
           </div>

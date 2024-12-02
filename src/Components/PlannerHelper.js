@@ -62,7 +62,7 @@ export function parseMealPlan(mealPlanText) {
 // Function to parse the API response into structured meal details
 export function parseMealDetails(responseText, mealType) {
     const meal = {
-      meal: mealType,   // Assign the provided meal type (e.g., Breakfast, Lunch, Dinner)
+      meal: mealType,   // Assign the provided meal type (e.g., Breakfast, Lunch, Dinner, Any)
       mealName: "",
       ingredients: [],
       cookTime: "",     // Initialize cook time
@@ -125,6 +125,40 @@ export function parseMealDetails(responseText, mealType) {
     return meal;
 }
 
+export async function singleMealGenerator(mealName, meals, session){
+    const { available } = await window.ai.languageModel.capabilities();
+    if (available !== 'no') {
+      try {
+        // Creating a session for the AI model
+        const promptTemplate = `Provide detailed information for the meal ${mealName} strictly following the format below:\n**Output Template:**\nMeal Name: Tuna Salad Sandwiches on Whole Wheat Bread\n
+Ingredients:\n
+- 3 cans (5oz each) tuna in water, drained\n
+- 1/2 cup mayonnaise\n
+- Tomato slices (optional)\n
+...\n
+Recipe:\n
+Step 1: Drain the tuna and set aside\n
+Step 2: In a medium bowl, whisk together mayonnaise, lemon juice, garlic, salt, and pepper.\n
+Step 3:...\n
+Total Calories: 300\n
+Carbs: 45,\n
+Protein: 25,\n
+Fat: 18\n
+Cooktime: 25 mins\n\n
+Please always return english and not code. Also don't return any text back with accents`
+        console.log(promptTemplate);
+        // Run the AI analysis based on the prompt
+        const promptRst = await session.prompt(promptTemplate);
+        meals[mealName] = parseMealDetails(promptRst, 'Any');
+        console.log(meals);
+        return meals;
+      } catch (error) {
+        console.error('Error analyzing the prompt:', error);
+      }
+    } else {
+      console.error('Model not ready');
+    }
+}
 export async function mealPlanGenerator(userInfo){
     const { available } = await window.ai.languageModel.capabilities();
     if (available !== 'no') {
@@ -211,7 +245,6 @@ Please always return english and not code. Also don't return any text back with 
       console.error('Model not ready');
     }
 };
-
 export async function ingreToMeal(ingredients){
     const { available } = await window.ai.languageModel.capabilities();
     if (available !== 'no') {
@@ -231,30 +264,28 @@ export async function ingreToMeal(ingredients){
             ingreStr = ingreStr + " " + ingredients[index]["name"];
             console.log(ingreStr);
         }
-        const promptTemplate = `I currently have a list of the following ingredients: ${ingreStr}. Can you provide me two meals? Provide detailed information for the meal strictly following the format below:\n**Output Template:**\nMeal 1:\n\nMeal Name: Tuna Salad Sandwiches on Whole Wheat Bread\n
-Ingredients:\n
-- 3 cans (5oz each) tuna in water, drained\n
-- 1/2 cup mayonnaise\n
-- Tomato slices (optional)\n
-...\n
-Recipe:\n
-Step 1: Drain the tuna and set aside\n
-Step 2: In a medium bowl, whisk together mayonnaise, lemon juice, garlic, salt, and pepper.\n
-Step 3:...\n
-Total Calories: 300\n
-Carbs: 45,\n
-Protein: 25,\n
-Fat: 18\n
-Cooktime: 25 mins\n\n
-Meal 2:\n\n
-...
-Please always return english and not code. Also don't return any text back with accents`
-
-        console.log(promptTemplate);
-        // Run the AI analysis based on the prompt
-        const promptRst = await s.prompt(promptTemplate);
+        var promptTemplate = `I currently have a list of the following ingredients: ${ingreStr}. Can you provide me two meals? Please only provide the meal plan strictly following the output template\n
+**Output Template:**\n
+Meal1: Avocado Toast\n
+Meal2: Grilled Chicken Caesar Salad\n`;
+        var promptRst = await s.prompt(promptTemplate);
         console.log(promptRst);
-        return promptRst;
+        // Regular expression to match Meal1 and Meal2 formats
+        const meals = {};
+        const mealRegex = /\bMeal(\d+):\s*(.+)/g;
+        let match;
+
+        // Loop through all matches and add them to the meals object
+        while ((match = mealRegex.exec(promptRst)) !== null) {
+            const [_, mealNumber, mealName] = match; // Destructure the match
+            meals[mealName.trim()] = {}; // Add to object
+        }
+
+        // Extract meal details
+        for (const mealName in meals){
+            await singleMealGenerator(mealName, meals, s);
+        }
+        return meals;
       } catch (error) {
         console.error('Error analyzing the prompt:', error);
       }
@@ -262,3 +293,44 @@ Please always return english and not code. Also don't return any text back with 
       console.error('Model not ready');
     }
 };
+export async function regenRecommendation(){
+    const { available } = await window.ai.languageModel.capabilities();
+    if (available !== 'no') {
+      try {
+        // Creating a session for the AI model
+        const s = await window.ai.languageModel.create({
+          systemPrompt:
+            'You are an expert meal planner who can help people meal prep and design the meal plans',
+          temperature: 1,
+          topK: 3,
+        });
+        var promptTemplate = `As a home chef, can you provide me three trending meals for the user? Please only provide the meal plan strictly following the output template\n
+**Output Template:**\n
+Meal1: Avocado Toast\n
+Meal2: Grilled Chicken Caesar Salad\n
+Meal3: ...`;
+        var promptRst = await s.prompt(promptTemplate);
+        console.log(promptRst);
+        // Regular expression to match Meal1 and Meal2 formats
+        const meals = {};
+        const mealRegex = /\bMeal(\d+):\s*(.+)/g;
+        let match;
+
+        // Loop through all matches and add them to the meals object
+        while ((match = mealRegex.exec(promptRst)) !== null) {
+            const [_, mealNumber, mealName] = match; // Destructure the match
+            meals[mealName.trim()] = {}; // Add to object
+        }
+
+        // Extract meal details
+        for (const mealName in meals){
+            await singleMealGenerator(mealName, meals, s);
+        }
+        return meals;
+      } catch (error) {
+        console.error('Error analyzing the prompt:', error);
+      }
+    } else {
+      console.error('Model not ready');
+    }
+}
