@@ -36,7 +36,7 @@ const LoadingPage = () => {
         console.log('Meal plan generated:', mealPlan);
         localStorage.setItem('mealPlanResult', JSON.stringify(mealPlan));
         // Uncomment and use when ready:
-        navigate('/app/home');
+        navigate('/app/meals');
       } catch (error) {
         console.error('Error generating meal plan:', error);
       }
