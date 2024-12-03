@@ -362,7 +362,7 @@ Meal Name: Avocado Toast\n`;
       const promptRst = await s.prompt(planTemplate);
       console.log(promptRst);
       const meals = {}
-      const mealName = responseText.match(/Meal Name:\s*(.+)/);
+      const mealName = promptRst.match(/Meal Name:\s*(.+)/);
       if (mealName) {
         await singleMealGenerator(mealName, meals, s);
       }
