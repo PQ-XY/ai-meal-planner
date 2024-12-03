@@ -98,7 +98,7 @@ export default function MealDialogs({day, meal}) {
               <ul className='dishSteps'>
                 {mealDetails.steps.map((step, index)=>(
                     <li key={index} className='dishStepsHeader'>Step {index + 1}
-                      <li className='dishStepsDetail'>{step.replace(/^Step \d+\:\s*/, "").replace(/^\d+\.\s*/, "")}</li>
+                      <li className='dishStepsDetail'>{step.replace(/\*\*/g, "").replace(/^Step \d+\:\s*/, "").replace(/^\d+\.\s*/, "")}</li>
                     </li>
                   ))}
               </ul>

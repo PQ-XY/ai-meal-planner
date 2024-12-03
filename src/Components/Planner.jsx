@@ -60,6 +60,12 @@ export default function Planner() {
 
   const [storedIngredients, setStoredIngredients] = useState([]);
 
+  const [showCard, setShowCard] = useState(false);
+
+  const handleShowCard = () => {
+    setShowCard(!showCard)
+  }
+
   const generateRecipes = async () => {
     // Store the current values into the final ingredients list when the button is clicked
     const ingredientsToStore = ingredientArray.filter(item => item.name.trim() !== ''); // Exclude empty names
@@ -68,6 +74,21 @@ export default function Planner() {
     // Send the ingredientsToStore to the backend here
     const mealGenerated = await ingreToMeal(ingredientsToStore);
     console.log(mealGenerated);
+    localStorage.setItem("IngreToMealResult", JSON.stringify(mealGenerated));
+    handleShowCard();
+    // Example: axios.post('/your-endpoint', { ingredients: ingredientsToStore });
+  };
+
+  const regenerateRecipes = async () => {
+    // Store the current values into the final ingredients list when the button is clicked
+    const ingredientsToStore = ingredientArray.filter(item => item.name.trim() !== ''); // Exclude empty names
+    setStoredIngredients(ingredientsToStore); // Save to state
+    console.log('Ingredients to send:', ingredientsToStore); // Log to check the result
+    // Send the ingredientsToStore to the backend here
+    const mealGenerated = await ingreToMeal(ingredientsToStore);
+    console.log(mealGenerated);
+    console.log(typeof mealGenerated)
+    return JSON.stringify(mealGenerated);
     // Example: axios.post('/your-endpoint', { ingredients: ingredientsToStore });
   };
 
@@ -100,14 +121,17 @@ export default function Planner() {
   };
 
   //test planner data
-  const planner_data = allDatas_planner()
-  const planner_data2 = allDatas_planner2()
-
-  const [reGenerate, setReGenerate] = useState(false)
+  const [meal_data, setMeal_data] = useState(()=> {
+    const savedData = localStorage.getItem('IngreToMealResult');
+    return savedData ? Object.values(JSON.parse(savedData)) : {};
+  });
 
   //handle re-generate
-  const handle_regenerate = () => {
-    setReGenerate(!reGenerate);
+  const handle_regenerate = async () => {
+    const updated_data = await regenerateRecipes();
+    console.log(updated_data);
+    setMeal_data(Object.values(JSON.parse(updated_data)));
+    localStorage.getItem('IngreToMealResult', JSON.stringify(updated_data));
   }
   
   //state for data for re-render
@@ -131,12 +155,6 @@ export default function Planner() {
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
   
   };
-
-  const [showCard, setShowCard] = useState(false);
-
-  const handleShowCard = () => {
-    setShowCard(!showCard)
-  }
 
   return (
     <div className='planner-page-layout'>
@@ -176,7 +194,7 @@ export default function Planner() {
                   <p className='planner-container-title-big'>Stward</p>
                   <p className='planner-container-title-small'>Based on the amount of ingredients and your habits, I recommend the following 2 dishes:</p>
                   <div className='add-ingredient-card-container'>
-                    {(reGenerate?planner_data:planner_data2).map((meal,index)=>(
+                    {(meal_data).map((meal,index)=>(
                       <RecommendationCard_IngredientBase key={index} meal={meal} onReplaceMeal={handle_replaceMeal}/>
                     ))}
                     <button className='generate-button' onClick={handle_regenerate}>Re-generate</button>
