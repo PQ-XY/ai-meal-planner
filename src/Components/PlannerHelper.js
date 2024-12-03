@@ -334,3 +334,46 @@ Meal3: ...`;
       console.error('Model not ready');
     }
 }
+export async function regenSingleMeal(prevMealName, userInfo){
+  const { available } = await window.ai.languageModel.capabilities();
+  if (available !== 'no') {
+    try {
+      // Creating a session for the AI model
+      const s = await window.ai.languageModel.create({
+        systemPrompt:
+          'You are an expert meal planner who can help people meal prep and design the meal plans',
+        temperature: 1,
+        topK: 3,
+      });
+      const planTemplate = `**User Information:\n 
+- **Number of meals per day:** ${userInfo["mealTypes"]}\n 
+- **Number of days for the meal plan:** ${userInfo["numDays"]}\n 
+- **Allergies and dietary restrictions:** ${userInfo["allergies"]}\n
+- **Preferred cuisine(s):** ${userInfo["preference"]}\n
+- **Available kitchenware:** ${userInfo["kitchenware"]}\n
+- **Taste preference:**${userInfo['tasteRating']} // users' sweetness, sour, spicy, and salty preference, ranging from 1 to 5\n
+**Task:** 
+Can you provide me only one meal for the user based on the user's information? The meal should be different from the previous meal ${prevMealName}. Please only provide the meal plan strictly following the output template\n
+**Output Template:**\n
+Meal Name: Avocado Toast\n`;
+
+      console.log(planTemplate);
+      // Run the AI analysis based on the prompt
+      const promptRst = await s.prompt(planTemplate);
+      console.log(promptRst);
+      const meals = {}
+      const mealName = responseText.match(/Meal Name:\s*(.+)/);
+      if (mealName) {
+        await singleMealGenerator(mealName, meals, s);
+      }
+      else{
+        console.error('No single meal generated');
+      }
+      return meals;
+    } catch (error) {
+      console.error('Error analyzing the prompt:', error);
+    }
+  } else {
+    console.error('Model not ready');
+  }
+}
