@@ -87,7 +87,8 @@ export default function Planner() {
     // Send the ingredientsToStore to the backend here
     const mealGenerated = await ingreToMeal(ingredientsToStore);
     console.log(mealGenerated);
-    localStorage.setItem("IngreToMealResult", JSON.stringify(mealGenerated));
+    console.log(typeof mealGenerated)
+    return JSON.stringify(mealGenerated);
     // Example: axios.post('/your-endpoint', { ingredients: ingredientsToStore });
   };
 
@@ -120,13 +121,17 @@ export default function Planner() {
   };
 
   //test planner data
-  const planner_data = JSON.parse(localStorage.getItem("IngreToMealResult"))
-  const [meal_data, setMeal_data] = useState (Object.values(planner_data))
+  const [meal_data, setMeal_data] = useState(()=> {
+    const savedData = localStorage.getItem('IngreToMealResult');
+    return savedData ? Object.values(JSON.parse(savedData)) : {};
+  });
 
   //handle re-generate
-  const handle_regenerate = () => {
-    regenerateRecipes();
-    setMeal_data(meal_data);
+  const handle_regenerate = async () => {
+    const updated_data = await regenerateRecipes();
+    console.log(updated_data);
+    setMeal_data(Object.values(JSON.parse(updated_data)));
+    localStorage.getItem('IngreToMealResult', JSON.stringify(updated_data));
   }
   
   //state for data for re-render

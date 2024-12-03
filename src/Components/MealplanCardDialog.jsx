@@ -79,7 +79,7 @@ export default function MealplanCardDialog({day, meal, onDelete, onGenerate}) {
               }}
             >
               <MenuItem onClick={()=> {handlePopupClose(); onDelete(day, mealTime)}}>Delete</MenuItem>
-              <MenuItem onClick={()=> {handlePopupClose(); onGenerate(day, mealTime)}}>Regenerate</MenuItem>
+              <MenuItem onClick={()=> {handlePopupClose(); onGenerate(day, mealTime, mealDetails.mealName)}}>Regenerate</MenuItem>
             </Menu>
           </div>
         </div>

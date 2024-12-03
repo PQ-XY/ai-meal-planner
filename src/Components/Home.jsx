@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Home.css'
 import MyProfile from './MyProfile';
 import Recommendation from './Recommendation';
-import AIAssistantBar from './AIAssistantBar';
 import SideWindow from './SideWindow';
 import { useState } from 'react';
 import allDatas_recommendation from '../data/test_recommendation_data';
 import allDatas_recommendation2 from '../data/test_recommendation_data2'
-import { regenRecommendation } from '../Components/PlannerHelper'; 
+import { regenRecommendation } from '../Components/PlannerHelper';  
 
 export default function Home() {
 
@@ -37,20 +36,22 @@ export default function Home() {
   console.log(localStorage.getItem('recommendedMealPlanResult'));
   console.log(recommendedMealData);
 
+  const generateRecommendedMealPlan = async () =>{
+    try {
+      const recommendedMealPlan = await regenRecommendation();
+      console.log('Recommended Meal plan generated:', recommendedMealPlan);
+      return JSON.stringify(recommendedMealPlan);
+    } catch(error) {
+      console.error('Error generating recommended meal plan:', error);
+    }
+  };
+
   //handle regenerate recommended meals
-  const handle_regenerate = () => {
-    const generateRecommendedMealPlan = async () =>{
-      try {
-        const recommendedMealPlan = await regenRecommendation();
-        console.log('Recommended Meal plan generated:', recommendedMealPlan);
-        localStorage.setItem('recommendedMealPlanResult', JSON.stringify(recommendedMealPlan));
-      } catch(error) {
-        console.error('Error generating recommended meal plan:', error);
-      }
-    };
-    generateRecommendedMealPlan();
-    const savedRecommendedMealData = localStorage.getItem('recommendedMealPlanResult');
-    setRecommendedMealData(savedRecommendedMealData ? JSON.parse(savedRecommendedMealData) : {});
+  const handle_regenerate = async () => {
+    const updated_data = await generateRecommendedMealPlan();
+    console.log(updated_data);
+    setRecommendedMealData(Object.values(JSON.parse(updated_data)));
+    localStorage.setItem('recommendedMealPlanResult', JSON.stringify(updated_data))
   }
 
   //get nick name

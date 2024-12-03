@@ -4,6 +4,7 @@ import RadialBarChart from './RadialBarChart';
 import AIAssistantBar from './AIAssistantBar';
 import BasicTabs from './BasicTabs';
 import allDatas from '../data/test_data';
+import { regenSingleMeal } from '../Components/PlannerHelper';
 
 export default function Meals() {
 
@@ -27,33 +28,37 @@ export default function Meals() {
   };
 
   //replace the meal card 
-  const handel_regenerateMeal = (day, mealTime) => {
+  const handel_regenerateMeal = async (day, mealTime, mealName) => {
 
     const updatedData = {...mealData}
 
+    console.log(localStorage.getItem('mealsArray'));
+    console.log(localStorage.getItem('dietArray'));
+    console.log(localStorage.getItem('allergyArray'));
+    console.log(localStorage.getItem('cuisineArray'));
+    console.log(localStorage.getItem('kitArray'));
+    console.log(localStorage.getItem('tasteArray'));
+    const flavorArray = JSON.parse(localStorage.getItem('tasteArray'))
+    const SaltyFlavor = flavorArray.find((flavor) => flavor.title === "Salty")['level'];
+    const SourFlavor = flavorArray.find((flavor) => flavor.title === "Sour")['level'];
+    const SweetFlavor = flavorArray.find((flavor) => flavor.title === "Sweet")['level'];
+    const SpicyFlavor = flavorArray.find((flavor) => flavor.title === "Spicy")['level'];
+    const tasteRatings = [SweetFlavor, SourFlavor, SpicyFlavor, SaltyFlavor];
+    let userInfo = {
+      mealTypes: localStorage.getItem('mealsArray'),
+      numDays: "1", // number of days, e.g. 7 days
+      allergies: localStorage.getItem('allergyArray'), // any allergies or restrictions, e.g., peanuts, gluten-free, lactose intolerance
+      preference: localStorage.getItem('cuisineArray'), // preferred cuisine type(s), e.g., Asian, Mediterranean, American, Italian
+      kitchenware: localStorage.getItem('kitArray'), // available kitchen equipment, e.g., wok, fry pan, air fryer, oven, blender, pressure cooker
+      tasteRating: tasteRatings // rating for sweetness, sour, spicy, and salty preference, ranging from 1 to 5
+    }
+
     //re-generate a new meal object(new api call)
-    const newMealObject = {
-      meal:mealTime,
-      mealName: "Grilled Salmon",
-      calories: 500,
-      carbs:20,
-      fat: 12,
-      protein:10,
-      cookTime:"",
-      ingredients: ["Salmon", "Garlic", "Butter"],
-      steps:["step 1: Pat the salmon fillet dry with paper towels.",
-            "step 2: For a more intense flavor, marinate the salmon in the olive oil, lemon juice, herbs, garlic powder, salt, and pepper for at least 30 minutes or up to overnight in the refrigerator.",
-            "step 3: Heat a grill to medium-high heat. ",
-            "step 4: Place the marinated salmon fillet skin-side down on the hot grill.",
-            "step 5: Grill for 5-7 minutes per side, or until cooked through and flakes easily with a fork.",
-            "step 6: Use a meat thermometer to ensure the salmon reaches an internal temperature of 145°F (63°C) for safety.",
-            "step 7: emove the salmon from the grill and let it rest for 2-3 minutes before serving.",
-            "step 8: Flake the cooked salmon and serve on a plate with your favorite sides.",
-      ]
-    };
+    const newMealObject = await regenSingleMeal(mealName, userInfo)
+    console.log(newMealObject) 
 
     if (updatedData[day] && updatedData[day][mealTime]) {
-      updatedData[day][mealTime] = newMealObject;
+      updatedData[day][mealTime] = Object.values(JSON.parse(JSON.stringify(newMealObject)));
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
     }
