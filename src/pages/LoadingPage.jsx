@@ -7,7 +7,7 @@ import { regenRecommendation } from '../Components/PlannerHelper';
 
 const LoadingPage = () => {
   const navigate = useNavigate(); // Hook to navigate programmatically
-
+  /*
   useEffect(()=>{
     const generateRecommendedMealPlan = async () =>{
       try {
@@ -20,6 +20,7 @@ const LoadingPage = () => {
     };
     generateRecommendedMealPlan();
   }, []);
+  */
 
   useEffect(() => {
     const generateMealPlan = async () => {
@@ -49,6 +50,10 @@ const LoadingPage = () => {
         const mealPlan = await mealPlanGenerator(userInfo);
         console.log('Meal plan generated:', mealPlan);
         localStorage.setItem('mealPlanResult', JSON.stringify(mealPlan));
+        // Generate recommended meal plan
+        const recommendedMealPlan = await regenRecommendation();
+        console.log('Recommended Meal plan generated:', recommendedMealPlan);
+        localStorage.setItem('recommendedMealPlanResult', JSON.stringify(recommendedMealPlan));
         // Uncomment and use when ready:
         navigate('/app/meals');
       } catch (error) {
