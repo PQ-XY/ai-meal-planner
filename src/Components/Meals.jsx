@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Meals.css'
 import RadialBarChart from './RadialBarChart';
 import AIAssistantBar from './AIAssistantBar';
 import BasicTabs from './BasicTabs';
 import allDatas from '../data/test_data';
 import { regenSingleMeal } from '../Components/PlannerHelper';
-import { generateFoodImage } from '../apis/foodImageApi';
-
 
 export default function Meals() {
 
@@ -15,9 +13,8 @@ export default function Meals() {
     const savedData = localStorage.getItem('mealPlanResult');
     return savedData ? JSON.parse(savedData) : {};
   });
-  const [loading, setLoading] = useState(false); // Track loading state
 
-  //delete the meal card
+  //delete the meal card 
   const handle_deleteMeal = (day, mealTime) => {
 
     const updatedData = {...mealData}
@@ -31,7 +28,7 @@ export default function Meals() {
   };
 
   //replace the meal card 
-  const handel_regenerateMeal = (day, mealTime, mealName) => {
+  const handel_regenerateMeal = async (day, mealTime, mealName) => {
 
     const updatedData = {...mealData}
 
@@ -59,69 +56,23 @@ export default function Meals() {
     //re-generate a new meal object(new api call)
     const newMealObject = await regenSingleMeal(mealName, userInfo)
     console.log(newMealObject) 
-    // //re-generate a new meal object(new api call)
-    // const newMealObject = {
-    //   meal:mealTime,
-    //   mealName: "Grilled Salmon",
-    //   calories: 500,
-    //   carbs:20,
-    //   fat: 12,
-    //   protein:10,
-    //   cookTime:"",
-    //   ingredients: ["Salmon", "Garlic", "Butter"],
-    //   steps:["step 1: Pat the salmon fillet dry with paper towels.",
-    //         "step 2: For a more intense flavor, marinate the salmon in the olive oil, lemon juice, herbs, garlic powder, salt, and pepper for at least 30 minutes or up to overnight in the refrigerator.",
-    //         "step 3: Heat a grill to medium-high heat. ",
-    //         "step 4: Place the marinated salmon fillet skin-side down on the hot grill.",
-    //         "step 5: Grill for 5-7 minutes per side, or until cooked through and flakes easily with a fork.",
-    //         "step 6: Use a meat thermometer to ensure the salmon reaches an internal temperature of 145°F (63°C) for safety.",
-    //         "step 7: emove the salmon from the grill and let it rest for 2-3 minutes before serving.",
-    //         "step 8: Flake the cooked salmon and serve on a plate with your favorite sides.",
-    //   ]
-    // };
 
-    const mealName = (updatedData[day] && updatedData[day][mealTime] && updatedData[day][mealTime].mealName) || newMealObject.mealName
-
-    getMealImg(day, mealTime, mealName)
-      .then((mealImg) => {
-        newMealObject.mealImg = mealImg
-
-        if (updatedData[day] && updatedData[day][mealTime]) {
-          updatedData[day][mealTime] = {...newMealObject, ...updatedData[day][mealTime]};
-          setMealData(updatedData);
-          localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
-        }
-      })
+    if (updatedData[day] && updatedData[day][mealTime]) {
+      console.log(mealTime);
+      console.log(newMealObject)
+      updatedData[day][mealTime] = Object.values(JSON.parse(JSON.stringify(newMealObject)))[0];
+      setMealData(updatedData);
+      localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
+    }
 
   };
 
-  const getMealImg = async (day, mealTime, mealName) => {
-    let cachedImage = localStorage.getItem(`meal-img-${day}-${mealTime}`); // Check if the image is cached
-
-    console.log(cachedImage)
-    if (!cachedImage) {
-      // Otherwise, fetch the image from the API
-      try {
-        let res = await generateFoodImage(mealName)
-        console.log(res)
-        if (res && typeof res === 'string') {
-          cachedImage = res; // Update image source with the API result
-          localStorage.setItem(`meal-img-${day}-${mealTime}`, res); // Cache the image in localStorage
-        }
-      } catch(e) {
-        console.error('Failed to generate food image');
-      }
-    }
-
-    return cachedImage
-  }
-
   function getCurrentWeekDates() {
     const today = new Date();
-
+  
     // Find Sunday (start of the week)
     // const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
-
+  
     // Find Saturday (end of the week)
     // const lastDayOfWeek = new Date(firstDayOfWeek);
     // lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
@@ -129,14 +80,14 @@ export default function Meals() {
     // Find 7th day
     const lastDay = new Date(today);
     lastDay.setDate(today.getDate() + 6);
-
+  
     // Format dates as MM/DD
     const formatDate = (date) => {
       const month = date.getMonth() + 1; // Months are 0-indexed
       const day = date.getDate();
       return `${month}/${day}`;
     };
-
+  
     return `${formatDate(today)} - ${formatDate(lastDay)}`;
   }
 
@@ -163,7 +114,7 @@ export default function Meals() {
   const getDayofWeek = () => {
     const today = new Date();
     const dayOfWeek = today.getDay();
-
+  
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return days[dayOfWeek]
   }
@@ -191,7 +142,7 @@ export default function Meals() {
   //total fat
   const totalFat = firstDayMeals.reduce((sum,meal)=> sum + meal[1].fat, 0)
   const totalFatPercentage = Math.ceil(totalFat * 9/ totalCalories * 100)
-
+  
 
   return (
     <div className='mealPageContainer'>
@@ -199,14 +150,14 @@ export default function Meals() {
         <div className='mealHeaderWeek'>
           <h1>7-day Meals</h1>
           <h2>{weekDates}</h2>
-        </div>
+        </div>      
         <div className='mealHeaderMeals'>
           <h3 style={{ fontWeight: currentMeal === 'Breakfast' ? 'bold' : 'normal' }}>Breakfast</h3>
           <h3 style={{ fontWeight: currentMeal === 'Lunch' ? 'bold' : 'normal' }}>Lunch</h3>
           <h3 style={{ fontWeight: currentMeal === 'Dinner' ? 'bold' : 'normal' }}>Dinner</h3>
         </div>
         <div className='mealCaloriesInfoContainer'>
-          <div className='totalCaloriesBox'>
+          <div className='totalCaloriesBox'>          
             <h1>{totalCalories} Cal</h1>
             <h2>{currentDay} Total Calories</h2>
           </div>
