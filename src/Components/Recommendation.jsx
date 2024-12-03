@@ -4,6 +4,8 @@ import RecommendationCard from './RecommendationCard'
 
 
 export default function Recommendation({meals, onReplaceMeal, onRegenerate}) {
+  const recommendedMeals = Object.values(meals)
+
   return (
     <div className='recommendationContainer'>
       <div className='recommendationHeader'>
@@ -30,7 +32,7 @@ export default function Recommendation({meals, onReplaceMeal, onRegenerate}) {
       <h3 className='recommendationSub'>We have generated new recipes based on your taste and previous meals, come and try!</h3>
       <div className='recommendationCardsBox'>
         {
-          meals.map((meal, index)=>(
+          recommendedMeals.map((meal, index)=>(
             <RecommendationCard key={index} meal={meal} onReplaceMeal={onReplaceMeal}/>
           ))
         }

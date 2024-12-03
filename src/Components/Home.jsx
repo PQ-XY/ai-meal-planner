@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
 import MyProfile from './MyProfile';
 import Recommendation from './Recommendation';
@@ -7,6 +7,7 @@ import SideWindow from './SideWindow';
 import { useState } from 'react';
 import allDatas_recommendation from '../data/test_recommendation_data';
 import allDatas_recommendation2 from '../data/test_recommendation_data2'
+import { regenRecommendation } from '../Components/PlannerHelper'; 
 
 export default function Home() {
 
@@ -28,14 +29,28 @@ export default function Home() {
   };
 
   //get recommendation data (recommendation api call)
-  const data_recommendation = allDatas_recommendation()
-  const data_recommendation2 = allDatas_recommendation2()
+  const [recommendedMealData, setRecommendedMealData] = useState(() => {
+    const savedRecommendedMealData = localStorage.getItem('recommendedMealPlanResult');
+    return savedRecommendedMealData ? JSON.parse(savedRecommendedMealData) : {};
+  });
 
-  const [recommendationData, setRecommendationData] = useState(false)
+  console.log(localStorage.getItem('recommendedMealPlanResult'));
+  console.log(recommendedMealData);
 
   //handle regenerate recommended meals
   const handle_regenerate = () => {
-    setRecommendationData(!recommendationData);
+    const generateRecommendedMealPlan = async () =>{
+      try {
+        const recommendedMealPlan = await regenRecommendation();
+        console.log('Recommended Meal plan generated:', recommendedMealPlan);
+        localStorage.setItem('recommendedMealPlanResult', JSON.stringify(recommendedMealPlan));
+      } catch(error) {
+        console.error('Error generating recommended meal plan:', error);
+      }
+    };
+    generateRecommendedMealPlan();
+    const savedRecommendedMealData = localStorage.getItem('recommendedMealPlanResult');
+    setRecommendedMealData(savedRecommendedMealData ? JSON.parse(savedRecommendedMealData) : {});
   }
 
   //get nick name
@@ -98,7 +113,7 @@ export default function Home() {
           <MyProfile></MyProfile>
         </div>
         <div className='recommendation'>
-          <Recommendation meals={recommendationData?data_recommendation:data_recommendation2} onReplaceMeal={handle_replaceMeal} onRegenerate={handle_regenerate}></Recommendation>
+          <Recommendation meals={recommendedMealData} onReplaceMeal={handle_replaceMeal} onRegenerate={handle_regenerate}></Recommendation>
         </div>
         {/* <div className='aiAssistantBar'>
           <AIAssistantBar></AIAssistantBar>

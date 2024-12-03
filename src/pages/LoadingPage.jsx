@@ -3,9 +3,23 @@ import { useNavigate } from 'react-router-dom'; // Import the navigation hook
 import logo from '../assets/images/logo.png';
 import './LoadingPage.css';
 import { mealPlanGenerator } from '../Components/PlannerHelper'; // Ensure this path is correct
+import { regenRecommendation } from '../Components/PlannerHelper'; 
 
 const LoadingPage = () => {
   const navigate = useNavigate(); // Hook to navigate programmatically
+
+  useEffect(()=>{
+    const generateRecommendedMealPlan = async () =>{
+      try {
+        const recommendedMealPlan = await regenRecommendation();
+        console.log('Recommended Meal plan generated:', recommendedMealPlan);
+        localStorage.setItem('recommendedMealPlanResult', JSON.stringify(recommendedMealPlan));
+      } catch(error) {
+        console.error('Error generating recommended meal plan:', error);
+      }
+    };
+    generateRecommendedMealPlan();
+  }, []);
 
   useEffect(() => {
     const generateMealPlan = async () => {
@@ -44,6 +58,7 @@ const LoadingPage = () => {
 
     generateMealPlan();
   }, []); // Dependencies: Re-run only if `navigate` changes
+
 
   return (
     <div className="loading-container">
