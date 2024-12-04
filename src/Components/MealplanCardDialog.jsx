@@ -58,7 +58,7 @@ export default function MealplanCardDialog({day, meal, onDelete, onGenerate}) {
       </div>
       <div className='mealCardInfo'>
         <div className='mealCardHeader'>
-          <h3 onClick={handleClickOpen}>{mealDetails.mealName.replace(/\s*\([^)]*\)/g, '')}</h3>
+          <h3 onClick={handleClickOpen}>{mealDetails?.mealName?.replace(/\s*\([^)]*\)/g, '') || 'No Meal Name Availabe'}</h3>
           <div>
             <IconButton
               id="basic-button"
@@ -148,7 +148,7 @@ export default function MealplanCardDialog({day, meal, onDelete, onGenerate}) {
               </div>
               <div className='dishSubInfo'>
                 <h3>Dishes</h3>
-                <h5>{mealDetails.mealName.replace(/\s*\([^)]*\)/g, '')}</h5>
+                <h5>{mealDetails?.mealName?.replace(/\s*\([^)]*\)/g, '') || 'No Meal Name Availabe'}</h5>
               </div>
               <div className='dishSubInfo'>
                 <h3>Ingredients</h3>

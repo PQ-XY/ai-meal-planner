@@ -59,8 +59,9 @@ export default function Meals() {
 
     if (updatedData[day] && updatedData[day][mealTime]) {
       console.log(mealTime);
-      console.log(newMealObject)
-      updatedData[day][mealTime] = Object.values(JSON.parse(JSON.stringify(newMealObject)))[0];
+      console.log(newMealObject);
+      updatedData[day][mealTime] = {...Object.values(JSON.parse(JSON.stringify(newMealObject)))[0], meal:mealTime};
+      console.log(updatedData[day][mealTime]);
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
     }

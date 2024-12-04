@@ -83,7 +83,7 @@ export default function MealDialogs({day, meal}) {
               </div>
               <div className='dishSubInfo'>
                 <h3>Dishes</h3>
-                <h5>{mealDetails.mealName.replace(/\s*\([^)]*\)/g, '')}</h5>
+                <h5>{mealDetails?.mealName?.replace(/\s*\([^)]*\)/g, '') || 'No Meal Name Availabe'}</h5>
               </div>
               <div className='dishSubInfo'>
                 <h3>Ingredients</h3>

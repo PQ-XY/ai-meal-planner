@@ -57,7 +57,7 @@ export default function RecommendationCard({ meal, onReplaceMeal }) {
       </div>
       <div className='recommendationCardInfo'>
         <div className='recommendationCardHeader'>
-          <h3>{meal.mealName.replace(/\s*\([^)]*\)/g, '')}</h3>
+          <h3>{meal?.mealName?.replace(/\s*\([^)]*\)/g, '') || 'No Meal Name Availabe'}</h3>
           <div>
             <IconButton
               id="basic-button"
