@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Meals.css'
 import RadialBarChart from './RadialBarChart';
 import AIAssistantBar from './AIAssistantBar';
 import BasicTabs from './BasicTabs';
 import allDatas from '../data/test_data';
 import { regenSingleMeal } from '../Components/PlannerHelper';
+import { generateFoodImage } from '../apis/foodImageApi';
 
 export default function Meals() {
 
@@ -60,7 +61,9 @@ export default function Meals() {
     if (updatedData[day] && updatedData[day][mealTime]) {
       console.log(mealTime);
       console.log(newMealObject);
-      updatedData[day][mealTime] = {...Object.values(JSON.parse(JSON.stringify(newMealObject)))[0], meal:mealTime};
+      const newMeal = Object.values(JSON.parse(JSON.stringify(newMealObject)))[0];
+      const mealImg = await getMealImg(day, mealTime, newMeal.mealName);
+      updatedData[day][mealTime] = {...newMeal, meal:mealTime, mealImg};
       console.log(updatedData[day][mealTime]);
       setMealData(updatedData);
       localStorage.setItem("mealPlanResult", JSON.stringify(updatedData));
@@ -68,6 +71,24 @@ export default function Meals() {
 
   };
 
+  const getMealImg = async (day, mealTime, mealName) => {
+    console.log(mealName);
+    let cachedImage = localStorage.getItem(`meal-img-${day}-${mealTime}-${mealName}`); // Check if the image is cached
+    if (!cachedImage) {
+      // Otherwise, fetch the image from the API
+      try {
+        let res = await generateFoodImage(mealName)
+        if (res && typeof res === 'string') {
+          cachedImage = res; // Update image source with the API result
+          localStorage.setItem(`meal-img-${day}-${mealTime}-${mealName}`, res); // Cache the image in localStorage
+        }
+      } catch(e) {
+        console.error('Failed to generate food image');
+      }
+    }
+    return cachedImage
+  };
+  
   function getCurrentWeekDates() {
     const today = new Date();
   
