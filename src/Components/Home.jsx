@@ -69,7 +69,6 @@ export default function Home() {
     const updatedData = {...mealData};
     console.log(updatedData);
     
-
     // Step 1: Check if the day exists
     if (!updatedData[day]) {
       updatedData[day] = {}; // Create the day if it doesn't exist
